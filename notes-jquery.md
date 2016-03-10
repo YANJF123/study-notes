@@ -31,5 +31,5 @@
 ```
 上面的代码会在DOM已经加载,不必等到其他资源(如图片等)加载完毕就开始执行,点击a超链接后会向控制台输入打印buuug7字符,并禁止链接的跳转
 window.onload和$(document).ready()的区别:  
-1. window.onload必须等到页面内包括图片的所有元素都加载完毕后才执行,多个window.onload只会执行一个
+1. window.onload必须等到页面内包括图片的所有元素都加载完毕后才执行,多个window.onload只会执行一个  
 2. $(document).ready()是DOM结构绘制完毕后就执行,不必等到加载完毕,多个$(document).ready()都可以执行
