@@ -65,3 +65,9 @@ $.get( "myhtmlpage.html", myCallBack( param1, param2 ));
 注意上面的有参数的回调函数,错误的那个是因为它把回调函数的值当做第二个参数,并不是把函数当做第二个参数
 
 
+##### No-Conflict Mode
+当与其他库冲突的时候,可以通过设置no-conflict model 来解决冲突问题
+```javascript
+$j=jQuery.nonConflict();
+```
+
