@@ -103,6 +103,33 @@ $("a").attr({
 $("a").attr("href");
 ```
 
+##### slelecting elements(选择元素)
+```javascript
+// selecting elements by ID
+$("#myId");
+
+// selecting elements by Class Name
+$(".myClass");
+
+// selecting elements by Attribute
+$("input[name='first-name']");
+
+// selecting elements by compound CSS selector
+$("#contents ul.people li");
+
+// pseudo-selector below
+
+$("a.external:first");
+// selected odd tr
+$("tr:odd");
+// select all input-like elements in a form
+$("#myForm:input");
+$("div:visible");
+// all except the first tree divs
+$("div:gt(2)");
+// all currently animated divs
+$("div:animated");
+```
 
 
 
