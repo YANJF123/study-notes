@@ -6,22 +6,26 @@
 ```javascript
 <!DOCTYPE html>
 <html>
+
 <head>
-<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>JS Bin</title>
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
 </head>
+
 <body>
-  <a href="https://www.baidu.com"  target="_blank">submit</a>
-  <script>
-    $(document).ready(function(){
-      $("a").click(function(event){
-        console.log("buuug7");
-        event.preventDefault();
-      });
+    <a href="https://www.baidu.com" target="_blank">submit</a>
+    <script>
+    $(document).ready(function() {
+        $("a").click(function(event) {
+            console.log("buuug7");
+            event.preventDefault();
+        });
     });
-  </script>
+    </script>
 </body>
+
 </html>
+
 ```
