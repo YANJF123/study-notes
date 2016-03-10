@@ -66,8 +66,31 @@ $.get( "myhtmlpage.html", myCallBack( param1, param2 ));
 
 
 ##### No-Conflict Mode
-当与其他库冲突的时候,可以通过设置no-conflict model 来解决冲突问题
+当与其他库冲突的时候,可以通过设置no-conflict model 来解决冲突问题,下面是几种方法可以参考 
+1. 创建新的别名
 ```javascript
-$j=jQuery.nonConflict();
+var $jq = jQuery.noConflict();
 ```
+2. 直接用函数表达式调用
+```javascript
+jQuery.noConflict();
+(function( $ ) {
+    // Your jQuery code here, using the $
+})( jQuery );
+```
+3. 把参数$直接传递到jQuery(document).ready()函数中
+```javascript
+jQuery(function($){
+    // Your jQuery code here, using the $
+});
+```
+
+
+
+
+
+
+
+
+
 
