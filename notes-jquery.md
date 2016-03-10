@@ -1,7 +1,7 @@
-#jquery notes
+#jQuery notes
 ***
 ### 基础
-
+***
 ##### 准备(jquery ready函数和代码写入的地方)
 - 第一步添加jquery库并引入你的html文件中  
 - 第二步在jquery ready函数中写你的代码
