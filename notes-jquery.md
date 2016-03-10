@@ -45,6 +45,23 @@ $("a").addClass("test");
 //remove class
 $("a").removeClass("test");
 ```
+##### jquery隐藏元素
+```javascript
+$("a").hide("slow");
+```
 
+##### 回调函数
+回调函数就是传递给其他函数的一个参数,在其父函数执行完毕后它自己才执行,回调函数在等待其父函数执行完毕之前的这段时间里,浏览器会去处理其他问题而不会停止下来等待该结果,一旦该回调函数执行完毕后就会通知浏览器处理该结果,大大提高了浏览器的执行效率,所以回调函数比一般的函数特别
+```javascript
+//callback without arguments
+$.get( "myhtmlpage.html", myCallBack );
+//callback with arguments(right)
+$.get( "myhtmlpage.html", function(){
+    myCallBack( param1, param2 );
+} );
+//callback with arguments(wrong)
+$.get( "myhtmlpage.html", myCallBack( param1, param2 ));
+```
+注意上面的有参数的回调函数,错误的那个是因为它把回调函数的值当做第二个参数,并不是把函数当做第二个参数
 
 
