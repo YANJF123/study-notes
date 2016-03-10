@@ -66,7 +66,9 @@ $.get( "myhtmlpage.html", myCallBack( param1, param2 ));
 
 
 ##### No-Conflict Mode
-当与其他库冲突的时候,可以通过用一下几种方法来解决冲突问题    
+当与其他库冲突的时候,可以通过用一下几种方法来解决冲突问题
+
+
 1. 创建新的别名
 ```javascript
 var $jq = jQuery.noConflict();
