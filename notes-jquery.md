@@ -40,7 +40,10 @@ $(document).ready(handler)==$().ready(handler)==$(handler) 这三个写法等价
 
 ##### 用jquery添加删除元素的类
 ```javscript
+// add class
 $("a").addClass("test");
+//remove class
+$("a").removeClass("test");
 ```
 
 
