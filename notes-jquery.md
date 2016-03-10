@@ -85,13 +85,23 @@ jQuery.noConflict();
 jQuery(function($){
     // Your jQuery code here, using the $
 });
-//or 
+// or 
 jQuery(document).ready(function($){
     // Your jQuery code here, usring the $
 });
 ```
 
-
+##### attributes(属性)
+```javascript
+$("a").attr("href","http://www.baidu.com/");
+// 一次设置多个属性
+$("a").attr({
+    "href":"http://www.baidu.com/",
+    "title":"new title"
+});
+// 获取元素属性的值
+$("a").attr("href");
+```
 
 
 
