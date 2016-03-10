@@ -69,18 +69,18 @@ $.get( "myhtmlpage.html", myCallBack( param1, param2 ));
 当与其他库冲突的时候,可以通过用一下几种方法来解决冲突问题
 
 
-1. 创建新的别名
+- 创建新的别名
 ```javascript
 var $jq = jQuery.noConflict();
 ```
-2. 直接用函数表达式调用
+- 直接用函数表达式调用
 ```javascript
 jQuery.noConflict();
 (function( $ ) {
     // Your jQuery code here, using the $
 })( jQuery );
 ```
-3. 把参数$直接传递到jQuery(document).ready()函数中
+- 把参数$直接传递到jQuery(document).ready()函数中
 ```javascript
 jQuery(function($){
     // Your jQuery code here, using the $
