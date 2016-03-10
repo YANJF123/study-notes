@@ -39,7 +39,7 @@ window.onload和$(document).ready()的区别:
 $(document).ready(handler)==$().ready(handler)==$(handler) 这三个写法等价
 
 ##### 用jquery添加删除元素的类
-```javscript
+```javascript
 // add class
 $("a").addClass("test");
 //remove class
