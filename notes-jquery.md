@@ -1,4 +1,6 @@
 #jquery notes
 ***
 #### 基础
-\<script src="https://code.jquery.com/jquery-2.1.4.js"\>\</script\>
+- 第一步添加jquery库并引入你的html文件中  
+- 第二步在$(document).ready(function(){//your code in here});中写你的代码  
+例子:
