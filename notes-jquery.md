@@ -38,7 +38,9 @@ window.onload和$(document).ready()的区别:
 
 
 ##### 用jquery添加删除元素的类
-
+```javscript
+$("a").addClass("test");
+```
 
 
 
