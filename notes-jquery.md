@@ -148,7 +148,7 @@ $("div.foo").not(".bar");
 // ul中含有apple类的li项目
 $("ul li").filter(".apple");
 // 返回列表的第一个元素
-$("ul li).first();
+$("ul li").first();
 // 返回ul中第三个元素
 $("ul li").eq(2);
 
@@ -157,8 +157,8 @@ $("ul li").eq(2);
 // :checked伪类选择器适用于checkbox,radio buttons,selects
 $("form :checked");
 // :disabled
-// 适用于任意\<input\>元素
-$("form :disabled")
+// 适用于任意<input>元素
+$("form :disabled");
 ```
 
 
