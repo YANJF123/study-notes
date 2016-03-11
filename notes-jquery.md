@@ -420,3 +420,39 @@ $( "h1" ).height();
 // the first <h1> relative to its "offset (positioned) parent".
 $( "h1" ).position();
 ```
+
+#### Data Methods(将数据存储与有个DOM元素上)
+页面刷新该数据将不会存在
+```javascript
+// Storing and retrieving data related to an element.
+$( "#myDiv" ).data( "keyName", { foo: "bar" } );
+
+// Returns { foo: "bar" } 
+$( "#myDiv" ).data( "keyName" ); 
+```
+
+#### jquery的一些实用方法(utility methods)
+在$命名空间中存储着一些辅助函数
+```javascript
+// $.trim()
+// Returns "lots of extra whitespace"
+$.trim( "    lots of extra whitespace    " );
+
+// $.each()
+$.each([ "foo", "bar", "baz" ], function( idx, val ) {
+    console.log( "element " + idx + " is " + val );
+});
+$.each({ foo: "bar", baz: "bim" }, function( k, v ) {
+    console.log( k + " : " + v );
+});
+
+// $.inArray()
+// 返回元素在数组中的索引,如果没找到返回-1
+var myArray = [ 1, 2, 3, 5 ];
+if ( $.inArray( 4, myArray ) !== -1 ) {
+    console.log( "found it!" );
+}
+
+// $.extend()
+
+```
