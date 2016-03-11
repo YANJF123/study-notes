@@ -159,6 +159,25 @@ $("form :checked");
 // :disabled
 // 适用于任意<input>元素
 $("form :disabled");
+// :enabled
+// :disabled的反面,选择任意没有disabled属性的元素
+$("form :enabled");
+// :input
+// 该伪选择器选择表单中的所有<input>,<textarea>,<select>,<button>元素
+$("form :input");
+// :selected
+// 选择select下选中的<option>
+$("form :selected");
+// 其他的伪类选择器
+// :password
+// :radio
+// :text
+// :submit
+// :checkbox
+// :reset
+// :file
+// :image
+
 ```
 
 
