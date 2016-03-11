@@ -375,3 +375,48 @@ $( "div.surrogateParent2" ).prevAll().first();
 // returns [ div.parent ]
 $( "div.surrogateParent2" ).prevAll().last();
 ```
+
+#### 操作css样式,元素大小(CSS,Styling,$Dimensions)
+注意驼峰拼写的css属性,是推荐的写法,不过不赞成用.css()函数设置元素的样式
+```javascript
+// Getting CSS properties.
+$( "h1" ).css( "fontSize" ); // Returns a string such as "19px".
+$( "h1" ).css( "font-size" ); // Also works.
+
+// Setting CSS properties.
+$( "h1" ).css( "fontSize", "100px" ); // Setting an individual property.
+// Setting multiple properties.
+$( "h1" ).css({
+    fontSize: "100px",
+    color: "red"
+});
+
+// 赞成的设置css样式的方法如下
+// Working with classes.
+var h1 = $( "h1" );
+h1.addClass( "big" );
+h1.removeClass( "big" );
+h1.toggleClass( "big" );
+if ( h1.hasClass( "big" ) ) {
+    ...
+}
+
+// Dimensions
+// Basic dimensions methods.
+ 
+// Sets the width of all <h1> elements.
+$( "h1" ).width( "50px" );
+ 
+// Gets the width of the first <h1> element.
+$( "h1" ).width();
+ 
+// Sets the height of all <h1> elements.
+$( "h1" ).height( "50px" );
+ 
+// Gets the height of the first <h1> element.
+$( "h1" ).height();
+ 
+// Returns an object containing position information for
+// the first <h1> relative to its "offset (positioned) parent".
+$( "h1" ).position();
+```
