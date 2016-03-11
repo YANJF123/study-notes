@@ -285,3 +285,45 @@ DOM=document object model(文档对象模型),它代表HTML文档,DOM元素被�
 var firstHeadingElem = $( "h1" ).get( 0 );
 });
 ```
+
+#### Traversing
+##### Parents
+```html
+<div class="grandparent">
+    <div class="parent">
+        <div class="child">
+            <span class="subchild"></span>
+        </div>
+    </div>
+    <div class="surrogateParent1"></div>
+    <div class="surrogateParent2"></div>
+</div>
+```
+```javascript
+// Selecting an element's direct parent:
+ 
+// returns [ div.child ]
+$( "span.subchild" ).parent();
+ 
+// Selecting all the parents of an element that match a given selector:
+ 
+// returns [ div.parent ]
+$( "span.subchild" ).parents( "div.parent" );
+ 
+// returns [ div.child, div.parent, div.grandparent ]
+$( "span.subchild" ).parents();
+ 
+// Selecting all the parents of an element up to, but *not including* the selector:
+ 
+// returns [ div.child, div.parent ]
+$( "span.subchild" ).parentsUntil( "div.grandparent" );
+ 
+// Selecting the closest parent, note that only one parent will be selected
+// and that the initial element itself is included in the search:
+ 
+// returns [ div.child ]
+$( "span.subchild" ).closest( "div" );
+ 
+// returns [ div.child ] as the selector is also included in the search:
+$( "div.child" ).closest( "div" );
+```
