@@ -129,6 +129,36 @@ $("div:visible");
 $("div:gt(2)");
 // all currently animated divs
 $("div:animated");
+
+// 判断是否选中元素
+// 错误
+if($("a.foo")){
+    ...
+}
+// 正确
+if($("a.foo").length){
+    ...
+}
+
+// filter selections
+// 类名为foo的div中是否有p元素
+$("div.foo").has("p");
+// 类名为foo的div元素中没有包含bar类的元素
+$("div.foo").not(".bar");
+// ul中含有apple类的li项目
+$("ul li").filter(".apple");
+// 返回列表的第一个元素
+$("ul li).first();
+// 返回ul中第三个元素
+$("ul li").eq(2);
+
+// 选择表单元素
+// :checked伪类选择器选中checked的输入项
+// :checked伪类选择器适用于checkbox,radio buttons,selects
+$("form :checked");
+// :disabled
+// 适用于任意\<input\>元素
+$("form :disabled")
 ```
 
 
