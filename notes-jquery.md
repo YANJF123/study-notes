@@ -492,3 +492,27 @@ $( "#foo" ).click( myObject.myFn ); // HTMLElement #foo
 $( "#foo" ).click( $.proxy( myObject, "myFn" ) ); // myObject
 
 ```
+
+##### 判断变量类型
+```javascript
+$.isArray([]); // true
+$.isFunction(function() {}); // true
+$.isNumeric(3.14); // true
+
+// $.type()
+// 就相当于javascript的typeof
+$.type( true ); // "boolean"
+$.type( 3 ); // "number"
+$.type( "test" ); // "string"
+$.type( function() {} ); // "function"
+ 
+$.type( new Boolean() ); // "boolean"
+$.type( new Number(3) ); // "number"
+$.type( new String('test') ); // "string"
+$.type( new Function() ); // "function"
+ 
+$.type( [] ); // "array"
+$.type( null ); // "null"
+$.type( /test/ ); // "regexp"
+$.type( new Date() ); // "date"
+```
