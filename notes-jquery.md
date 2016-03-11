@@ -202,7 +202,17 @@ $( "#content" )
         .html( "new text for the first h3!" );
 ```
 
-
+#### 操纵元素
+##### 获取和设置元素的信息(getting and setting information about elements)
+```javascript
+// .html() 获取或者设置HTML内容
+// .text() 获取或者设置text内容,HTML将会被去除
+// .attr() 获取或者设置元素属性
+// .width() 获取或者设置选中区域的第一个元素宽度,传递参数为整数
+// .height() 获取或者设置选中区域的第一个元素高度,传递参数为整数
+// .position() 获取选中区域第一个元素的定位信息,它不能设置元素定位信息
+// .val() 获取或者设置表单元素的值
+```
 
 
 
