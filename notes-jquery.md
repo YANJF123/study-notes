@@ -307,15 +307,15 @@ $( "span.subchild" ).parent();
  
 // Selecting all the parents of an element that match a given selector:
  
-// returns [ div.parent ]
+// returns [ div.parent ](返回父元素中类名为parent的div元素)
 $( "span.subchild" ).parents( "div.parent" );
  
-// returns [ div.child, div.parent, div.grandparent ]
+// returns [ div.child, div.parent, div.grandparent ](返回所有的父元素包括body和html,这里没写出来)
 $( "span.subchild" ).parents();
  
 // Selecting all the parents of an element up to, but *not including* the selector:
  
-// returns [ div.child, div.parent ]
+// returns [ div.child, div.parent ](返回从子元素直接父元素到类名为grandparent的父元素之间的元素,但是不包含选择器中的父元素)
 $( "span.subchild" ).parentsUntil( "div.grandparent" );
  
 // Selecting the closest parent, note that only one parent will be selected
@@ -326,4 +326,52 @@ $( "span.subchild" ).closest( "div" );
  
 // returns [ div.child ] as the selector is also included in the search:
 $( "div.child" ).closest( "div" );
+```
+
+##### Children
+```javascript
+// Selecting an element's direct children:
+ 
+// returns [ div.parent, div.surrogateParent1, div.surrogateParent2 ](返回div类型的子元素)
+$( "div.grandparent" ).children( "div" );
+ 
+// Finding all elements within a selection that match the selector:
+ 
+// returns [ div.child, div.parent, div.surrogateParent1, div.surrogateParent2 ]
+$( "div.grandparent" ).find( "div" );
+```
+
+##### Siblings
+```javascript
+// Selecting a next sibling of the selectors:
+ 
+// returns [ div.surrogateParent1 ]
+$( "div.parent" ).next();
+ 
+// Selecting a prev sibling of the selectors:
+ 
+// returns [] as No sibling exists before div.parent
+$( "div.parent" ).prev();
+ 
+// Selecting all the next siblings of the selector:
+ 
+// returns [ div.surrogateParent1, div.surrogateParent2 ]
+$( "div.parent" ).nextAll();
+ 
+// returns [ div.surrogateParent1 ]
+$( "div.parent" ).nextAll().first();
+ 
+// returns [ div.surrogateParent2 ]
+$( "div.parent" ).nextAll().last();
+ 
+// Selecting all the previous siblings of the selector:
+ 
+// returns [ div.surrogateParent1, div.parent ]
+$( "div.surrogateParent2" ).prevAll();
+ 
+// returns [ div.surrogateParent1 ]
+$( "div.surrogateParent2" ).prevAll().first();
+ 
+// returns [ div.parent ]
+$( "div.surrogateParent2" ).prevAll().last();
 ```
