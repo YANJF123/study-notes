@@ -477,9 +477,7 @@ console.log( newObject.foo ); // "baz"
 var myFunction = function() {
     console.log( this );
 };
-var myObject = {
-    foo: "bar"
-};
+var myObject = {foo: "bar"};
 myFunction(); // window
 var myProxyFunction = $.proxy( myFunction, myObject );
 myProxyFunction(); // myObject
