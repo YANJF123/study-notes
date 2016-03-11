@@ -273,4 +273,15 @@ $("#myDiv a:first").attr({
     rel:"nofollow"
 });
 ```
+#### jquery对象
+当创建或者选择元素的时候,jquery返回一个jquery对象,类似于数组,但是比数组更加复杂
+##### DOM和DOM元素
+DOM=document object model(文档对象模型),它代表HTML文档,DOM元素被它的类型(例如div,p,a等)和属性(src,href,class等)来描述
+##### jquery对象
+用jquery对象简介并且兼容性很好,所以就可以代替本地(native-dom)来操作,检查你jquery选择器是否匹配上对应的元素的通用做法是用.length属性来验证,其中的.get()方法是将jquery对象转换成本地dom元素(native DOM element),返回DOM元素本身
 
+```javascript
+// Selecting only the first <h1> element on the page.
+var firstHeadingElem = $( "h1" ).get( 0 );
+});
+```
