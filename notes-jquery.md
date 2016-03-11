@@ -180,6 +180,28 @@ $("form :selected");
 
 ```
 
+##### getters & setters
+一些jquery函数既可以用于获取值也可以用于设置值,通常一个getters函数会获取选中区域中的第一元素的值,当然.text()函数除外,
+它会默认获取所有元素的值
+```javascript
+// 会设置所有h1元素的html为hello world
+$("h1").html("hello world");
+// 会获取第一个h1元素的值
+$("h1").html();
+// setter通常会返回一个jquery对象,允许你在后面继续调用jquery函数,而getters通常不能这么调用
+// 这样的调用通常称为chaining,也就是链式调用
+$("h1").html("hello world").addClass("test");
+$("#content").find("h3").eq(2).html("foo bar");
+// jquery提供的.end()方法让链式调用返回上一级
+$( "#content" )
+    .find( "h3" )
+    .eq( 2 )
+        .html( "new text for the third h3!" )
+        .end() // Restores the selection to all h3s in #content
+    .eq( 0 )
+        .html( "new text for the first h3!" );
+```
+
 
 
 
