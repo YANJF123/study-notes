@@ -213,8 +213,64 @@ $( "#content" )
 // .position() 获取选中区域第一个元素的定位信息,它不能设置元素定位信息
 // .val() 获取或者设置表单元素的值
 ```
+##### 移动,复制,移除元素
+```javascript
+// .insertAfter() 将给定的元素插入参数所选元素的后面
+// <h6>元素会跟在<h1>元素后面
+$("<h6>i am h6</h6>").insertAfter("h1");
+// .after() 在选定的元素后面跟上参数中的元素
+// 同样<h1>元素后面跟着<h6>
+$("h1").after("<h6>i am h6</h6>");
+// .insertBefore()和.before()跟前面的相反
 
 
+// .append()将参数指定的内容添加到所选定的元素的末尾
+// .appendTo()与append()前后倒置
 
+// Make the first list item the last list item:
+// 将ul中第一个li添加到末尾,当然第二个li就会变成第一个li
+var li = $( "#myList li:first" ).appendTo( "#myList" );
+ 
+// Another approach to the same problem:
+$( "#myList" ).append( $( "#myList li:first" ) );
+```
+##### 克隆元素
+```javascript
+// 克隆ul第一个li元素在添加到ul末尾
+$("#myList li:first").clone().appendTo("#myList");
+```
+##### 删除元素
+* .remove()删除的元素不在关联其数据和事件
+* .detach()删除的元素仍旧关联它原来的数据和事件
+* .empty()清空元素的内容
 
+##### 创建元素
+```javascript
+// 创建一个段落
+$("<p>This is a new paragraph.</p>");
+
+// Creating a new element with an attribute object.
+$( "<a/>", {
+    html: "This is a <strong>new</strong> link",
+    "class": "new",
+    href: "foo.html"
+});
+
+//给ul一次添加多个子元素
+var html=[];
+for(var i=0;i<10;i++){
+    html.push("<li>item"+i+"</li>");
+}
+$("ul").append(html.join(""));
+```
+##### 操作属性
+```javascript
+// 操作单个属性
+$("#myDiv a:first").attr("href","new.html");
+// 操作多个属性
+$("#myDiv a:first").attr({
+    href:"new.html",
+    rel:"nofollow"
+});
+```
 
