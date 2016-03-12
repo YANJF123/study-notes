@@ -516,3 +516,114 @@ $.type( null ); // "null"
 $.type( /test/ ); // "regexp"
 $.type( new Date() ); // "date"
 ```
+
+##### 遍历jquery对象或者非jquery对象
+```javascript
+// $.each() 是一个通用的遍历对象,数组,伪数组(array-like)的方法
+var sum=0;
+var arr=[1,2,3,4,5];
+$.each(arr,function(k,v){
+    sum+=v;
+});
+console.log(sum);//15
+
+// .each() 仅仅用在jquery集合上
+<ul>
+    <li><a href="#">Link 1</a></li>
+    <li><a href="#">Link 2</a></li>
+    <li><a href="#">Link 3</a></li>
+</ul>
+$( "li" ).each( function( index, element ){
+    console.log( $( this ).text() );
+});
+// Logs the following:
+// Link 1
+// Link 2
+// Link 3
+
+// the second argument
+// 有时候需要传递第二个参数,下面的例子看看
+$( "li" ).each( function( index, listItem ) {
+    this === listItem; // true
+    // For example only. You probably shouldn't call $.ajax() in a loop.
+    $.ajax({
+        success: function( data ) {
+            // The context has changed.
+            // The "this" keyword no longer refers to listItem.
+            this !== listItem; // true
+        }
+    });
+});
+
+// 有时候.each()不用的好
+// 如下的两个例子是等价的
+// 非必须(unnecessary)
+$( "li" ).each( function( index, el ) {
+    $( el ).addClass( "newClass" );
+});
+// 很好
+$( "li" ).addClass( "newClass" );
+
+// 另外一种情况是.each()通常是用来获取信息的,用来设置信息并不好用
+// Doesn't work:
+$( "input" ).val( $( this ).val() + "%" );
+// .val() does not change the execution context, so this === window
+// works
+$( "input" ).each( function( i, el ) {
+    var elem = $( el );
+    elem.val( elem.val() + "%" );
+});
+
+// 大多数情况下,"getter"返回的是集合中首个元素的信息(.text()方法除外)
+// 通常"setter",例如.text(),.html()等接受一个匿名函数用来应用到每一个匹配的元素上
+// 匿名函数中的参数是匹配元素的index和value
+// 下面的两个写法等价
+$( "input" ).each( function( i, el ) {
+    var elem = $( el );
+    elem.val( elem.val() + "%" );
+});
+ 
+$( "input" ).val(function( index, value ) {
+    return value + "%";
+});
+
+// .map()
+// 有的时候用.map()比.each()更加有用,例如
+var newArr = [];
+$( "li" ).each( function() {
+    newArr.push( this.id );
+});
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
