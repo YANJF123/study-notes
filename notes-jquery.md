@@ -593,7 +593,37 @@ var newArr = [];
 $( "li" ).each( function() {
     newArr.push( this.id );
 });
+//下面的写法比上面的更加有效
+$( "li" ).map( function(index, element) {
+    return this.id;
+}).get();
 
+
+// $.map()
+// $.map()工作在普通javascript数组之上,而.map()工作在jquery集合之上
+<li id="a"></li>
+<li id="b"></li>
+<li id="c"></li>
+ 
+<script>
+var arr = [
+    {id: "a",tagName: "li"},
+    {id: "b",tagName: "li"}, 
+    {id: "c",tagName: "li"}
+    ];
+ 
+// Returns [ "a", "b", "c" ]
+$( "li" ).map( function( index, element ) {
+    return element.id;
+}).get();
+ 
+// Also returns [ "a", "b", "c" ]
+// Note that the value comes first with $.map
+$.map( arr, function( value, index ) {
+    return value.id;
+});
+ 
+</script>
 ```
 
 
