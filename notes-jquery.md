@@ -1,5 +1,13 @@
 #jQuery notes
 ***
+### jquery FAQ
+###### 如何通过class或id选择元素
+```javascript
+//用id选择元素
+$( "#myDivId" );
+//用类class选择元素
+$( ".myCssClass" );
+```
 ### 基础
 ***
 ##### 准备(jquery ready函数和代码写入的地方)
