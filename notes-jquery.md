@@ -605,7 +605,6 @@ $( "li" ).map( function(index, element) {
 <li id="b"></li>
 <li id="c"></li>
  
-<script>
 var arr = [
     {id: "a",tagName: "li"},
     {id: "b",tagName: "li"}, 
@@ -622,10 +621,87 @@ $( "li" ).map( function( index, element ) {
 $.map( arr, function( value, index ) {
     return value.id;
 });
- 
-</script>
 ```
 
+##### jquery .index()方法
+.index()用来搜索匹配元素,并返回相应的索引,从0开始
+###### .index()没有参数的情况
+```html
+<ul>
+    <div></div>
+    <li id="foo1">foo</li>
+    <li id="bar1">bar</li>
+    <li id="baz1">baz</li>
+    <div></div>
+</ul> 
+```
+
+```javascript
+// 没有参数的情况
+var foo = $( "#foo1" );
+console.log( "Index: " + foo.index() ); // 1
+ 
+var listItem = $( "li" );
+// This implicitly calls .first()
+console.log( "Index: " + listItem.index() ); // 1
+console.log( "Index: " + listItem.first().index() ); // 1
+ 
+var div = $( "div" );
+// This implicitly calls .first()
+console.log( "Index: " + div.index() ); // 0
+console.log( "Index: " + div.first().index() ); // 0
+//note: jquery 1.9之前需要在.index()后添加.first()来正常工作,jquery1.9+就不必加了
+```
+###### .index()有参数的情况(字符串参数)
+```html
+<ul>
+    <div class="test"></div>
+    <li id="foo1">foo</li>
+    <li id="bar1" class="test">bar</li>
+    <li id="baz1">baz</li>
+    <div class="test"></div>
+</ul>
+<div id="last"></div>
+```
+```javascript
+var foo = $( "li" );
+// This implicitly calls .first()
+console.log( "Index: " + foo.index( "li" ) ); // 0
+console.log( "Index: " + foo.first().index( "li" ) ); // 0
+ 
+var baz = $( "#baz1" );
+console.log( "Index: " + baz.index( "li" )); // 2
+ 
+var listItem = $( "#bar1" );
+console.log( "Index: " + listItem.index( ".test" ) ); // 1
+ 
+var div = $( "#last" );
+console.log( "Index: " + div.index( "div" ) ); // 2
+```
+###### .index()参数(是一个jquery的选择器)
+如果参数是一个选择器,返回值就是原先元素相对于选择器匹配元素中的位置,找不到返回-1
+```html
+<ul>
+    <div class="test"></div>
+    <li id="foo1">foo</li>
+    <li id="bar1" class="test">bar</li>
+    <li id="baz1">baz</li>
+    <div class="test"></div>
+</ul>
+<div id="last"></div>
+```
+```javascript
+var foo = $( "li" );
+var baz = $( "#baz1" );
+console.log( "Index: " + foo.index( baz ) ); // 2
+ 
+var tests = $( ".test" );
+var bar = $( "#bar1" );
+ 
+// Implicitly calls .first() on the argument.
+console.log( "Index: " + tests.index( bar ) ); // 1
+console.log( "Index: " + tests.index( bar.first() ) ); // 1
+```
 
 
 
