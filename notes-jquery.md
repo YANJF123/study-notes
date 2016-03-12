@@ -1,13 +1,137 @@
 #jQuery notes
 ***
+
+
 ### jquery FAQ
-###### 如何通过class或id选择元素
+
+###### 如何通过class或id选择元素?
 ```javascript
 //用id选择元素
 $( "#myDivId" );
 //用类class选择元素
 $( ".myCssClass" );
 ```
+###### 当我已近有了一个DOM元素集合的时候,如何选择集合中的其他元素?
+```javascript
+var myDomElement = document.getElementById( "foo" ); // A plain DOM element.
+$( myDomElement ).find( "a" ); // Finds all anchors inside the DOM element.
+```
+
+###### 如何测试一个元素含有一个特定的类?
+```javascript
+// 用.hasClass()
+$( "div" ).click(function() {
+    if ( $( this ).hasClass( "protected" ) ) {
+        $( this )
+            .animate({ left: -10 })
+            .animate({ left: 10 })
+            .animate({ left: -10 })
+            .animate({ left: 10 })
+            .animate({ left: 0 });
+    }
+});
+// 用.is()
+if ( $( "#myDiv" ).is( ".pretty.awesome" ) ) {
+    $( "#myDiv" ).show();
+}
+// 不过.is()有更多的用法,例如
+if ( $( "#myDiv" ).is( ":hidden" ) ) {
+    $( "#myDiv" ).show();
+}
+```
+
+###### 如何判定选择的元素是否存在?
+```javascript
+// 用.length
+if ( $( "#myDiv" ).length ) {
+    $( "#myDiv" ).show();
+}
+```
+
+###### 如何知道toggle的元素状态?
+```javascript
+var isVisible = $( "#myDiv" ).is( ":visible" );
+var isHidden = $( "#myDiv" ).is( ":hidden" );
+```
+
+###### 用id选择器选择元素的时候,id的值中含有css预设的特定符号怎么办?
+```javascript
+// 用"\\"转义字符
+// Does not work:
+$( "#some:id" )
+// Works!
+$( "#some\\:id" )
+// Does not work:
+$( "#some.id" )
+// Works!
+$( "#some\\.id" )
+
+// 用下面的函数也可以解决问题
+function jq( myid ) {
+    return "#" + myid.replace( /(:|\.|\[|\]|,)/g, "\\$1" );
+}
+// works
+$( jq( "some.id" ) )
+```
+###### 如何disable/enable表单元素?
+```javascript
+// Disable #x
+$( "#x" ).prop( "disabled", true );
+// Enable #x
+$( "#x" ).prop( "disabled", false );
+```
+
+###### 如何check/uncheck表单中的复选框,单选框?
+```javascript
+// Check #x
+$( "#x" ).prop( "checked", true );
+// Uncheck #x
+$( "#x" ).prop( "checked", false );
+```
+
+###### 如何获得下拉列表选中项的值?
+```html
+<select id="myselect">
+    <option value="1">Mr</option>
+    <option value="2">Mrs</option>
+    <option value="3">Ms</option>
+    <option value="4">Dr</option>
+    <option value="5">Prof</option>
+</select>
+```
+```javascript
+// 选中的项的值,该值会提交到服务器
+$( "#myselect" ).val();
+// => 1
+
+// 获取下拉列表中选中项的值
+$( "#myselect option:selected" ).text();
+// => "Mr"
+```
+
+###### 如何替换有十个子项的列表(ul,ol)中第三个子项的值?
+```javascript
+// 用.eq()方法
+// This doesn't work; text() returns a string, not the jQuery object:
+$( this ).find( "li a" ).eq( 2 ).text().replace( "foo", "bar" );
+// This works:
+var thirdLink = $( this ).find( "li a" ).eq( 2 );
+var linkText = thirdLink.text().replace( "foo", "bar" );
+thirdLink.text( linkText )
+```
+
+###### 如何把一个jquery对象转换成本地DOM元素(native DOM element)?
+jquery对象是伪数组类型
+```javascript
+// 用数组的形式来转换
+$( "#foo" )[ 0 ]; // Equivalent to document.getElementById( "foo" )
+// 用.get(),不过性能不行	
+$( "#foo" ).get( 0 ); // Identical to above, only slower.
+// You can also call .get() without any arguments to retrieve a true array of DOM elements.
+```
+
+
+
 ### 基础
 ***
 ##### 准备(jquery ready函数和代码写入的地方)
