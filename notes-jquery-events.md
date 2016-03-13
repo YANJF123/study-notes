@@ -1,5 +1,5 @@
 ### jquery事件
-jquery提供简单的方法将事件附加在选择器上,提供的方法在事件发生的时候会调用,在方法内部,"this"指向该选中的元素(比如被点击的元素),事件处理的方法接受一个事件对象,该事件对象被用于确定事件的属性和阻止时间的默认行为
+jquery提供简单的方法将事件附加在选择器上,提供的方法在事件发生的时候会调用,在方法内部,"this"指向该选中的元素(比如被点击的元素),事件处理的方法接受一个事件对象,该事件对象被用于确定事件的属性和阻止事件默认行为
 ***
 
 #### jquery基本事件
@@ -182,7 +182,7 @@ $( "form" ).on( "submit", function( event ) {
 ```
 
 #### 事件处理(handling events)
-.on()可以绑定任何所选元素的时间
+.on()可以绑定任何所选元素的事件
 ```javascript
 // link Simple event binding
 // When any <p> tag is clicked, we expect to see '<p> was clicked' in the console.
@@ -225,7 +225,7 @@ $( "p" ).on( "click", {
 });
 
 // Binding events to elements that don't exist yet
-// this is called event delegation(时间委托)
+// this is called event delegation(事件委托)
 $( "ul" ).on( "click", "li", function() {
     console.log( "Something in a <ul> was clicked, and we detected that it was an <li> element." );
 });
