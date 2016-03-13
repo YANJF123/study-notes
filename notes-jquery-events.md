@@ -255,7 +255,27 @@ $( "p" ).on( "click", foo ).on( "click", bar );
 $( "p" ).off( "click", bar );
 ```
 
+#### 在事件处理函数内部(inside the event handling function)
+```javascript
+// pageX, pageY
+// type
+// which
+// data
+// target
+// preventDefault()
+// stopPropagation()
 
+//In addition to the event object, the event handling function also has access to the DOM element that the handler was bound to via the keyword this. To turn the DOM element into a jQuery object that we can use jQuery methods on, we simply do $( this ), often following this idiom
+var elem = $( this );
+// Preventing a link from being followed
+$( "a" ).click(function( event ) {
+    var elem = $( this );
+    if ( elem.attr( "href" ).match( "evil" ) ) {
+        event.preventDefault();
+        elem.addClass( "evil" );
+    }
+});
+```
 
 
 
