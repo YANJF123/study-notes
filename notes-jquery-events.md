@@ -277,6 +277,34 @@ $( "a" ).click(function( event ) {
 });
 ```
 
+#### 理解事件委托机制
+事件委托机制允许我们把一个事件监听器附加到一个父节点,该事件监听器将会在匹配的后代中工作,无论后代是现在存在的还是未来添加的
+```html
+<html>
+<body>
+<div id="container">
+    <ul id="list">
+        <li><a href="http://domain1.com">Item #1</a></li>
+        <li><a href="/local/path/1">Item #2</a></li>
+        <li><a href="/local/path/2">Item #3</a></li>
+        <li><a href="http://domain4.com">Item #4</a></li>
+    </ul>
+</div>
+</body
+```
+```javascript
+// Attach a directly bound event handler
+$( "#list" ).on( "click","a", function( event ) {
+    event.preventDefault();
+    console.log( $( this ).text() );
+});
+// other example
+// Attach a delegated event handler with a more refined selector
+// 其中a[href^='http']表示以http开头的链接
+$( "#list" ).on( "click", "a[href^='http']", function( event ) {
+    $( this ).attr( "target", "_blank" );
+});
+```
 
 
 
