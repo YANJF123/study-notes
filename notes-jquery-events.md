@@ -306,9 +306,31 @@ $( "#list" ).on( "click", "a[href^='http']", function( event ) {
 });
 ```
 
+#### 触发事件处理器(triggering event handlers)
+可以手动通过.trigger()方法触发事件,不过该方法不能用于模拟本地浏览器事件,比如点击超链接或者输入框
+```javascript
+<a href="http://learn.jquery.com">Learn jQuery</a>
 
+// This will not change the current page
+$( "a" ).trigger( "click" );
 
+// 如果不用.trigger()方法如何模拟本地浏览器事件
+// 可以用jquery UI团队提供的jquery.simular.js
+// Triggering a native browser event using the simulate plugin
+$( "a" ).simulate( "click" );
+```
 
+#### jquery事件的变化历史
+贯穿jquery的演化史,事件绑定的方法进行了无数次的改进,从jquery1.7开始启用.on()方法来直接绑定事件或者创建委托事件,下面介绍从jquery1.0开始到现在绑定事件方法的更替
+```javascript
+// .bind() 在jquery1.0版本中可用,该方法现在已废弃
+
+// .live() jquery1.3 废弃
+
+// .delegate() jquery 1.4.2 废弃
+
+// .on() jquery 1.7+
+```
 
 
 
