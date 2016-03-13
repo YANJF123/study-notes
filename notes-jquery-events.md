@@ -323,7 +323,7 @@ $( "a" ).simulate( "click" );
 #### jquery事件的变化历史
 贯穿jquery的演化史,事件绑定的方法进行了无数次的改进,从jquery1.7开始启用.on()方法来直接绑定事件或者创建委托事件,下面介绍从jquery1.0开始到现在绑定事件方法的更替
 ```javascript
-// .bind() 在jquery1.0版本中可用,该方法现在已废弃
+// .bind() 在jquery1.0 废弃
 
 // .live() jquery1.3 废弃
 
