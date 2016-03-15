@@ -90,6 +90,8 @@ $.ajax()的配置项
 - $.post
 - $.getScript
 - $.getJSON
+- $.fn.load() 
+
 ```javascript
 // Using jQuery's Ajax convenience methods
 // Get plain text or HTML
@@ -102,16 +104,25 @@ $.get( "/users.php", {
 $.getScript( "/static/js/myScript.js", function() {
     functionFromMyScript();
 });
- 
 // Get JSON-formatted data from the server
 $.getJSON( "/details.php", function( resp ) {
- 
     // Log each key in the response data
     $.each( resp, function( key, value ) {
         console.log( key + " : " + value );
     });
 });
+
+// Using .load() to populate an element
+$( "#newContent" ).load( "/foo.html" );
+
+// Using .load() to populate an element based on a selector
+$( "#newContent" ).load( "/foo.html #myDiv h1:first", function( html ) {
+    alert( "Content updated!" );
+});
 ```
+
+ 
+
 
 
 
