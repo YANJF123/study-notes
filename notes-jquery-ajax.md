@@ -13,6 +13,7 @@ json: for transporting JSON-formatted data,which can include strings,arrays,and 
 jsonp: for transporting JSON data from another domain  
 xml: for transporting data in a custom XML schema.  
 大多数的情况下用JSON格式传输数据  
+
 ##### A is Asynchronous
 ```javascript
 //The asynchronicity of Ajax catches many new jQuery users off guard. Because Ajax calls are asynchronous by default, the response is not immediately available. Responses can only be handled using a callback. So, for example, the following code will not work:
@@ -26,11 +27,12 @@ console.log( response ); // undefined
 $.get( "foo.php", function( response ) {
     console.log( response ); // server response
 });
+
 ```
 ##### same-origin policy and JSONP
 In general, Ajax requests are limited to the same protocol (http or https), the same port, and the same domain as the page making the request. This limitation does not apply to scripts that are loaded via jQuery's Ajax methods.  
 
-The other exception is requests targeted at a JSONP service on another domain. In the case of JSONP, the provider of the service has agreed to respond to your request with a script that can be loaded into the page using a <script> tag, thus avoiding the same-origin limitation; that script will include the data you requested, wrapped in a callback function you provide.
+The other exception is requests targeted at a JSONP service on another domain. In the case of JSONP, the provider of the service has agreed to respond to your request with a script that can be loaded into the page using a \<script\> tag, thus avoiding the same-origin limitation; that script will include the data you requested, wrapped in a callback function you provide.
 
 ##### Ajax and Firebug
 
