@@ -121,16 +121,106 @@ $( "#newContent" ).load( "/foo.html #myDiv h1:first", function( html ) {
 });
 ```
 
+#### Ajax and Forms
+
+##### serialization
+序列化表单,.serialized()转换成查询字符串和.serializeArray()转换成数组
+```javascript
+// Turning form data into a query string
+$( "#myForm" ).serialize();
+// Creates a query string like this:
+// field_1=something&field2=somethingElse
+
+// Creating an array of objects containing form data
+$( "#myForm" ).serializeArray();
  
+// Creates a structure like this:
+// [
+//   {
+//     name : "field_1",
+//     value : "something"
+//   },
+//   {
+//     name : "field_2",
+//     value : "somethingElse"
+//   }
+// ]
+```
+ 
+ ##### 客户端验证(Client-side validation)
+ ```javascript
+ // Using validation to check for the presence of an input
+$( "#form" ).submit(function( event ) {
+    // If .required's value's length is zero
+    if ( $( ".required" ).val().length === 0 ) {
+        // Usually show some kind of error message here
+        // Prevent the form from submitting
+        event.preventDefault();
+    } else {
+        // Run $.ajax() here
+    }
+});
 
+// Validate a phone number field
+$( "#form" ).submit(function( event ) {
+    var inputtedPhoneNumber = $( "#phone" ).val();
+    // Match only numbers
+    var phoneNumberRegex = /^\d*$/;
+    // If the phone number doesn't match the regex
+    if ( !phoneNumberRegex.test( inputtedPhoneNumber ) ) {
+        // Usually show some kind of error message here
+        // Prevent the form from submitting
+        event.preventDefault();
+    } else {
+        // Run $.ajax() here
+    }
+});
+ ```
 
+##### Prefiltering
+A prefilter is a way to modify the ajax options before each request is sent (hence, the name prefilter).
 
+```javascript
+// For example, say we would like to modify all cross-domain requests through a proxy. To do so with a prefilter is quite simple
+// Using a proxy with a prefilter
+$.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
+    if ( options.crossDomain ) {
+        options.url = "http://mydomain.net/proxy/" + encodeURIComponent( options.url );
+        options.crossDomain = false;
+    }
+});
 
+// You can pass in an optional argument before the callback function that specifies which dataTypes you'd like the prefilter to be applied to. For example, if we want our prefilter to only apply to JSON and script requests, we'd do:
+// Using the optional dataTypes argument
+$.ajaxPrefilter( "json script", function( options, originalOptions, jqXHR ) {
+    // Do all of the prefiltering here, but only for
+    // requests that indicate a dataType of "JSON" or "script"
+});
+```
 
+#### Working with JSONP
+The advent of JSONP — essentially a consensual cross-site scripting hack — has opened the door to powerful mashups of content. Many prominent sites provide JSONP services, allowing you access to their content via a predefined API. A particularly great source of JSONP-formatted data is the Yahoo! Query Language, which we'll use in the following example to fetch news about cats.
 
-
-
-
+```javascript
+// Using YQL and JSONP
+$.ajax({
+    url: "http://query.yahooapis.com/v1/public/yql",
+    // The name of the callback parameter, as specified by the YQL service
+    jsonp: "callback",
+    // Tell jQuery we're expecting JSONP
+    dataType: "jsonp",
+    // Tell YQL what we want and that we want JSON
+    data: {
+        q: "select title,abstract,url from search.news where query=\"cat\"",
+        format: "json"
+    },
+    // Work with the response
+    success: function( response ) {
+        console.log( response ); // server response
+    }
+});
+```
+jQuery handles all the complex aspects of JSONP behind-the-scenes — all we have to do is tell jQuery the name of the JSONP callback parameter specified by YQL ("callback" in this case), and otherwise the whole process looks and feels like a normal Ajax request.
 
 
 
