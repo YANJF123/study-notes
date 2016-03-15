@@ -41,18 +41,12 @@ $.ajax()
 ```javascript
 // Using the core $.ajax() method
 $.ajax({
- 
     // The URL for the request
     url: "post.php",
- 
     // The data to send (will be converted to a query string)
-    data: {
-        id: 123
-    },
- 
+    data: {id: 123},
     // Whether this is a POST or GET request
     type: "GET",
- 
     // The type of data we expect back
     dataType : "json",
 })
@@ -75,6 +69,50 @@ $.ajax({
     alert( "The request is complete!" );
   });
 ```
+$.ajax()的配置项  
+- asyn:  默认为ture,设置为false变成同步调用
+- cache: 默认true,当这只为false会不用缓存
+- done: 如何请求成功要执行的回调函数
+- fail: 请求失败执行的回调函
+- always: 无论失败是否都执行的回调函数
+- context: 回调函数运行的上下文(在回调函数内部this指向原来发送给$.ajax()的对象)
+- data: 发送到服务器的数据,可以是对象,也可以是查询字符串(foo=bar&amp;baz=bim)
+- dataType: 从服务器返回数据的类型
+- jsonp: 默认值为"callback",当发送一个JSONP请求的时候,在查询字符串中回调函数的名字
+- timeout: 设置延时(单位毫秒),超过该时间仍旧获取不到结果判定为失败的请求
+- traditional: Set to true to use the param serialization style in use prior to jQuery 1.4. For details, see http://api.jquery.com/jQuery.param/.
+- type: 请求类型,"GET"或者"POST","PUT","DELETE"
+- url: 请求的URL(该参数不能省略)
+
+##### 一些简便用法
+下面这些方法都是$.ajax()的简单包装,他们都需要设置的参数是url,data,success callback,data type(optional)
+- $.get
+- $.post
+- $.getScript
+- $.getJSON
+```javascript
+// Using jQuery's Ajax convenience methods
+// Get plain text or HTML
+$.get( "/users.php", {
+    userId: 1234
+}, function( resp ) {
+    console.log( resp ); // server response
+});
+// Add a script to the page, then run a function defined in it
+$.getScript( "/static/js/myScript.js", function() {
+    functionFromMyScript();
+});
+ 
+// Get JSON-formatted data from the server
+$.getJSON( "/details.php", function( resp ) {
+ 
+    // Log each key in the response data
+    $.each( resp, function( key, value ) {
+        console.log( key + " : " + value );
+    });
+});
+```
+
 
 
 
