@@ -119,6 +119,109 @@ $( "<button type='button'></button>" )
     .appendTo( document.body );
 ```
 
+#### 用.animate()定制特效
+通过.animate()方法可以实现强大的特效
+```javascript
+// Custom effects with .animate()
+$( "div.funtimes" ).animate(
+    {
+        left: "+=50",
+        opacity: 0.25
+    },
+    // Duration
+    300,
+    // Callback to invoke when the animation is finished
+    function() {
+        console.log( "done!" );
+    }
+);
+// 注意与颜色相关的属性在.animate()中无法使用,不过jquery提供的jquery-color插件可以处理
+
+//Easing
+// Per-property easing
+$( "div.funtimes" ).animate({
+    left: [ "+=50", "swing" ],
+    opacity: [ 0.25, "linear" ]
+}, 300 );
+```
+
+#### queue&dequeue explained
+##### queues as callbacks
+```javascript
+//queue跟callback函数完成一样的功能
+$( ".box" )
+    .animate( {
+        height: 20
+    }, "slow")
+    .queue( function() {
+        $( "#title" ).html( "We're in the animation, baby!" );
+        // This tells jQuery to continue to the next item in the queue
+        // 调用.dequeue()让该执行的项目弹出队列,然后执行下一个任务
+        $( this ).dequeue();
+    } );
+
+// 另外一种让执行完毕的任务弹出队列的方式是调用.next()
+.queue( function( next ) {
+    console.log( "I fired!" );
+    next();
+} );
+    
+```
+##### 定制队列
+以上都是使用默认的队列名字"fx",元素可以有很多个队列附加在其上面,我们可以给每个队列不同的名字
+```javascript
+// 输入.dequeue("queueName")调用该队列执行
+$( ".box" )
+    .queue( "steps", function( next ) {
+        console.log( "Step 1" );
+        next();
+    } )
+    .queue( "steps", function( next ) {
+        console.log( "Step 2" );
+        next();
+    } )
+    .dequeue( "steps" );
+```
+
+##### 清除队列
+队列就是一些列有序的操作,调用.clearQueue()可以清除队列
+```javascript
+// In this example, nothing will happen as we removed everything from the steps queue.
+$( ".box" )
+    .queue( "steps", function( next ) {
+        console.log( "Will never log because we clear the queue" );
+        next();
+    } )
+    .clearQueue( "steps" )
+    .dequeue( "steps" );
+```
+
+##### 替换队列
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
