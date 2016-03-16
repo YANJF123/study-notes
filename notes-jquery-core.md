@@ -138,35 +138,17 @@ $( "#foo" ).get( 0 ); // Identical to above, only slower.
 - 第一步添加jquery库并引入你的html文件中  
 - 第二步在jquery ready函数中写你的代码
 ```javascript
-<!DOCTYPE html>
-<html>
-
-<head>
-    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>JS Bin</title>
-</head>
-
-<body>
-    <a href="https://www.baidu.com" target="_blank">click me</a>
-    <script>
-    $(document).ready(function() {
+$(document).ready(function() {
         $("a").click(function(event) {
             console.log("buuug7");
             event.preventDefault();
         });
     });
-    </script>
-</body>
-
-</html>
-
 ```
 上面的代码会在DOM已经加载,不必等到其他资源(如图片等)加载完毕就开始执行,点击a超链接后会向控制台打印buuug7字符,并禁止链接的跳转  
 window.onload和$(document).ready()的区别:  
 1. window.onload必须等到页面内包括图片的所有元素都加载完毕后才执行,多个window.onload只会执行一个  
-2. $(document).ready()是DOM结构绘制完毕后就执行,不必等到加载完毕,多个$(document).ready()都可以执行  
+2. $(document).ready()是DOM结构绘制完毕后就执行,不必等到全部加载完毕,多个$(document).ready()都可以执行  
 
 $(document).ready(handler)==$().ready(handler)==$(handler) 这三个写法等价
 
@@ -183,7 +165,7 @@ $("a").hide("slow");
 ```
 
 ##### 回调函数
-回调函数就是传递给其他函数的一个参数,在其父函数执行完毕后它自己才执行,回调函数在等待其父函数执行完毕之前的这段时间里,浏览器会去处理其他问题而不会停止下来等待该结果,一旦该回调函数执行完毕后就会通知浏览器处理该结果,大大提高了浏览器的执行效率,所以回调函数比一般的函数特别
+回调函数就是传递给其他函数的一个参数,该参数也为函数,在其父函数执行完毕后它自己才执行,回调函数在等待其父函数执行完毕之前的这段时间里,浏览器会去处理其他问题而不会停止下来等待该结果,一旦该回调函数执行完毕后就会通知浏览器处理该结果,大大提高了浏览器的执行效率,所以回调函数比一般的函数特别
 ```javascript
 //callback without arguments
 $.get( "myhtmlpage.html", myCallBack );
@@ -200,20 +182,17 @@ $.get( "myhtmlpage.html", myCallBack( param1, param2 ));
 ##### No-Conflict Mode
 当与其他库冲突的时候,可以通过用一下几种方法来解决冲突问题
 
-
-- 创建新的别名
 ```javascript
+// 创建新的别名
 var $jq = jQuery.noConflict();
-```
-- 直接用函数表达式调用
-```javascript
+
+// 直接用函数表达式调用
 jQuery.noConflict();
 (function( $ ) {
     // Your jQuery code here, using the $
 })( jQuery );
-```
-- 把参数$直接传递到jQuery(document).ready()函数中
-```javascript
+
+// 把参数$直接传递到jQuery(document).ready()函数中
 jQuery(function($){
     // Your jQuery code here, using the $
 });
@@ -225,6 +204,7 @@ jQuery(document).ready(function($){
 
 ##### attributes(属性)
 ```javascript
+// 设置元素属性
 $("a").attr("href","http://www.baidu.com/");
 // 一次设置多个属性
 $("a").attr({
@@ -249,8 +229,7 @@ $("input[name='first-name']");
 // selecting elements by compound CSS selector
 $("#contents ul.people li");
 
-// pseudo-selector below
-
+/* pseudo-selector below */
 $("a.external:first");
 // selected odd tr
 $("tr:odd");
@@ -313,8 +292,8 @@ $("form :selected");
 ```
 
 ##### getters & setters
-一些jquery函数既可以用于获取值也可以用于设置值,通常一个getters函数会获取选中区域中的第一元素的值,当然.text()函数除外,
-它会默认获取所有元素的值
+一些jquery函数既可以用于获取值也可以用于设置值,通常一个getters函数会获取选中区域中的第一元素的值(不过.text()函数除外,
+它会默认获取所有元素的值)
 ```javascript
 // 会设置所有h1元素的html为hello world
 $("h1").html("hello world");
@@ -357,10 +336,10 @@ $("h1").after("<h6>i am h6</h6>");
 
 
 // .append()将参数指定的内容添加到所选定的元素的末尾
-// .appendTo()与append()前后倒置
+// .appendTo()与append()相反
 
 // Make the first list item the last list item:
-// 将ul中第一个li添加到末尾,当然第二个li就会变成第一个li
+// 将ul中第一个li添加到末尾,当然第二个li就会变成第一个li,因为appendTo默认为移动元素
 var li = $( "#myList li:first" ).appendTo( "#myList" );
  
 // Another approach to the same problem:
@@ -399,18 +378,18 @@ $("ul").append(html.join(""));
 ```javascript
 // 操作单个属性
 $("#myDiv a:first").attr("href","new.html");
-// 操作多个属性
+// 操作一个元素的多个属性
 $("#myDiv a:first").attr({
     href:"new.html",
     rel:"nofollow"
 });
 ```
 #### jquery对象
-当创建或者选择元素的时候,jquery返回一个jquery对象,类似于数组,但是比数组更加复杂
+当创建或者选择元素的时候,jquery返回一个jquery对象,类似于数组(array-like),但是比数组更加复杂
 ##### DOM和DOM元素
 DOM=document object model(文档对象模型),它代表HTML文档,DOM元素被它的类型(例如div,p,a等)和属性(src,href,class等)来描述
 ##### jquery对象
-用jquery对象简介并且兼容性很好,所以就可以代替本地(native-dom)来操作,检查你jquery选择器是否匹配上对应的元素的通用做法是用.length属性来验证,其中的.get()方法是将jquery对象转换成本地dom元素(native DOM element),返回DOM元素本身
+用jquery对象简单并且兼容性很好,所以就可以代替本地(native-dom)来操作,检查你jquery选择器是否匹配上对应的元素的通用做法是用.length属性来验证,其中的.get()方法是将jquery对象转换成本地dom元素(native DOM element),返回DOM元素本身
 
 ```javascript
 // Selecting only the first <h1> element on the page.
@@ -418,7 +397,7 @@ var firstHeadingElem = $( "h1" ).get( 0 );
 });
 ```
 
-#### Traversing
+#### 穿越(Traversing)
 ##### Parents
 ```html
 <div class="grandparent">
@@ -509,7 +488,7 @@ $( "div.surrogateParent2" ).prevAll().last();
 ```
 
 #### 操作css样式,元素大小(CSS,Styling,$Dimensions)
-注意驼峰拼写的css属性,是推荐的写法,不过不赞成用.css()函数设置元素的样式
+注意驼峰拼写的css属性,是推荐的写法,不过不赞成用.css()函数设置元素的样式,而是用.addClass(),.removeClass()来操作
 ```javascript
 // Getting CSS properties.
 $( "h1" ).css( "fontSize" ); // Returns a string such as "19px".
@@ -533,7 +512,7 @@ if ( h1.hasClass( "big" ) ) {
     ...
 }
 
-// Dimensions
+// 尺寸(Dimensions)
 // Basic dimensions methods.
  
 // Sets the width of all <h1> elements.
@@ -553,7 +532,7 @@ $( "h1" ).height();
 $( "h1" ).position();
 ```
 
-#### Data Methods(将数据存储与有个DOM元素上)
+#### Data Methods(将数据存储到DOM元素上)
 页面刷新该数据将不会存在
 ```javascript
 // Storing and retrieving data related to an element.
@@ -564,7 +543,7 @@ $( "#myDiv" ).data( "keyName" );
 ```
 
 #### jquery的一些实用方法(utility methods)
-在$命名空间中存储着一些辅助函数
+在$命名空间中存的一些辅助函数
 ```javascript
 // $.trim()
 // Returns "lots of extra whitespace"
@@ -605,6 +584,7 @@ console.log( firstObject.foo ); // "bar"
 console.log( newObject.foo ); // "baz"
 
 // $.proxy()
+// 在调用一个方法的时候你可以传递上下文context的scope
 // Returns a function that will always run in the provided scope — that is, sets the meaning of this inside the passed function to the second argument.
 var myFunction = function() {
     console.log( this );
@@ -622,7 +602,6 @@ var myObject = {
 };
 $( "#foo" ).click( myObject.myFn ); // HTMLElement #foo
 $( "#foo" ).click( $.proxy( myObject, "myFn" ) ); // myObject
-
 ```
 
 ##### 判断变量类型
@@ -689,6 +668,7 @@ $( "li" ).each( function( index, listItem ) {
 
 // 有时候.each()不用的好
 // 如下的两个例子是等价的
+
 // 非必须(unnecessary)
 $( "li" ).each( function( index, el ) {
     $( el ).addClass( "newClass" );
@@ -757,7 +737,7 @@ $.map( arr, function( value, index ) {
 
 ##### jquery .index()方法
 .index()用来搜索匹配元素,并返回相应的索引,从0开始
-###### .index()没有参数的情况
+##### 没有参数的情况
 ```html
 <ul>
     <div></div>
@@ -769,7 +749,7 @@ $.map( arr, function( value, index ) {
 ```
 
 ```javascript
-// 没有参数的情况
+// 是获取对应它父元素的位置来返回index索引的
 var foo = $( "#foo1" );
 console.log( "Index: " + foo.index() ); // 1
  
