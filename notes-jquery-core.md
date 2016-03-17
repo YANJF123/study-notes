@@ -3,6 +3,12 @@
 
 
 ### jquery FAQ
+###### jquery禁止链接
+```javascript
+$("a").on("click",function(e){
+    return false;
+});
+```
 
 ###### 如何通过class或id选择元素?
 ```javascript
