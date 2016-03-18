@@ -130,7 +130,11 @@ console.log(anyString.substring(0,10));
 ​console.log( "ALPHABET".toLowerCase() ); // "alphabet"
 ```
 
-
+##### toUpperCase()会将调用该方法的字符串值转换为大写的形式,并返回
+```javascript
+// 语法: str.toUpperCase()
+​console.log( "alphabet".toUpperCase() ); // "ALPHABET"
+```
 
 
 
