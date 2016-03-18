@@ -1,5 +1,13 @@
 ## javascript中操作Array和String的常用方法整理
 ### String
+其中它的属性有两个(String.length和String.prototype)
+
+##### fromCharCode()根据指定的Unicode编码中的序号值来返回一个字符串
+```javascript
+// 语法: String.fromCharCode(num1, ..., numN) 
+String.fromCharCode(65,66,67) //ABC
+```
+
 ##### slice()方法提取字符串中的一部分,并返回新的字符串  
 ```javascript
 // 语法: str.slice(beginSlice[, endSlice])
@@ -14,6 +22,7 @@ str.slice(-3);     // returns 'us.'
 str.slice(-3, -1); // returns 'us'
 str.slice(0, -1);  // returns 'The morning is upon us'
 ```
+
 #####replace()使用一个值替换掉一个匹配模式,并返回替换后的字符串,替换模式可以是字符串或者RegExp,替换值可以是一个字符串或者一个函数
 ```javascript
 // 语法: str.replace(regexp|substr,newSubStr|function[,flags])
@@ -136,7 +145,16 @@ console.log(anyString.substring(0,10));
 ​console.log( "alphabet".toUpperCase() ); // "ALPHABET"
 ```
 
+##### trim()删除字符串两端的空白
+```javascript
+// 语法: str.trim()
+var orig = '   foo  ';
+console.log(orig.trim()); // 'foo'
 
+// 另一个.trim()例子，只从一边删除
+var orig = 'foo    ';
+console.log(orig.trim()); // 'foo'
+```
 
 
 
