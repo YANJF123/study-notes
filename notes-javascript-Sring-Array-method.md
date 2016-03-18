@@ -156,17 +156,208 @@ var orig = 'foo    ';
 console.log(orig.trim()); // 'foo'
 ```
 
+### Array
+Array有两个属性(Array.length和Array.prototype)
+##### Array.isArray()用来判断某个值是否是数组
+```javascript
+// 语法: Array.isArray(value)
+// 下面的函数调用都返回 true
+Array.isArray([]);
+Array.isArray([1]);
+Array.isArray(new Array());
+// 鲜为人知的事实：其实 Array.prototype 也是一个数组。
+Array.isArray(Array.prototype); 
+
+// 下面的函数调用都返回 false
+Array.isArray();
+Array.isArray({});
+Array.isArray(null);
+Array.isArray(undefined);
+Array.isArray(17);
+Array.isArray('Array');
+Array.isArray(true);
+Array.isArray(false);
+Array.isArray({ __proto__: Array.prototype });
+```
+
+##### concat()将传入的数组或者非数组与原来数组合并,组成一个新的数组并返回
+```javascript
+// 语法: array.concat(value1, value2, ..., valueN)
+// 连接两个数组
+var alpha = ["a", "b", "c"];
+var numeric = [1, 2, 3];
+// 组成新数组 ["a", "b", "c", 1, 2, 3]; 原数组 alpha 和 numeric 未被修改
+var alphaNumeric = alpha.concat(numeric);
+
+// 连接三个数组
+var num1 = [1, 2, 3];
+var num2 = [4, 5, 6];
+var num3 = [7, 8, 9];
+// 组成新数组[1, 2, 3, 4, 5, 6, 7, 8, 9]; 原数组 num1, num2, num3 未被修改
+var nums = num1.concat(num2, num3);
+```
 
 
+##### filter()方法使用指定的函数测试所有元素,并创建一个包含所有通过测试的元素的新数组
+```javascript
+// 语法: arr.filter(callback[, thisArg])
+// 参数: 用来测试数组的每个元素的函数。调用时使用参数 (element, index, array)。返回true表示保留该元素（通过测试），false则不保留。
+function isBigEnough(element) {
+  return element >= 10;
+}
+var filtered = [12, 5, 8, 130, 44].filter(isBigEnough);
+// filtered is [12, 130, 44]
+```
+
+##### find()方法返回数组中满足测试条件的一个元素,如果没有满足条件的元素,返回undefined
+```javascript
+// 语法: arr.find(callback[, thisArg])
+// 参数: callback在数组每一项上执行的函数，接收 3 个参数：element当前遍历到的元素,index当前遍历到的索引,array数组本身
+// 下面的例子展示了如何从一个数组中寻找质数（如果找不到质数则返回undefined）
+
+function isPrime(element, index, array) {
+    var start = 2;
+    while (start <= Math.sqrt(element)) {
+        if (element % start++ < 1) return false;
+    }
+    return (element > 1);
+}
+
+console.log( [4, 6, 8, 12].find(isPrime) ); // undefined, not found
+console.log( [4, 5, 8, 12].find(isPrime) ); // 5
+```
 
 
+##### forEach()方法让数组的每一项都执行给定的函数
+```javascript
+// 语法: array.forEach(callback[, thisArg])
+// 参数: callback接受三个参数,currentValue当前项的值,index当前项的索引,array数组本身
+function logArrayElements(element, index, array) {
+    console.log("a[" + index + "] = " + element);
+}
+[2, 5, 9].forEach(logArrayElements);
+// logs:
+// a[0] = 2
+// a[1] = 5
+// a[2] = 9
+```
 
 
+##### indexOf()方法返回给定元素在数组中能找到的第一个索引值,否则返回-1
+```javascript
+// 语法: arr.indexOf(searchElement[, fromIndex = 0])
+// 参数: searchElement要查找的元素,fromIndex开始查找的位置
+var array = [2, 5, 9];
+array.indexOf(2);     // 0
+array.indexOf(7);     // -1
+array.indexOf(9, 2);  // 2
+array.indexOf(2, -1); // -1
+array.indexOf(2, -3); // 0
+```
+
+##### join() 方法将数组中的所有元素连接成一个字符串。
+```javascript
+// 语法: str = arr.join([separator = ','])
+// 参数: separator用于指定连接每个数组元素的分隔符,默认为逗号
+var a = ['Wind', 'Rain', 'Fire'];
+var myVar1 = a.join();      // myVar1的值变为"Wind,Rain,Fire"
+var myVar2 = a.join(', ');  // myVar2的值变为"Wind, Rain, Fire"
+var myVar3 = a.join(' + '); // myVar3的值变为"Wind + Rain + Fire"
+var myVar4 = a.join('');    // myVar4的值变为"WindRainFire"
+```
 
 
+##### lastIndexOf()方法返回指定元素在数组中的最后一个索引,不存在返回-1,从数组的后面向前面查找
+```javascript
+// 语法: arr.lastIndexOf(searchElement[, fromIndex = arr.length - 1])
+// 参数: searchElement被查找的元素,fromIndex从此位置开始逆向查找
+var array = [2, 5, 9, 2];
+var index = array.lastIndexOf(2);
+// index is 3
+index = array.lastIndexOf(7);
+// index is -1
+index = array.lastIndexOf(2, 3);
+// index is 3
+index = array.lastIndexOf(2, 2);
+// index is 0
+index = array.lastIndexOf(2, -2);
+// index is 0
+index = array.lastIndexOf(2, -1);
+// index is 3
+```
+
+##### map()方法返回一个由原数组中的每个元素调用一个指定方法后的返回值组成的新数组
+```javascript
+// 语法: array.map(callback[, thisArg])
+// 参数: callback原数组中的元素经过该方法后返回一个新元素,currentValue数组中当前被传递的元素,index元素索引,array调用map()方法的数组
+// 求数组中每个元素的平方根
+var numbers = [1, 4, 9];
+var roots = numbers.map(Math.sqrt);
+/* roots的值为[1, 2, 3], numbers的值仍为[1, 4, 9] */
+```
 
 
+##### pop() 方法删除一个数组中的最后的一个元素，并且返回这个元素
+```javascript
+// 语法: array.pop()
+var myFish = ["angel", "clown", "mandarin", "surgeon"];
+console.log("myFish before: " + myFish);
+var popped = myFish.pop();
+console.log("myFish after: " + myFish);
+console.log("Removed this element: " + popped);
+```
 
+##### push()方法添加一个或多个元素到数组的末尾，并返回数组新的长度（length 属性值）
+```javascript
+// 语法: arr.push(element1, ..., elementN)
+// 参数: elementN被添加到数组末尾的元素
+var sports = ["soccer", "baseball"];
+var total = sports.push("football", "swimming");
+console.log(sports); // ["soccer", "baseball", "football", "swimming"]
+console.log(total);  // 4
+```
+
+
+##### reduce()方法接收一个函数作为累加器（accumulator），数组中的每个值（从左到右）开始合并，最终为一个值
+```javascript
+// 语法: arr.reduce(callback,[initialValue])
+// 参数: callback执行数组中的每个值的函数,四个参数:
+// 参数: previousValue上次调用回调返回的值,或者提供的初始值,currentValue数组中当前被处理的值,
+// 参数: index当前元素在数组中的索引,array调用reduce()的数组
+[0,1,2,3,4].reduce(function(previousValue, currentValue, index, array){
+  return previousValue + currentValue; //10
+});
+```
+##### reverse() 方法颠倒数组中元素的位置。第一个元素会成为最后一个，最后一个会成为第一个
+```javascript
+// 语法: arr.reverse()
+var myArray = ['one', 'two', 'three'];
+myArray.reverse(); 
+console.log(myArray) // ['three', 'two', 'one']
+});
+```
+
+##### shift() 方法删除数组的第一个元素，并返回这个元素。该方法会改变数组的长度
+```javascript
+// 语法: arr.shift()
+var myFish = ['angel', 'clown', 'mandarin', 'surgeon'];
+console.log('调用 shift 之前: ' + myFish);
+// "调用 shift 之前: angel,clown,mandarin,surgeon"
+var shifted = myFish.shift(); 
+console.log('调用 shift 之后: ' + myFish); 
+// "调用 shift 之后: clown,mandarin,surgeon" 
+console.log('被删除的元素: ' + shifted); 
+// "被删除的元素: angel"
+```
+
+
+##### slice()方法把数组中的一部分复制存入一个新的数组中,并返回该新的数组
+```javascript
+// 语法: arr.slice([begin[,end]])
+var fruits=["Banana","Orange","Lemon","Apple","Mango"];
+var citrus=fruits.slice(1,3); // ["Orange","Lemon"]
+
+```
 
 
 
