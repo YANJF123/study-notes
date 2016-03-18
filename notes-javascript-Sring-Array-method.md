@@ -1,5 +1,5 @@
-## javascript中操作Array和String的常用方法整理
-#### String
+# javascript中操作Array和String的常用方法整理
+## String
 ##### slice()方法提取字符串中的一部分,并返回新的字符串  
 ```javascript
 // 语法: str.slice(beginSlice[, endSlice])
