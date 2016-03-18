@@ -91,7 +91,44 @@ var s="my name is bob";
 var result=s.split(" "); //["my","name","is","bob"]
 ```
 
+##### substr()方法返回字符串中从指定位置开始到指定长度的字符串
+```javascript
+// 语法: str.substr(start[, length])
+var str = "abcdefghij";
+console.log("(1,2): "    + str.substr(1,2));   // (1,2): bc
+console.log("(-3,2): "   + str.substr(-3,2));  // (-3,2): hi
+console.log("(-3): "     + str.substr(-3));    // (-3): hij
+console.log("(1): "      + str.substr(1));     // (1): bcdefghij
+console.log("(-20, 2): " + str.substr(-20,2)); // (-20, 2): ab
+console.log("(20, 2): "  + str.substr(20,2));  // (20, 2):
+```
 
+##### substring()返回字符串两个索引之间的子串
+```javascript
+// 语法: str.substring(indexStart[, indexEnd])
+var anyString = "Mozilla";
+
+// 输出 "Moz"
+console.log(anyString.substring(0,3));
+console.log(anyString.substring(3,0));
+
+// 输出 "lla"
+console.log(anyString.substring(4,7));
+console.log(anyString.substring(7,4));
+
+// 输出 "Mozill"
+console.log(anyString.substring(0,6));
+
+// 输出 "Mozilla"
+console.log(anyString.substring(0,7));
+console.log(anyString.substring(0,10));
+```
+
+##### toLowerCase()会将调用该方法的字符串值转换为小写的形式,并返回
+```javascript
+// 语法: str.toLowerCase()
+​console.log( "ALPHABET".toLowerCase() ); // "alphabet"
+```
 
 
 
