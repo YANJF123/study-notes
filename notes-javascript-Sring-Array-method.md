@@ -359,7 +359,71 @@ var citrus=fruits.slice(1,3); // ["Orange","Lemon"]
 
 ```
 
+##### sort() 方法对数组的元素做原地的排序，并返回这个数组
+```javascript
+// 语法: arr.sort([compareFunction])
+var fruit = ['cherries', 'apples', 'bananas'];
+fruit.sort(); // ['apples', 'bananas', 'cherries']
+
+var scores = [1, 10, 2, 21]; 
+scores.sort(); // [1, 10, 2, 21]
+// Watch out that 10 comes before 2,
+// because '10' comes before '2' in Unicode code point order.
+
+var things = ['word', 'Word', '1 Word', '2 Words'];
+things.sort(); // ['1 Word', '2 Words', 'Word', 'word']
+// In Unicode, numbers come before upper ca
+```
+
+##### splice() 方法用新元素替换旧元素，以此修改数组的内容
+```javascript
+// 语法: array.splice(start, deleteCount[, item1[, item2[, ...]]])
+// 参数: start从数组的哪一位开始修改
+// 参数: deleteCount删除的个数,为0表示不删除,这种情况下至少添加一个元素
+// 参数: itenN要添加的元素,如果不指定,则为删除
+// 返回值: 由被删除的元素组成的一个数组
+var myFish = ["angel", "clown", "mandarin", "surgeon"];
+
+//从第 2 位开始删除 0 个元素，插入 "drum"
+var removed = myFish.splice(2, 0, "drum");
+//运算后的 myFish:["angel", "clown", "drum", "mandarin", "surgeon"]
+//被删除元素数组：[]，没有元素被删除
+
+//从第 3 位开始删除 1 个元素
+removed = myFish.splice(3, 1);
+//运算后的myFish：["angel", "clown", "drum", "surgeon"]
+//被删除元素数组：["mandarin"]
+
+//从第 2 位开始删除 1 个元素，然后插入 "trumpet"
+removed = myFish.splice(2, 1, "trumpet");
+//运算后的myFish: ["angel", "clown", "trumpet", "surgeon"]
+//被删除元素数组：["drum"]
+
+//从第 0 位开始删除 2 个元素，然后插入 "parrot", "anemone" 和 "blue"
+removed = myFish.splice(0, 2, "parrot", "anemone", "blue");
+//运算后的myFish：["parrot", "anemone", "blue", "trumpet", "surgeon"]
+//被删除元素的数组：["angel", "clown"]
+
+//从第 3 位开始删除 2 个元素
+removed = myFish.splice(3, Number.MAX_VALUE);
+//运算后的myFish: ["parrot", "anemone", "blue"]
+//被删除元素的数组：["trumpet", "surgeon"]
+```
+
+##### unshift() 方法在数组的开头添加一个或者多个元素，并返回数组新的 length 值
+```javascript
+// 语法: arr.unshift(element1, ..., elementN)
+var arr = [1, 2];
+
+arr.unshift(0); //result of call is 3, the new array length
+//arr is [0, 1, 2]
+
+arr.unshift(-2, -1); // = 5
+//arr is [-2, -1, 0, 1, 2]
+
+arr.unshift( [-3] );
+//arr is [[-3], -2, -1, 0, 1, 2]
+```
 
 
-
-
+ 
