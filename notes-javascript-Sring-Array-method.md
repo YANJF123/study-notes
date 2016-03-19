@@ -23,7 +23,8 @@ str.slice(-3, -1); // returns 'us'
 str.slice(0, -1);  // returns 'The morning is upon us'
 ```
 
-#####replace()使用一个值替换掉一个匹配模式,并返回替换后的字符串,替换模式可以是字符串或者RegExp,替换值可以是一个字符串或者一个函数
+##### replace()使用一个值替换掉一个匹配模式,并返回替换后的字符串,替换模式可以是字符串或者RegExp,  
+替换值可以是一个字符串或者一个函数
 ```javascript
 // 语法: str.replace(regexp|substr,newSubStr|function[,flags])
 var re = /apples/gi;
@@ -201,7 +202,8 @@ var nums = num1.concat(num2, num3);
 ##### filter()方法使用指定的函数测试所有元素,并创建一个包含所有通过测试的元素的新数组
 ```javascript
 // 语法: arr.filter(callback[, thisArg])
-// 参数: 用来测试数组的每个元素的函数。调用时使用参数 (element, index, array)。返回true表示保留该元素（通过测试），false则不保留。
+// 参数: callback用来测试数组的每个元素的函数
+// 参数: callback调用时使用参数 (element, index, array)。返回true表示保留该元素（通过测试），false则不保留。
 function isBigEnough(element) {
   return element >= 10;
 }
@@ -289,7 +291,8 @@ index = array.lastIndexOf(2, -1);
 ##### map()方法返回一个由原数组中的每个元素调用一个指定方法后的返回值组成的新数组
 ```javascript
 // 语法: array.map(callback[, thisArg])
-// 参数: callback原数组中的元素经过该方法后返回一个新元素,currentValue数组中当前被传递的元素,index元素索引,array调用map()方法的数组
+// 参数: callback原数组中的元素经过该方法后返回一个新元素
+// 参数: callback中的参数:currentValue数组中当前被传递的元素,index元素索引,array调用map()方法的数组
 // 求数组中每个元素的平方根
 var numbers = [1, 4, 9];
 var roots = numbers.map(Math.sqrt);
