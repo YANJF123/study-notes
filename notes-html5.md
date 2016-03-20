@@ -1,4 +1,5 @@
-### HTML5
+## HTML5
+
 - 语义: 能够让你更恰当地描述你的内容是什么
 - 连通性: 能够让你跟服务器之间通过新技术进行通讯
 - 离线&储存: 能够让网页在客户端本地存储数据以高效地离线运行
@@ -95,7 +96,6 @@
 </article>
 ```
 
-
 * <nav>描绘一个含有多个超链接的区域，这个区域包含转到其他页面，或者页面内部其他部分的链接列表,例如页头导航
 ```html
 <nav>
@@ -107,6 +107,25 @@
 </nav>
 ```
 
+##### HTML5音频视频
+嵌入媒体
+```html
+<video src="http://v2v.cc/~j/theora_testsuite/320x240.ogg" controls>
+  你的浏览器不支持 <code>video</code> 标签.
+</video>
+
+<audio src="audio.ogg" controls autoplay loop>
+<p>你的浏览器不支持audio标签</p>
+</audio>
+
+```
+
+##### HTML5表单
+<input>元素的type拥有更多的值
+* search: 这个元素呈现为一个搜索框,换行符会从输入值中去掉
+* tel: 一个编辑电话号码的输入控件,换行符会从中去掉,在没有其他的限制,因为电话号码国际化差异非常明显,可以设置pattern和maxlength来做额外的限制
+* url: 表现为一个编辑url的输入控件
+* email: 呈现为一个邮件地址
 
 
 
