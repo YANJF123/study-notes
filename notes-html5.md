@@ -127,6 +127,26 @@
 * url: 表现为一个编辑url的输入控件
 * email: 呈现为一个邮件地址
 
+<input>元素也拥有一些新的属性
+* list:<datalist>元素的id
+```html
+<label>Choose a browser from this list:
+<input list="browsers" name="myBrowser" /></label>
+<datalist id="browsers">
+  <option value="Chrome">
+  <option value="Firefox">
+  <option value="Internet Explorer">
+  <option value="Opera">
+  <option value="Safari">
+</datalist
+```
+* pattern: 一个正则表达式,用于检查控件的值,能够作用于的type值为text,tel,search,url,email的input元素
+```html
+//限制输入框只能输入三个大写字母
+<input type="text" name="name" id="name" pattern="[A-Z]{3}">
+```
+* form: 一个字符串用于表明该input输入那个form元素
+* formmethod: 一个字符串,用于表明该提交时会使用那个HTTP方法(GET或者POST),如果定义,会覆盖<form>元素上的method属性
 
 
 
