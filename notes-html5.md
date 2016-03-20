@@ -22,14 +22,14 @@
 ##### HTML5新增了几个新元素使得开发者可以用标准语义去描述web文档的结构
 这些包括section,article,aside,footer,header,nav,hgrop
 * <header>元素表示一组引导性的帮助，可能包含标题元素，也可以包含其他元素，像logo、分节头部、搜索表单等。
-```html
-<header>
-  a logo
-</header>
-```
+  ```html
+  <header>
+    a logo
+  </header>
+  ```
 * <footer>表示最近一个章节内容或者根节点元素的页脚。一个页脚通常包含该章节作者、版权数据或者与文档相关的链接等信息。
-```html
-<footer>
-  Some copyright info or perhaps some author info for an &lt;article&gt;?
-</footer>
+  ```html
+  <footer>
+    Some copyright info or perhaps some author info for an &lt;article&gt;?
+  </footer>
 ```
