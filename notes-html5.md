@@ -146,9 +146,9 @@
 <input type="text" name="name" id="name" pattern="[A-Z]{3}">
 ```
 * form: 一个字符串用于表明该input输入那个form元素
-* formmethod: 一个字符串,用于表明该提交时会使用那个HTTP方法(GET或者POST),如果定义,会覆盖<form>元素上的method属性
+* formmethod: 一个字符串,用于表明该提交时会使用那个HTTP方法(GET或者POST),如果定义,会覆盖\<form\>元素上的method属性
 
-###### <form>元素有一个新特新
+###### \<form\>元素有一个新特新
 novalidate:设置该属性不会在表单提交之前对其验证
 ```html
 // 提交表单将不会做任何验证
@@ -159,12 +159,12 @@ novalidate:设置该属性不会在表单提交之前对其验证
 </form>
 ```
 
-###### <datalist>元素
-<datalist> 元素会在填写 <input> 字段时，显示一列 <option> 作为提示。  
-你可以使用 <input> 元素上的 list 特性来将一个特定的 input 与特定的 <datalist> 元素做关联。
+###### \<datalist\>元素
+\<datalist\> 元素会在填写 \<input\> 字段时，显示一列 \<option\> 作为提示。  
+你可以使用 \<input\> 元素上的 list 特性来将一个特定的 input 与特定的 \<datalist\> 元素做关联。
 
 ###### placeholder属性
-placeholder 特性作用于 <input> 与 <textarea> 元素上，提示用户此域内能够输入什么内容。placeholder 中的文本不能包含回车与换行。
+placeholder 特性作用于 \<input\> 与 \<textarea\> 元素上，提示用户此域内能够输入什么内容。placeholder 中的文本不能包含回车与换行。
 
 ###### aotuofocus属性
 autofocus 特性让你能够指定一个表单控件，当页面载入后该表单自动获得焦点，除非用户覆盖它
@@ -173,9 +173,9 @@ autofocus 特性让你能够指定一个表单控件，当页面载入后该表�
 ```
 
 ###### 约束验证
-* <input>, <select>， 和 <textarea> 元素上的 required属性规定其值必须填写
-* <input> 元素上的 pattern 特性用于限定元素值必须匹配一个特定的正则表达式。
-* <input> 与 <textarea> 元素的 maxlength 特性限制了用户能够输入的最大字符数(在 Unicode 代码点内)
+* \<input\>, \<select\>， 和 \<textarea\> 元素上的 required属性规定其值必须填写
+* \<input\> 元素上的 pattern 特性用于限定元素值必须匹配一个特定的正则表达式。
+* \<input\> 与 \<textarea\> 元素的 maxlength 特性限制了用户能够输入的最大字符数(在 Unicode 代码点内)
 * type 的 url 与 email 值分别用于限制输入值是否为有效的 URL 或电子邮件地址。
 
 
