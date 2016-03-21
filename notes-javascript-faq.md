@@ -15,5 +15,5 @@ var text = document.getElementById("divA").textContent;
 // 设置文本内容:
 document.getElementById("divA").textContent = "This is some text";
 // divA的HTML现在是这样的:
-//   <div id="divA">This is some text</div>
+// <div id="divA">This is some text</div>
 ```
