@@ -390,11 +390,84 @@ sass/
 `– main.scss              # Main Sass file
 ~~~
 
+##### base文件夹
+base/文件夹存放项目中的模板文件,在这里可以找到重置文件,排版规范文件或者一个样式表,命名的时候参考下面的方式
+- _base.scss
+- _reset.scss
+
+##### layout文件夹
+layout/文件夹存放构建网站或者应用程序使用的布局部分,该文件夹存放网站主体(头部,尾部,导航栏,侧边栏..)的样式表
+- _grid.scss
+- _header.scss
+- _footer.scss
+- _sidebar.scss
+- _forms.scss
+- _nav.scss
+
+##### components 文件夹
+components/文件夹存放局部组件,包含各种具体模块,基本都是独立的模块,比如一个滑块,加载块
+- _media.scss
+- _carousel.scss
+- _thumbnails.scss
+
+##### pages文件夹
+如果页面有特定样式,最好将该文件存放进pages/目录并用页面名字.例如,_home.scss
+- _home.scss
+- _contact.scss
+
+##### themes文件夹
+themes/文件夹存放主题相关的scss
+- _themes.scss
+- _admin.scss
 
 
+##### abstracts文件夹
+abstract/文件夹包含了整个项目中使用到Sass辅助工具,这里存放着一个全局变量,函数,混合宏和占位符,该文件夹的经验法则是,编译后这里不应该输出任何css,单纯的只是一些Sass辅助工具(该文件夹也为称为helper/或者utilities)
+- _variables.scss
+- _mixins.scss
+- _functions.scss
+- _placeholder.scss
+- 
 
+##### vendors文件夹
+用来存放所有外部库和框架
+- _normalize.scss
+- _bootstrap.scss
+- _jquery_ui.scss
+- 
 
+##### 入口文件
+通常写作main.scss应该是整个代码库中唯一开头不是下划线命名的sass文件,出@important和注释外,该文件不应该包含其他任何代码,如下面的例子
+~~~
+@import 'abstracts/variables';
+@import 'abstracts/functions';
+@import 'abstracts/mixins';
+@import 'abstracts/placeholders';
 
+@import 'vendors/bootstrap';
+@import 'vendors/jquery-ui';
+
+@import 'base/reset';
+@import 'base/typography';
+
+@import 'layout/navigation';
+@import 'layout/grid';
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/sidebar';
+@import 'layout/forms';
+
+@import 'components/buttons';
+@import 'components/carousel';
+@import 'components/cover';
+@import 'components/dropdown';
+
+@import 'pages/home';
+@import 'pages/contact';
+
+@import 'themes/theme';
+@import 'themes/admin';
+~~~
 
 
 
