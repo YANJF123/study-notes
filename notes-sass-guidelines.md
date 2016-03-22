@@ -434,7 +434,7 @@ abstract/文件夹包含了整个项目中使用到Sass辅助工具,这里存放
 - _normalize.scss
 - _bootstrap.scss
 - _jquery_ui.scss
-- 
+
 
 ##### 入口文件
 通常写作main.scss应该是整个代码库中唯一开头不是下划线命名的sass文件,出@important和注释外,该文件不应该包含其他任何代码,如下面的例子
