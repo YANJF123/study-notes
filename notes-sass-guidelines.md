@@ -1,6 +1,8 @@
 # 读sass-guidelines的一些记录
 
 ## 语法格式
+
+
 ### 字符串
 ##### 建议在入口文件中通过@charset指令使用UFT-8的编码格式
 ~~~
@@ -184,14 +186,96 @@ $breakpoints: ( small: 767px, medium: 992px, large: 1200px );
 }
 ```
 
+
 ## 命名约定
+设计到命名的地方有变量,函数,混合宏
+### 常量
+常量建议用大写书写
+```scss
+// Yep
+$CSS_POSITIONS: (top, right, bottom, left, center);
 
+// Nope
+$css-positions: (top, right, bottom, left, center);
+```
 
+### 命名空间
+为了避免跟其他人的代码冲突,使用命名空间来包裹你的所有变量,函数,混合宏和占位符,例如是用"su-"
+```scss
+$su-configuration: ( … );
 
+@function su-rainbow($unicorn) {
+  // …
+}
+```
 
+## 注释
+代码写完应该立即注释
+### 标示注释
+```scss
+/**
+ * Helper class to truncate and add ellipsis to a string too long for it to fit
+ * on a single line.
+ * 1. Prevent content from wrapping, forcing it on a single line.
+ * 2. Add ellipsis at the end of the line.
+ */
+.ellipsis {
+  white-space: nowrap; /* 1 */
+  text-overflow: ellipsis; /* 2 */
+  overflow: hidden;
+}
+```
+单行注释
+```scss
+// Add current module to the list of imported modules.
+// `!global` flag is required so it actually updates the global variable.
+$imported-modules: append($imported-modules, $module) !global;
+```
 
-
-
+### 文档
+每一个旨在代码库中复用的变量、函数、混合宏和占位符，都应该使用 SassDoc 记录下来作为全部 API 的一部分。
+```scss
+/// Vertical rhythm baseline used all over the code base.
+/// @type Length
+$vertical-rhythm-baseline: 1.5rem;
+```
+一个完整的例子
+```scss
+/// Mixin helping defining both `width` and `height` simultaneously.
+///
+/// @author Hugo Giraudel
+///
+/// @access public
+///
+/// @param {Length} $width - Element’s `width`
+/// @param {Length} $height [$width] - Element’s `height`
+///
+/// @example scss - Usage
+///   .foo {
+///     @include size(10em);
+///   }
+///
+///   .bar {
+///     @include size(100%, 10em);
+///   }
+///
+/// @example css - CSS output
+///   .foo {
+///     width: 10em;
+///     height: 10em;
+///   }
+///
+///   .bar {
+///     width: 100%;
+///     height: 10em;
+///   }
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+```
+## 结构
+CSS预处理器一个最主要的好处就是可以拆分代码库到几个文件中,而不会影响性能(@import),部署的时候都会被编译到一个单一的文件中
 
 
 
