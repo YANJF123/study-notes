@@ -7,7 +7,7 @@
 ~~~
 
 ##### 在Sass中字符串始终要被单引号包裹
-```css
+```sass
 // Yep
 $direction: 'left';
 
