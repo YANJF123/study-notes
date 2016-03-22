@@ -289,10 +289,106 @@ CSS预处理器一个最主要的好处就是可以拆分代码库到几个文�
 - 组件本身的样式
 - 和组件样式有关的变量,修饰器以及状态
 - 如有需要,设置组件的子级样式
+一个组件文件内可以存在与该组件密切相关的变量,占位符,混合宏(mixin)甚至是函数,都应该避免对其他组件的引用,否则将会让项目整体的依赖变得难以维护
+```scss
+// Button-specific variables
+$button-color: $secondary-color;
 
+// … include any button-specific:
+// - mixins
+// - placeholders
+// - functions
 
+/**
+ * Buttons
+ */
+.button {
+  @include vertical-rhythm;
+  display: block;
+  padding: 1rem;
+  color: $button-color;
+  // … etc.
 
+  /**
+   * Inlined buttons on large screens
+   */
+  @include respond-to('medium') {
+    display: inline-block;
+  }
+}
 
+/**
+ * Icons within buttons
+ */
+.button > svg {
+  fill: currentcolor;
+  // … etc.
+}
+
+/**
+ * Inline button
+ */
+.button--inline {
+  display: inline-block;
+}
+```
+
+### 7-1模式
+* abstracts/
+* base/
+* components/
+* layout/
+* pages/
+* themes/
+* vendors/
+* main.css
+~~~
+sass/
+|
+|– abstracts/
+|   |– _variables.scss    # Sass Variables
+|   |– _functions.scss    # Sass Functions
+|   |– _mixins.scss       # Sass Mixins
+|   |– _placeholders.scss # Sass Placeholders
+|
+|– base/
+|   |– _reset.scss        # Reset/normalize
+|   |– _typography.scss   # Typography rules
+|   …                     # Etc.
+|
+|– components/
+|   |– _buttons.scss      # Buttons
+|   |– _carousel.scss     # Carousel
+|   |– _cover.scss        # Cover
+|   |– _dropdown.scss     # Dropdown
+|   …                     # Etc.
+|
+|– layout/
+|   |– _navigation.scss   # Navigation
+|   |– _grid.scss         # Grid system
+|   |– _header.scss       # Header
+|   |– _footer.scss       # Footer
+|   |– _sidebar.scss      # Sidebar
+|   |– _forms.scss        # Forms
+|   …                     # Etc.
+|
+|– pages/
+|   |– _home.scss         # Home specific styles
+|   |– _contact.scss      # Contact specific styles
+|   …                     # Etc.
+|
+|– themes/
+|   |– _theme.scss        # Default theme
+|   |– _admin.scss        # Admin theme
+|   …                     # Etc.
+|
+|– vendors/
+|   |– _bootstrap.scss    # Bootstrap
+|   |– _jquery-ui.scss    # jQuery UI
+|   …                     # Etc.
+|
+`– main.scss              # Main Sass file
+~~~
 
 
 
