@@ -469,8 +469,26 @@ abstract/文件夹包含了整个项目中使用到Sass辅助工具,这里存放
 @import 'themes/admin';
 ~~~
 
+## 响应式设计和断点
 
+### 命名断点
+媒体查询应该关注屏幕尺寸,不应该用设备名来命名,而应用更普通的方式,例如
+```scss
+// Yep
+$breakpoints: (
+  'medium': (min-width: 800px),
+  'large': (min-width: 1000px),
+  'huge': (min-width: 1200px),
+);
 
+// Nope
+$breakpoints: (
+  'tablet': (min-width: 800px),
+  'computer': (min-width: 1000px),
+  'tv': (min-width: 1200px),
+);
+```
+就此来说，任何不与特定设备关联而表达清晰的命名约定，都会因其广泛的通用性获得认可。
 
 
 
