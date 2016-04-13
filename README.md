@@ -21,7 +21,7 @@ my own study notes(自己的学习笔记)
 - [notes-jquery-extend](https://github.com/buuug7/study-notes/blob/master/jquery/notes-jquery-extend.md)
 
 #### typical-template
-- [basic-html-layout](https://github.com/buuug7/study-notes/blob/master/typical-template/basic-html-layout.md)
+- [basic-html-layout](https://github.com/buuug7/study-notes/blob/master/typical-template/basic-html-layout.html)
 
 #### useful-images
 - [loader.gif](https://github.com/buuug7/study-notes/blob/master/useful-images/loader.gif)
