@@ -19,6 +19,11 @@ my own study notes(自己的学习笔记)
 - [notes-jquery-effects](https://github.com/buuug7/study-notes/blob/master/jquery/notes-jquery-effects.md)
 - [notes-jquery-ajax](https://github.com/buuug7/study-notes/blob/master/jquery/notes-jquery-ajax.md)
 - [notes-jquery-extend](https://github.com/buuug7/study-notes/blob/master/jquery/notes-jquery-extend.md)
+- 
+
+#### linux
+- [linux-basic-operation](https://github.com/buuug7/study-notes/blob/master/linux/linux-basic-operation.md)
+
 
 #### typical-template
 - [basic-html-layout](https://github.com/buuug7/study-notes/blob/master/typical-template/basic-html-layout.html)
