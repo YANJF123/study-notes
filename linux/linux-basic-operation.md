@@ -138,8 +138,27 @@ chown -R buuug7.buuug7 /test
 // 软连接,删除源,另一个无法使用
 // ln -s cc ccTo
 
+// 管道和重定向
+// 批处理命令连接执行,使用 |
+// 串联:使用分号
+// 前面执行成功,则执行后面,否则不执行:&&
+// 前面执行失败,则执行后面一条: ||
 
+// 如果有home目录,则输出success,否则输出failed
+ls /home && echo success! || echo failed
 
+// 重定向
+// 将信息buug7输出到a.txt
+echo buuug7 > a.txt
+// 将/home目录下面的信息存入a.txt中
+ls /home > a.txt
+//清空文件
+ :> a.txt
+
+// bash快捷键输入删除
+// ctrl+u 删除光标到行首的字符,删除全行
+// ctrl+w 删除光标前面的一个相邻字符串
+// ctrl+H 删除光标前边的一个字符
 
 
 ```
