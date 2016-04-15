@@ -130,7 +130,13 @@ chown buuug7 a.txt
 chown -R buuug7.buuug7 /test
 
 
+// 给文件增加别名
 
+// 硬连接,删除其中的一个,另一个仍旧可以使用
+// ln cc ccAgian 
+
+// 软连接,删除源,另一个无法使用
+// ln -s cc ccTo
 
 
 
