@@ -1,7 +1,5 @@
 ##  study-notes
-
-### descriptions
-my own study notes(自己的学习笔记)
+自己收集的一些非常有用的web开发的相关技巧知识,以备自己以后查看,也可方便别人学习查看,都是web开发当中频繁用到的,并且有详细的例子,现在陆续更新当中
 
 #### css+html+sass
 - [css-useful-tips](https://github.com/buuug7/study-notes/blob/master/css-html/css-useful-tips.md)
