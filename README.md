@@ -1,31 +1,31 @@
 # Study Notes
 自己收集的一些非常有用的web开发的相关技巧知识,以备自己以后查看,也可方便别人学习查看,都是web开发当中频繁用到的,并且有详细的例子,现在陆续更新当中
 
-#### css+html+sass
+## css+html+sass
 - [css-useful-tips](https://github.com/buuug7/study-notes/blob/master/css-html/css-useful-tips.md)
 - [notes-css-position](https://github.com/buuug7/study-notes/blob/master/css-html/notes-css-position.md)
 - [notes-html5](https://github.com/buuug7/study-notes/blob/master/css-html/notes-html5.md)
 - [notes-sass-guidelines](https://github.com/buuug7/study-notes/blob/master/css-html/notes-sass-guidelines.md)
 
-#### javascript
+## javascript
 - [notes-javascript-faq](https://github.com/buuug7/study-notes/blob/master/javascript/notes-javascript-faq.md)
 - [notes-javascript-Sring-Array-method](https://github.com/buuug7/study-notes/blob/master/javascript/notes-javascript-Sring-Array-method.md)
 
-#### jquery
+## jquery
 - [notes-jquery-core](https://github.com/buuug7/study-notes/blob/master/jquery/notes-jquery-core.md)
 - [notes-jquery-events](https://github.com/buuug7/study-notes/blob/master/jquery/notes-jquery-events.md)
 - [notes-jquery-effects](https://github.com/buuug7/study-notes/blob/master/jquery/notes-jquery-effects.md)
 - [notes-jquery-ajax](https://github.com/buuug7/study-notes/blob/master/jquery/notes-jquery-ajax.md)
 - [notes-jquery-extend](https://github.com/buuug7/study-notes/blob/master/jquery/notes-jquery-extend.md)
 
-#### linux
+## linux
 - [linux-basic-operation](https://github.com/buuug7/study-notes/blob/master/linux/linux-basic-operation.md)
 
 
-#### typical-template
+## typical-template
 - [basic-html-layout](https://github.com/buuug7/study-notes/blob/master/typical-template/basic-html-layout.html)
 
-#### useful-images
+## useful-images
 - [loader.gif](https://github.com/buuug7/study-notes/blob/master/useful-images/loader.gif)
 - [loader.gif](https://github.com/buuug7/study-notes/blob/master/useful-images/loading.gif)
 
