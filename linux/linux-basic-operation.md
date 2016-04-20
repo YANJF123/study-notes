@@ -256,6 +256,40 @@ find . -name *.txt  -exec cat -n {} \;
 // 如果需要执行多个命令,可以将多个命令写成一个脚本,然后用-exec调用的时候执行脚本即可
 -exec ./commond.sh {} \;
 
+// grep 文本搜索
+// 格式:grep match_pattern file
+// 参数:-o 输出匹配的文本行,-v输出没有匹配的行,-c统计文件中包含文本的次数,-n打印匹配的行号,-i忽略大小写,-l只打印文件名
+
+// 在多级目录中对文本进行递归搜索(程序员最爱)
+grep "buuug7" . -R -n
+
+// 匹配多个模式:比如搜索/etc/passwd 文件中含有'buuug7'和含有'root'的文本行
+grep -e 'buuug7' -e 'root' /ect/passwd
+
+
+// xargs能够将输入数据转化为特定命令的命令行参数
+// 查找/etc/hsots文件内包含google内容的文本行,一行显示3列
+grep "google" /etc/hosts | xargs -n 3
+
+// sort 排序
+// -n 按数字来排序
+// -d 按字典来排序
+// -r 逆序排序
+// -k N 指定按第N列排序
+// 按字典顺序排列/etc/hosts文件中的内容
+sort -d /etc/hosts
+
+
+// uniq 消除重复行
+// 查看/etc/hosts文件没有重复的文本行
+sort /etc/hosts | uniq
+// 查看/etc/hosts文件中各行重复的次数
+sort /etc/hosts | uniq -c
+// 查看/etc/hosts文件中的重复行
+sort /etc/hosts | uniq -d
+
+
+
 ```
 
 
