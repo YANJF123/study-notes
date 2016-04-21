@@ -288,6 +288,21 @@ sort /etc/hosts | uniq -c
 // 查看/etc/hosts文件中的重复行
 sort /etc/hosts | uniq -d
 
+// tr 进行转换
+// 语法:tr [OPTION]... SET1 [SET2]
+
+// 替换字符串abcde中的e为2
+// echo abcde | tr 'e' '2'
+
+// 删除字符床abc123中的数字
+// echo abc123 | tr -d '0-9'
+
+// 压缩字符
+// 去除字符串中多余的空格
+// echo abc   123 | tr -s ' '
+
+// 替换字符,将字符串abcdefg字符用数字替换
+// echo abcdefg | tr 'a-z' '0-9'
 
 
 ```
