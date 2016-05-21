@@ -1,4 +1,4 @@
-## javascript OOP 来自于[MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript)
+## JavaScript OOP 来自于[MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript)
 
 ### 面向对象编程
 面向对象编程是用抽象的方式创建基于现实世界模型的一种编程模式,包括模块化,多态,封装几种技术
@@ -38,3 +38,140 @@ var MYAPP=MYAPP || {};
 // 子命名空间
 var MYAPP.event={};
 ```
+下面是用于创建命名空间和添加变量,函数和方法的代码写法:
+```JavaScript
+// 给普通方法和属性创建一个叫做MYAPP.commonMethod的容器
+MYAPP.commonMethod = {
+  regExForName: "", // 定义名字的正则验证
+  regExForPhone: "", // 定义电话的正则验证
+  validateName: function(name){
+    // 对名字name做些操作，你可以通过使用“this.regExForname”
+    // 访问regExForName变量
+  },
+ 
+  validatePhoneNo: function(phoneNo){
+    // 对电话号码做操作
+  }
+}
+
+// 对象和方法一起申明
+MYAPP.event = {
+    addListener: function(el, type, fn) {
+    //  代码
+    },
+   removeListener: function(el, type, fn) {
+    // 代码
+   },
+   getEvent: function(e) {
+   // 代码
+   }
+  
+   // 还可以添加其他的属性和方法
+}
+
+//使用addListner方法的写法:
+MYAPP.event.addListener("yourel", "type", callback);
+```
+
+#### 标准内置对象
+JavaScript有包括在其核心的几个对象，例如，Math，Object，Array和String对象。下面的例子演示了如何使用Math对象的random()方法来获得一个随机数。
+```JavaScript
+console.log(Math.random);
+```
+JavaScript中的每个对象都是Object对象的实例且继承它所有的属性和方法
+
+#### 自定义对象
+##### 类
+JavaScript是一种基于原型的语言，它没类的声明语句，比如C++或Java中用的.这有时会对习惯使用有类申明语句语言的程序员产生困扰.相反,JavaScript可用方法作类.定义一个类跟定义一个函数一样简单.在下面的例子中,我们定义了一个新类Person.
+```JavaScript
+function Person(){}
+// 或者
+var Person=function(){}
+```
+##### 对象(类的实例)
+我们使用 new obj 创建对象 obj 的新实例, 将结果（obj 类型）赋值给一个变量方便稍后调用。
+在下面的示例中，我们定义了一个名为Person的类，然后我们创建了两个Person的实例(person1 and person2).
+```JavaScript
+function Person(){}
+var person1=new Person();
+var person2=new Person();
+```
+##### 构造器
+在实例化时构造器被调用 (也就是对象实例被创建时)。构造器是对象中的一个方法。 在JavaScript,中函数就可以作为构造器使用,因此不需要特别地定义一个构造器方法. 每个声明的函数都可以在实例化后被调用执行
+
+构造器常用于给对象的属性赋值或者为调用函数做准备。 在本文的后面描述了类中方法既可以在定义时添加，也可以在使用前添加。
+
+在下面的示例中, Person类实例化时构造器调用一个 alert函数。
+```JavaScript
+function Person(){
+  alert('Person instantiated');
+}
+var person1=new Person();
+var person2=new Person();
+```
+##### 属性(对象属性)
+属性就是 类中包含的变量;每一个对象实例有若干个属性. 为了正确的继承，属性应该被定义在类的原型属性 (函数)中。
+
+可以使用 关键字 this调用类中的属性, this是对当前对象的引用。 从外部存取(读/写)其属性的语法是: InstanceName.Property; 这与C++，Java或者许多其他语言中的语法是一样的 (在类中语法 this.Property 常用于set和get属性值)
+
+在下面的示例中，我们为定义Person类定义了一个属性 firstName 并在实例化时赋初值。
+```JavaScript
+function Person(firstName){
+  this.firstName=firstName;
+  alert('Person instantiated');
+}
+var person1=new Person('Alice');
+var person2=new Person('Bob');
+
+// Show the firstName peroperties of the Objects
+alert('person1 is '+person1.firstName); // person1 is Alice
+alert('person2 is '+person2.firstName); // person2 is Bob
+```
+##### 方法(对象属性)
+方法与属性很相似， 不同的是：一个是函数，另一个可以被定义为函数。 调用方法很像存取一个属性,  不同的是add () 在方法名后面很可能带着参数. 为定义一个方法, 需要将一个函数赋值给类的 prototype 属性; 这个赋值给函数的名称就是用来给对象在外部调用它使用的。
+
+在下面的示例中，我们给Person类定义了方法 sayHello()，并调用了它.
+```JavaScript
+function Person(firstName){
+  this.firstName=firstName;
+}
+Person.prototype.sayHello=function(){
+  alert("Hello,I'm "+ this.firstName);
+}
+var person1=new Person('Alice');
+var person2=new Person('Bob');
+
+// call the Person sayHello method
+person1.sayHello(); // Hello,I'm Alice
+person2.sayHello(); // Hello,I'm Bob
+```
+
+在JavaScript中方法通常是一个绑定到对象中的普通函数, 这意味着方法可以在其所在context之外被调用。 思考下面示例中的代码:
+```JavaScript
+function Person(firstName) {
+  this.firstName = firstName;
+}
+
+Person.prototype.sayHello = function() {
+  alert("Hello, I'm " + this.firstName);
+};
+
+var person1 = new Person("Alice");
+var person2 = new Person("Bob");
+var helloFunction = person1.sayHello;
+
+person1.sayHello();                                 // alerts "Hello, I'm Alice"
+person2.sayHello();                                 // alerts "Hello, I'm Bob"
+helloFunction();                                    // alerts "Hello, I'm undefined" (or fails
+                                                    // with a TypeError in strict mode)
+console.log(helloFunction === person1.sayHello);          // logs true
+console.log(helloFunction === Person.prototype.sayHello); // logs true
+helloFunction.call(person1);                        // logs "Hello, I'm Alice"
+```
+如上例所示, 所有指向sayHello函数的引用 ，包括 person1, Person.prototype, 和 helloFunction 等， 均引用了相同的函数.
+
+在调用函数的过程中，this的值取决于我们怎么样调用函数.  在通常情况下，我们通过一个表达式person1.sayHello()来调用函数：即从一个对象的属性中得到所调用的函数。此时this被设置为我们取得函数的对象（即person1）。这就是为什么person1.sayHello() 使用了姓名“Alice”而person2.sayHello()使用了姓名“bob”的原因。 
+
+然而我们使用不同的调用方法时, this的值也就不同了。当从变量 helloFunction()中调用的时候， this就被设置成了全局对象 (在浏览器中即window)。由于该对象 (非常可能地) 没有firstName 属性, 我们得到的结果便是"Hello, I'm undefined". (这是松散模式下的结果， 在 严格模式中，结果将不同（此时会产生一个error）。 但是为了避免混淆，我们在这里不涉及细节) 。另外，我们可以像上例末尾那样，使用Function#call (或者Function#apply)显式的设置this的值。
+
+##### 继承
