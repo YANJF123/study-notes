@@ -80,7 +80,7 @@ function test() {
 test();
 ```
 
-### 我们改如何编码
+### 我们该如何编码
 首先申明变量必须用var,并且放在最顶部申明,建议在一个作用域中用单个var申明变量
 I recommend using JSLint with the onevar option to enforce this,your code should be look like below:
 ```JavaScript
