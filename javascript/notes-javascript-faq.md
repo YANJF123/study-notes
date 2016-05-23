@@ -22,6 +22,10 @@ document.getElementById("divA").textContent = "This is some text";
 Loose typing means that variables are declared without a type.
 弱类型指的是在申明变量的时候不指定变量的类型
 ```JavaScript
+/*JavaScript Example(loose typing)*/
 var a=13;// Number declaration
-var b="";// String declaration
+var b="thirteen";// String declaration
+/*Java Example(Strong typing)*/
+int a=13; // int declaration
+String b="thirteen"; // String declaration
 ```
