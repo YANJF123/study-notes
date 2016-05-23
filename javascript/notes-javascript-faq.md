@@ -25,6 +25,8 @@ Loose typing means that variables are declared without a type.
 /*JavaScript Example(loose typing)*/
 var a=13;// Number declaration
 var b="thirteen";// String declaration
+```
+```java
 /*Java Example(Strong typing)*/
 int a=13; // int declaration
 String b="thirteen"; // String declaration
