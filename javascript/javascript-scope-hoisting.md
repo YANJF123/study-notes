@@ -1,6 +1,6 @@
 ## JavaScript Scope and Hoisting
 
-### JavaScript拥有函数级别的作用域
+#### JavaScript拥有函数级别的作用域
 ```JavaScript
 // 块级别的作用域对于JavaScript来说不起作用
 var x = 1;
@@ -20,7 +20,7 @@ function foo() {
 foo(); // 2
 console.log(x); // 1
 ```
-### 变量,函数申明提升
+#### 变量,函数申明提升
 ```JavaScript
 function foo(){
   bar();
@@ -80,7 +80,7 @@ function test() {
 test();
 ```
 
-### 我们该如何编码
+#### 我们该如何编码
 首先申明变量必须用var,并且放在最顶部申明,建议在一个作用域中用单个var申明变量
 I recommend using JSLint with the onevar option to enforce this,your code should be look like below:
 ```JavaScript
@@ -92,23 +92,6 @@ function foo(a, b, c) {
 }
 ```
 
-### 标准上如何说的
+#### 标准上如何说的
 
 If the variable statement occurs inside a FunctionDeclaration, the variables are defined with function-local scope in that function, as described in section 10.1.3. Otherwise, they are defined with global scope (that is, they are created as members of the global object, as described in section 10.1.3) using property attributes { DontDelete }. Variables are created when the execution scope is entered. A Block does not define a new execution scope. Only Program and FunctionDeclaration produce a new scope. Variables are initialised to undefined when created. A variable with an Initialiser is assigned the value of its AssignmentExpression when the VariableStatement is executed, not when the variable is created.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
