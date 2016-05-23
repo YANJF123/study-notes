@@ -29,5 +29,5 @@ var b="thirteen";// String declaration
 ```java
 /*Java Example(Strong typing)*/
 int a=13; // int declaration
-String b="thirteen"; // String declaration
+string b="thirteen"; // String declaration
 ```
