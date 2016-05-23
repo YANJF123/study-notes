@@ -52,7 +52,7 @@ function foo() {
 }
 
 
-// 试看下面的两个函数,第二个是被JavaScript解析之后的
+// 试看下面的两个函数,第二个是被JavaScript解析器解析之后的
 function test() {
 	foo(); // TypeError "foo is not a function"
 	bar(); // "this will run!"
