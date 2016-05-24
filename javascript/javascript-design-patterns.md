@@ -1,5 +1,5 @@
 ## JavaScript Design Patterns
-Design patterns are reusable solutions to commonly occuring problems in software design.
+Design patterns are reusable solutions to commonly occuring problems in software design.  
 设计模式指的是对那些经常出现的问题的一种通用的解决方法,设计模式的好处是为了代码的复用,可维护性
 
 ### 面向对象五大原则
