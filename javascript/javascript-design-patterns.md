@@ -4,22 +4,22 @@ Design patterns are reusable solutions to commonly occuring problems in software
 
 ### 面向对象五大原则
 
-#### Single Responsibility Principle 单一职责原则
+##### Single Responsibility Principle 单一职责原则
 核心思想是:一个类最好只做一件事情,职责过多,可能引起变化的原因就越多,这将导致职责相互依赖,相互之间产生影响,从而大大损伤其内聚性和耦合度,职责通常理解为功能,单一职责即为单一功能.
 
-#### Open Closed Priciple 开闭原则
+##### Open Closed Priciple 开闭原则
 核心思想是:软件实体应该是可扩展的,而不是可修改的.也就是对扩展开放,对修改封闭.开放封闭原则主要体现在两个方面:  
 - 对扩展开放,意味着有新的需求和变化时,可以对现有代码进行扩展,以适应新的情况
 - 对修改封闭,意味着类一旦设计完成,就可以独立完成其工作,而不要对其进行任何尝试性的修改
 
-#### Dependency Inversion Priciple 依赖倒置原则
+##### Dependency Inversion Priciple 依赖倒置原则
 核心思想:依赖于抽象,具体而言就是高层模块不依赖于底层模块,二者都同依赖于抽象,抽象不依赖于具体,具体必须依赖于抽象  
 依赖抽象是面向对象编程的精髓,也是依赖倒置的核心
 
-#### Interface Segregation Priciple 接口隔离原则
+##### Interface Segregation Priciple 接口隔离原则
 核心思想:使用多个小的专门的接口,而不是使用一个大的总接口
 
-#### Liskon Substitution Priciple 里氏代换原则
+##### Liskon Substitution Priciple 里氏代换原则
 核心思想:子类必须能够替换其基类,但基类不一定能替换子类.该思想体现为对继承机制的约束规范,至于子类能够替换基类时,才能保证系统在运行期间内识别子类,这是保证继承复用的基础.
 
 ### JavaScript Design Patterns
@@ -205,3 +205,69 @@ console.log( civic.toString() );
 console.log( mondeo.toString() );
 ```
 上面代码，单个toString()实例被所有的Car对象所共享了
+
+
+#### The Module Pattern (模块模式)
+在JavaScript中有好几种实现模块模式的方法,包括:
+- The Module pattern
+- Object literal notation
+- AMD modules
+- CommonJS modules
+- ECMAScript Harmony modules
+
+##### Object Literals(对象字面量)
+在对象字面量中,一个对象被描述为包裹在一对大括号中的键值对,注意最后的一个键值对后面没有逗号
+```JavaScript
+var myObjectLiteral = {
+    variableKey: variableValue,
+    functionKey: function () {
+      // ...
+    }
+};
+```
+看看如下用对象字面量定义的一个完整的模块的例子
+```JavaScript
+var myModule = {
+  myProperty: "someValue",
+  // object literals can contain properties and methods.
+  // e.g we can define a further object for module configuration:
+  myConfig: {
+    useCaching: true,
+    language: "en"
+  },
+ 
+  // a very basic method
+  saySomething: function () {
+    console.log( "Where in the world is Paul Irish today?" );
+  },
+ 
+  // output a value based on the current configuration
+  reportMyConfig: function () {
+    console.log( "Caching is: " + ( this.myConfig.useCaching ? "enabled" : "disabled") );
+  },
+ 
+  // override the current configuration
+  updateMyConfig: function( newConfig ) {
+ 
+    if ( typeof newConfig === "object" ) {
+      this.myConfig = newConfig;
+      console.log( this.myConfig.language );
+    }
+  }
+};
+ 
+// Outputs: Where in the world is Paul Irish today?
+myModule.saySomething();
+ 
+// Outputs: Caching is: enabled
+myModule.reportMyConfig();
+ 
+// Outputs: fr
+myModule.updateMyConfig({
+  language: "fr",
+  useCaching: false
+});
+ 
+// Outputs: Caching is: disabled
+myModule.reportMyConfig();
+```
