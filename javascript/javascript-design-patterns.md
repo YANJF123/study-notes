@@ -1,4 +1,4 @@
-## JavaScript Design Patterns
+## Design Patterns
 Design patterns are reusable solutions to commonly occuring problems in software design.  
 设计模式指的是对那些经常出现的问题的一种通用的解决方法,设计模式的好处是为了代码的复用,可维护性
 
@@ -22,3 +22,186 @@ Design patterns are reusable solutions to commonly occuring problems in software
 #### Liskon Substitution Priciple 里氏代换原则
 核心思想:子类必须能够替换其基类,但基类不一定能替换子类.该思想体现为对继承机制的约束规范,至于子类能够替换基类时,才能保证系统在运行期间内识别子类,这是保证继承复用的基础.
 
+### JavaScript Design Patterns
+由于javascript中缺少class,可以用function来模拟类,例如:
+```JavaScript
+// A car "class"
+function Car( model ) {
+ 
+  this.model = model;
+  this.color = "silver";
+  this.year = "2012";
+ 
+  this.getInfo = function () {
+    return this.model + " " + this.year;
+  };
+}
+
+// 调用
+var myCar = new Car("ford");
+myCar.year = "2010";\
+console.log( myCar.getInfo() );
+```
+
+#### The Constructor Pattern 构造器模式
+对象构造器是被用来创建特殊类型的对象的，首先它要准备使用的对象，其次在对象初次被创建时，通过接收参数，构造器要用来对 对象的属性和方法赋值.
+
+创建对象的三种方式
+```JavaScript
+// Each of the following options will create a new empty object:
+var newObject = {};
+// or
+var newObject = Object.create( Object.prototype );
+// or
+var newObject = new Object();
+```
+把键值对赋值给对象的四种方法
+```JavaScript
+// ECMAScript 3 compatible approaches
+ 
+// 1. Dot syntax
+ 
+// Set properties
+newObject.someKey = "Hello World";
+ 
+// Get properties
+var value = newObject.someKey;
+ 
+ 
+ 
+// 2. Square bracket syntax
+ 
+// Set properties
+newObject["someKey"] = "Hello World";
+ 
+// Get properties
+var value = newObject["someKey"];
+ 
+ 
+ 
+// ECMAScript 5 only compatible approaches
+// For more information see: http://kangax.github.com/es5-compat-table/
+ 
+// 3. Object.defineProperty
+ 
+// Set properties
+Object.defineProperty( newObject, "someKey", {
+    value: "for more control of the property's behavior",
+    writable: true,
+    enumerable: true,
+    configurable: true
+});
+ 
+// If the above feels a little difficult to read, a short-hand could
+// be written as follows:
+ 
+var defineProp = function ( obj, key, value ){
+  var config = {
+    value: value,
+    writable: true,
+    enumerable: true,
+    configurable: true
+  };
+  Object.defineProperty( obj, key, config );
+};
+ 
+// To use, we then create a new empty "person" object
+var person = Object.create( Object.prototype );
+ 
+// Populate the object with properties
+defineProp( person, "car", "Delorean" );
+defineProp( person, "dateOfBirth", "1981" );
+defineProp( person, "hasBeard", false );
+ 
+console.log(person);
+// Outputs: Object {car: "Delorean", dateOfBirth: "1981", hasBeard: false}
+ 
+ 
+// 4. Object.defineProperties
+ 
+// Set properties
+Object.defineProperties( newObject, {
+ 
+  "someKey": {
+    value: "Hello World",
+    writable: true
+  },
+ 
+  "anotherKey": {
+    value: "Foo bar",
+    writable: false
+  }
+ 
+});
+ 
+// Getting properties for 3. and 4. can be done using any of the
+// options in 1. and 2.
+
+
+// Usage:
+ 
+// Create a race car driver that inherits from the person object
+var driver = Object.create( person );
+ 
+// Set some properties for the driver
+defineProp(driver, "topSpeed", "100mph");
+ 
+// Get an inherited property (1981)
+console.log( driver.dateOfBirth );
+ 
+// Get the property we set (100mph)
+console.log( driver.topSpeed );
+```
+
+一个简单的构造器模式的例子:
+```JavaScript
+function Car( model, year, miles ) {
+ 
+  this.model = model;
+  this.year = year;
+  this.miles = miles;
+ 
+  this.toString = function () {
+    return this.model + " has done " + this.miles + " miles";
+  };
+}
+ 
+// Usage:
+ 
+// We can create new instances of the car
+var civic = new Car( "Honda Civic", 2009, 20000 );
+var mondeo = new Car( "Ford Mondeo", 2010, 5000 );
+ 
+// and then open our browser console to view the
+// output of the toString() method being called on
+// these objects
+console.log( civic.toString() );
+console.log( mondeo.toString() );
+```
+
+使用“原型”的构造器:
+在Javascript中函数有一个prototype的属性。当我们调用Javascript的构造器创建一个对象时，构造函数prototype上的属性对于所创建的对象来说都看见。照这样，就可以创建多个访问相同prototype的Car对象了。
+```JavaScript
+function Car( model, year, miles ) {
+ 
+  this.model = model;
+  this.year = year;
+  this.miles = miles;
+ 
+}
+ 
+// Note here that we are using Object.prototype.newMethod rather than
+// Object.prototype so as to avoid redefining the prototype object
+Car.prototype.toString = function () {
+  return this.model + " has done " + this.miles + " miles";
+};
+ 
+// Usage:
+ 
+var civic = new Car( "Honda Civic", 2009, 20000 );
+var mondeo = new Car( "Ford Mondeo", 2010, 5000 );
+ 
+console.log( civic.toString() );
+console.log( mondeo.toString() );
+```
+上面代码，单个toString()实例被所有的Car对象所共享了

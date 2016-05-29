@@ -8,8 +8,13 @@
 - [notes-sass-guidelines](https://github.com/buuug7/study-notes/blob/master/css-html/notes-sass-guidelines.md)
 
 ## Javascript
-- [notes-javascript-faq](https://github.com/buuug7/study-notes/blob/master/javascript/notes-javascript-faq.md)
-- [notes-javascript-Sring-Array-method](https://github.com/buuug7/study-notes/blob/master/javascript/notes-javascript-Sring-Array-method.md)
+- [javascript-faq](https://github.com/buuug7/study-notes/blob/master/javascript/javascript-faq.md)
+- [javascript-Sring-Array-method](https://github.com/buuug7/study-notes/blob/master/javascript/javascript-Sring-Array-method.md)
+- [javascript-useful-hacks](https://github.com/buuug7/study-notes/blob/master/javascript/javascript-useful-hacks.md)
+- [javascript-scope-hoisting](https://github.com/buuug7/study-notes/blob/master/javascript/javascript-scope-hoisting.md)
+- [javascript-oop](https://github.com/buuug7/study-notes/blob/master/javascript/javascript-oop.md)
+- [javascript-closures](https://github.com/buuug7/study-notes/blob/master/javascript/javascript-closures.md)
+- [javascript-design-patterns](https://github.com/buuug7/study-notes/blob/master/javascript/javascript-.md)
 
 ## Jquery
 - [notes-jquery-core](https://github.com/buuug7/study-notes/blob/master/jquery/notes-jquery-core.md)
