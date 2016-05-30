@@ -225,7 +225,7 @@ var myObjectLiteral = {
     }
 };
 ```
-看看如下用对象字面量定义的一个完整的模块的例子
+看看如下用对象字面量标记定义的一个完整的模块的例子
 ```JavaScript
 var myModule = {
   myProperty: "someValue",
@@ -271,3 +271,49 @@ myModule.updateMyConfig({
 // Outputs: Caching is: disabled
 myModule.reportMyConfig();
 ```
+
+##### The Module Pattern
+
+在JavaScript中,模块模式通常用来模拟一个对象中类似于类概念中的私有或者公开方法和变量,这样有利于从全局作用域中分离出来,不至于跟页面中其他的脚本中的函数命名冲突.  
+
+模块模式使用闭包来确保了"私有",它提供了一种将私有方法和变量,保护的代码片段从全局作用域中隔离开的方法,使用这种模式,仅仅只有公开的API被返回,其他的所有都保持了私有.  
+
+该模式跟IIFE很类似,只是返回对象而不是一个函数  
+
+一个简单的模块模式的模板样例:
+```JavaScript
+var myNamespace = (function () {
+ 
+  var myPrivateVar, myPrivateMethod;
+ 
+  // A private counter variable
+  myPrivateVar = 0;
+ 
+  // A private function which logs any arguments
+  myPrivateMethod = function( foo ) {
+      console.log( foo );
+  };
+ 
+  return {
+    // A public variable
+    myPublicVar: "foo",
+ 
+    // A public function utilizing privates
+    myPublicFunction: function( bar ) {
+ 
+      // Increment our private counter
+      myPrivateVar++;
+ 
+      // Call our private method using bar
+      myPrivateMethod( bar );
+    }
+  };
+ 
+})();
+```
+Advantages
+能够避免类库之间命名冲突,减少全局污染
+
+Disadvantages
+由于进入公开和私有的成员的方法不同,当想改变成员可见性的时候不得不在引用成员的每个地方都去修改  
+对私有成员进行单元测试困难,bug热修复困难,并且私有成员继承困难,可扩展有限
