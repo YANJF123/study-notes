@@ -1,5 +1,26 @@
 ## javascript basic 基础
 
+### JavaScript 的实现由下面三个不同的部分组成
+- 核心ECMAscript()
+- 文档对象模型DOM(Document Object Model)是针对XML但是经过扩展用于HTML的编程接口
+```
+// DOM就是把文档看做一个对象来对待
+// 文档中的各个组件,可以通过object.attribute这种形式来访问
+// 一个DOM会有一个根对象,这个对象通常就是document
+// 上文所说的「像操作对象一样」，最主要就是指访问对象的属性和调用对象的方法。
+// 对象的属性可以通过 object.attribute 这种形式来访问，对象的方法可以通过 object.method(arguments) 这种形式来调用。
+```
+- 浏览器对象模型BOM(Browser Object Model),通过该模型对象可以访问和操作浏览器的组件,例如导航条,历史记录等
+```
+// BOM通常有:
+// 弹出新浏览器窗口的功能
+// 移动,缩放和关闭浏览器窗口的功能
+// 提供浏览器详细信息的navigator对象
+// 提供用户浏览器加载页面的详细信息的location对象
+// 提供用户显示器分辨率详情信息的screen对象
+// 对cookies的支持
+// 像XMLHttpRequest和IE的ActiveXObject这样的自定义对象
+```
 ### 语法
 - ECMAScript中的一切都区分大小写
 - 标识符就是变量,函数,属性的名字,或者函数的参考,第一个字符必须是一个字母,下划线或者$符号,建议驼峰表示法为最佳实践
