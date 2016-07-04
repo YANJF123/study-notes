@@ -67,6 +67,26 @@ function doSomething(){
 ```
 
 ### 数据类型
+- typeof 操作符
+```
+// 对一个变量使用typeof操作符可能返回下列某个字符串
+// undefied 未定义
+// boolean 如果这个值是布尔
+// string 如果这个值是字符串
+// number 如果这个值是数值
+// object 如果这个值是对象或者null
+// function 如果这个值是函数
+
+// 其中函数在ECMAScript中从技术角度来说是对象,而不是一种数据类型
+// 不过函数由于有一些特殊的属性,因此通过typeof操作符来区分函数和其他对象是有必要的
+```
+
+- Undefined 类型
+```
+// 该类型的值只有undefined一个,使用var 申明变量但是未对其初始化时,这个变量值就是undefined
+
+```
+
 - Number（数字）
 ```
 // Javascript不区分整数跟浮点数，所有数字均采用浮点数表示
