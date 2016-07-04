@@ -29,16 +29,16 @@
 // 对cookies的支持
 // 像XMLHttpRequest和IE的ActiveXObject这样的自定义对象
 ```
+
+### 在HTML中使用JavaScript
+- 把JavaScript插入到HTML页面中要用\<script\>元素,在包含外部JavaScript文件时,必须将src属性设置为指向相应的URL,这个文件既可以是与包含它们页面位于同一个服务器上的文件,也可以是其他任何域的文件
+- 所有\<script\>元素都会按照它们在页面中出现的先后顺序依次被解析.
+- \<noscript\>元素可以指定在不支持脚本的浏览器中显示替代的内容
+
 ### 语法
 - ECMAScript中的一切都区分大小写
 - 标识符就是变量,函数,属性的名字,或者函数的参考,第一个字符必须是一个字母,下划线或者$符号,建议驼峰表示法为最佳实践
-- 注释
-```javascript
-// 我是单行注释
-/*
- * 我是多行注释
- */
-```
+- 注释,分为单行注释,块级注释
 - 严格模式 strict mode,在严格模式下,ECMAscript3中的一些不确定行为得到了处理,而且对某些不安全的操作会抛出错误
 ```javascript
 // 在整个脚本中启用严格模式,添加如下代码在脚本顶端
@@ -51,8 +51,22 @@ function doSomething(){
 }
 ```
 - 语句,一个语句以分号结尾,
+- 关键字和保留字
+```
+// 关键字
+// break do instanceof typeof case else new var catch finally return void continue 
+// for switch while debugger function this with default if throw delete in try
+// 保留字(第五版)
+// class enum extends super const export import 
+```
+- 变量
+```
+// 变量是松散类型的,也就是可以保存任何类型的数据,换句话说,每个变量仅仅是一个用于保存值的占位符而已
+// 变量的申明需要注意var
+// var 一般申明局部变量,全局变量的申明不带var
+```
 
-#### 类型
+### 数据类型
 - Number（数字）
 ```
 // Javascript不区分整数跟浮点数，所有数字均采用浮点数表示
