@@ -2,6 +2,13 @@
 
 ### JavaScript 的实现由下面三个不同的部分组成
 - 核心ECMAscript()
+```
+// ECMA-262标准,ECMAscript是对该标准的语言描述
+// JavaScript实现了ECMAScript
+// ECMAScript最新版为第6版
+// ECMAScript 6 (简称ES6)是JavaScript语言的下一代标准，已经在2015年6月正式发布了。它的目标，是使得JavaScript语言可以用来编写复杂的大型应用程序，成为企业级开发语言
+// ES6=ECMAScript2015
+```
 - 文档对象模型DOM(Document Object Model)是针对XML但是经过扩展用于HTML的编程接口
 ```
 // DOM就是把文档看做一个对象来对待
