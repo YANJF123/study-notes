@@ -84,7 +84,21 @@ function doSomething(){
 - Undefined 类型
 ```
 // 该类型的值只有undefined一个,使用var 申明变量但是未对其初始化时,这个变量值就是undefined
+// 
+```
+  
+- Null 类型
+```
+// 该类型是第二个只有一个值的数据类型,这个特殊的值是null
+// 从逻辑角度来看,null值表示一个空对象指针
+// 从typeof检测null值会返回object
+// 如果定义的变量准备在将来用于保存对象,那么最好将该变量初始化为null而不是其他值
+// 实际上undefined的值是派生自null值的 
+```
 
+- Boolean 类型
+```
+// 该类型只有两个值 true 和 false
 ```
 
 - Number（数字）
@@ -119,6 +133,8 @@ parseFloat('123.333'); //123.333
 "hello".toUpperCase(); // HELLO
 
 ```
+- Number(数字)
+- String(字符串)
 - Boolean（布尔）
 - Symbol（符号）（第六版新增）
 - Object（对象）
