@@ -153,6 +153,24 @@ parseFloat('123.333'); //123.333
 "hello".toUpperCase(); // HELLO
 
 ```
+- Object 类型
+```
+// ECMAScript中的对象其实就是一组数据和功能的集合
+// 对象可以通过new 操作符后跟要创建的对象类型的名称来创建
+// 创建object类型的实例后就可以为其添加属性和方法
+
+// Object的每个实例都具有下路的属性和方法
+// Constructor 保存着用于创建当前对象的函数
+// hasOwnProperty(propertyName)用于检查给定的属性在当前对象实例中是否存在
+// 其中propertyName必须以字符串的形式指定
+// 例如 o.hasOwnProperty('name');
+// isPrototypeOf(object) 用于检查传入的对象是否是另一个对象的原型
+// propertyIsEnumerable(propertyName) 用于检查给定属性是否能够使用for-in语句枚举 
+// toLocaleString() 返回对象的字符串表示,该字符串与执行环境的地区对应
+// toString()返回对象的字符串表示
+// valueOf()返回对象的字符串,数值或者布尔值表示,通常与toString()返回值相同
+```
+
 - Number(数字)
 - String(字符串)
 - Boolean（布尔）
