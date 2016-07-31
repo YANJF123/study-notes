@@ -81,7 +81,7 @@ inline elements allow to distinguish parts of your text.
 - \<span\> for inline elements
 
 #### don't thinkover semantics
-经管HTML中有语义的元素很多,但是你只要掌握下面列出的这些就已经足够了
+尽管HTML中有语义的元素很多,但是你只要掌握下面列出的这些就已经足够了
 - structure
   - header
   - h1
@@ -104,3 +104,32 @@ inline elements allow to distinguish parts of your text.
   - q
   - abbr
   - small
+
+### HTML Formatting
+when whitespace doesn't matter
+- line-breaks (换行符),换行和空行都会被浏览器忽略
+- tabulations(tab制表符),同样也被浏览器忽略
+- tree format , 建议书写HTML的时候用树形的格式,以便于阅读
+
+Tabulations, empty lines, successive spaces, and line-breaks, are dismissed by the computer, and are all converted into a single space.
+制表符,空行,连续的空格,换行,都被当做一个空格来处理
+
+### A Valid HTML document
+some boilerplate
+- Doctype
+- the \<html\> element,all your HTML document must be wrapped inside an \<html\> element
+- the \<head\> element,give additional for an HTML element
+- the \<body\> element,everything inside the \<body\> will be displayed in the brower window
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>your title</title>
+    <meta name="description" content="simple html">
+  </head>
+  <body>
+    <p>hello world!</p>
+  </body>
+</html>
+```
