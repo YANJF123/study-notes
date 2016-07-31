@@ -16,3 +16,10 @@ write comments,they will be ignored by the browser,and are only useful for us hu
 ```html
 <!-- i am a comment -->
 ```
+#### self-enclosing elements
+they only have an opening tag
+```html
+<br>
+<input type="text">
+<img src="/a.jpg">
+```
