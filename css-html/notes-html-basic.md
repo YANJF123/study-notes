@@ -46,3 +46,61 @@ it comes from the ability to nest HTML elements within one another.
 - Order 次序,外层内层嵌套顺序不能颠倒
 - Depth 深度,外层可以嵌套内层,内层也可以嵌套
 - Block and inline nesting ,一般是按照块级元素嵌套行内元素,但是有个例外就是a元素
+
+### HTML Sematics HTML语义(HTML is about meaning)
+the purpose of HTML tags is to deliver meaning to a document
+Don't be concerned about how your webpage looks like.Focus on the significance of each tag you'll use.
+
+#### Structure elements:organizing your page
+structure elements allow you to organize the main parts of your page,they usually contain other HTML elements.
+- \<header\> as the first element of the page,that can include the logo and the tagline.
+- \<nav\> as a list of links that go to the different pages of the website.
+- \<h1\> as the title of the page.
+- \<article\> as the main content ,like a blog post
+- \<footer\> as the last element of the page, located at the bottom
+
+#### Text elements:defining your content
+inside these structure elements,you usually find text delements meant to define the purpose of your content
+- \<p\> for paragraphs
+- \<ul\> for (unordered) lists
+- \<ol\> for (ordered) lists
+- \<li\> for individual list items
+- \<blockquote\> for quotes
+
+#### Inline elements:distinguishing your text
+inline elements allow to distinguish parts of your text.
+- \<strong\> for important words
+- \<em\> for emphasized words
+- \<a\> for links
+- \<small\> for less important words
+- \<abbr\> for abbreviations like W3C
+
+#### generic elements
+尽管这些HTML元素没有实际的意义,但是有很多布局都是使用div+span来布局的
+- \<div\> for block-level elements
+- \<span\> for inline elements
+
+#### don't thinkover semantics
+经管HTML中有语义的元素很多,但是你只要掌握下面列出的这些就已经足够了
+- structure
+  - header
+  - h1
+  - h2
+  - h3
+  - nav
+  - footer
+  - article
+  - section
+- text
+  - p
+  - ul
+  - ol 
+  - li
+  - blockquote
+- inline 
+  - a
+  - strong
+  - em 
+  - q
+  - abbr
+  - small
