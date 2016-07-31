@@ -120,6 +120,7 @@ some boilerplate
 - the \<html\> element,all your HTML document must be wrapped inside an \<html\> element
 - the \<head\> element,give additional for an HTML element
 - the \<body\> element,everything inside the \<body\> will be displayed in the brower window
+#### a complete valid HTML documet
 ```html
 <!DOCTYPE html>
 <html>
