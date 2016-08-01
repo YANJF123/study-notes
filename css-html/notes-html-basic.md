@@ -269,4 +269,7 @@ the main element contains,as its name suggests,the most important content of the
 the aside element usually lives alongside the main and contains additional information related to the main content.
 
 #### section
-the section element allows to group
+the section element allows to group,sections themselves dont't carry a specific meaning,it's more about the relation between its child elements 
+ranther than its own meaning within the overall page.
+section 元素通常用来分组,通常它自己没有什么实际意义,在整个页面内,更多的是关于它的子元素的之间的关系,而不是它自身的意义
+
