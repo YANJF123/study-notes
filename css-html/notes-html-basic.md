@@ -163,6 +163,6 @@ the small parts within a block of text块级元素的一部分
 - Other inline elements,there are plenty of other inline-elements to choose from ,but it is enough if you know above we introduced. 
 
 ### HTML Links
-the core of  the web
+the **core** of  the web
 Links are essential in HTML,as the web was initially designed to be an information network of documents linked between each other.
 in HTML,links are inline elements written with the `<a>`,the `href` attribute 
