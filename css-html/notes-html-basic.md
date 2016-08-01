@@ -134,3 +134,35 @@ some boilerplate
   </body>
 </html>
 ```
+
+## HTML Content
+HTML content is 90% text
+
+### HTML Text
+- Paragraphs,paragrahps \<p\> are the most used HTML elements,as they act as the default block-level element and are quick to write.
+- List, lists come in 3 variations: ul ,ol,dl
+- Blockquotes,blockquotes are used to identify a citation.
+- Headings,there are 6 levels of headings available,ranging from h1 to h5,1 being the most inportant one
+
+### inline sematics
+the small parts within a block of text块级元素的一部分
+- Strong,for important words,use \<strong\> tag
+- Emphasis,for emphasis words,use the \<em\> tag
+- Abbreviations,abbreviations like W3C or CD can use the \<abbr\> element
+```html
+<p>
+  I just bought a <abbr title="compact Disc">CD</abbr>.
+</p>
+```
+- Inline quotes,the \<blockquote\> element is a block-level element,it has an inline version \<q\>
+```html
+<p>
+  he said <q>"hello world"</q> and just left.
+</p>
+```
+- Other inline elements,there are plenty of other inline-elements to choose from ,but it is enough if you know above we introduced. 
+
+### HTML Links
+the core of  the web
+Links are essential in HTML,as the web was initially designed to be an information network of documents linked between each other.
+in HTML,links are inline elements written with the `<a>`,the `href` attribute 
