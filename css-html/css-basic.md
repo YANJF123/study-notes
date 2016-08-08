@@ -149,3 +149,24 @@ header a{
 ```
 this can be read from right to left as:"select all **a** elements that are within a **header** element". this will prevent all other links 
 to remain unaffected.
+
+#### Pseudo-class selectors
+HTML elments can have different **states**,the most common case is when you hover over a link. it's possible in CSS to apply a different style when such an event occurs.  
+HTML元素具有不同的状态,最常见的情况是你把鼠标悬置在超链接上的时候. 当此事件发生的时候应用不同的CSS样式是可能的.  
+```
+a{
+  color:blue;
+}
+a:hover{
+  color:red;
+}
+```
+
+### CSS inheritance (CSS继承)
+#### value propagation 值的传递
+The *color* value can be inherited from an ancestor.
+#### inherited properties
+only a few CSS  properties can be inherited from ancestors.they are mainly text properties:
+- text color
+- font(family,size,style,weight)
+- line-height 
