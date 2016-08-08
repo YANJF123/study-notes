@@ -61,3 +61,82 @@ the `<link>` HTML tag.
   </body>
 </html>
 ```
+the 3rd method of using a separate CSS file is preferred.
+
+#### why not style directly in the HTML?
+because we want to separate the content from its presentation(CSS).  
+it makes maintenance easier as well : the same CSS file can be used for a whole website.  
+it provides flexiblity:focus on the content on one side , the styling on the other.  
+
+
+### CSS syntax
+who{what:how}  
+the purpose of CSS is to define the layout and styling of your HTML elements.
+```
+/* css rule */
+selector{property:value;}
+```
+CSS have a 3-part process:
++ the selector defines who is targeted,which HTML element(s)
++ the property defines what characteristic to alter
++ the value defines how to alter that characteristic
+
+#### quick example
+```
+blockquote{
+  background:lightgreen;
+  color:darkgreen;
+}
+<blockquote>sometings is ready.</blockquote>
+```
+#### comments
+```
+/* this is a css comment */
+blockquote{
+  background:lightgreen;
+  color:darkgreen;
+}
+```
+
+### CSS selectors
+CSS selectors define which elements we want out styling to be applied to.  
+CSS选择器用来定义我们的样式到具体的的元素  
+
+#### generic tag selectors
+generic HTML tag selector is something like below:
+```
+a{/* Links */}
+p{/* Paragraphs */}
+ul{/* Unordered lists */}
+li{/* List items */}
+```
+
+#### classes
+Of all HTML attributes,the class attribute is the most important for CSS.it allows us to define a group of HTML elements that we can target specifically.
+```
+.data{
+  color:red;
+}
+<p class="data">something like ...</p>
+```
+
+#### IDs
+you can also use the `id` attribute in your HTML,and target it with a hash `#` in your CSS
+```
+#tagline{
+  color:red;
+}
+<p id="tagline">this is a text.</p>
+```
+#### combining selectors
+see some examples in below:
+```
+.date{
+  color:red;
+}
+em.date{
+  color:blue;
+}
+<p class="date">i am paragraph.</p>
+<p>i also a <em class="date">paragraph</em>.</p>
+```
