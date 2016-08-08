@@ -140,3 +140,12 @@ em.date{
 <p class="date">i am paragraph.</p>
 <p>i also a <em class="date">paragraph</em>.</p>
 ```
+#### hierarchy selectors
+a **space** in a selector defines a ancestor/descendant relationship.
+```
+header a{
+  color:red;
+}
+```
+this can be read from right to left as:"select all **a** elements that are within a **header** element". this will prevent all other links 
+to remain unaffected.
