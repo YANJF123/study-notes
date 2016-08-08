@@ -273,3 +273,150 @@ the section element allows to group,sections themselves dont't carry a specific 
 ranther than its own meaning within the overall page.
 section 元素通常用来分组,通常它自己没有什么实际意义,在整个页面内,更多的是关于它的子元素的之间的关系,而不是它自身的意义
 
+
+### HTML forms
+to make a page interactive (使页面具有交互性),下面是一些交互的例子:
++ signing up and logging in to website 注册登录
++ entering personal information(name,address,credit card details) 输入个人信息
++ filtering content(by using dropdowns,checkboxes...) 过滤内容
++ performing a search 执行搜索
++ uploading files 上传文件
+
+HTML 提供了如下form controls:
++ text inputs
++ radio buttons
++ checkboxes
++ dropdowns
++ upload widgets
++ submit buttons
+
+#### The form element
+the `<form>` is a block-level element thats defines an interactive part of a webpage.
++ `action` contains an address that defines where the form information will be sent
++ `method` can be either GET or POST and defines how the form information will be sent
+
+#### text inputs
++ Text `<input type='text'>` allows any type of character
++ Email `<input type='email'>` might display a warning if an invalid email is entered
++ Passsword `<input type='password'>` shows dots as characters
++ Number `<input type='number'>` Up/Down keyboard keys can be used
++ Telephone `<input type='tel'>` Can trigger an autofill
++ Multiple line text `<textarea></textarea>` can be resized
+
+#### placeholders
+text inputs can display a placeholder text  
+`<input type='text' placeholder='enter your name'>`
+
+#### labels
+because form elements on their own are not very descriptive,they are usually preceded by a text label.  
+因为表单元素自身没有描述性,通常在他们前面加上用label包裹的描述文本
+```
+<label for="email">Email</label>
+<input type="email" id="email">
+```
+
+#### checkbox
+checkboxes are form controls that only have 2 states:checked or unchecked  
+```
+<label>
+  <input type="checkbox"> i agree to the terms
+</label>
+```
+by default , checkbox input is unchecked.you can mark it as checked by using the simply called  checked attribute
+```
+<label>
+  <input type="checkbox" checked> i agree to the terms
+</label>
+```
+
+#### radio buttons
+your HTML code need to group a list of radio buttons together,this is achieved by using the same value for the name attribute.
+```
+<label>marital status</label>
+<label>
+  <input type="radio" name="status"> single
+</label>
+<label>
+  <input type="radio" name="status"> married
+</label>
+<label>
+  <input type="radio" name="status"> widowed
+</label>
+```
+
+#### dropdown menus
+if the number of options to choose from takes up too much space,you can use `<select>` dropdown menus.
+```
+<select name="" id="">
+  <option value="january">january</option>
+  <option value="february">february</option>
+  <option value="march">march</option>
+</select>
+```
+if your add the `mutiple` attribute , your can provide the ability to select multiple choices.
+```
+<label for="">which browers do you have?</label>
+<select name="" id="" multiple>
+  <option value="chrome">chrome</option>
+  <option value="IE">IE</option>
+  <option value="firefox">firefox</option>
+</select>
+``` 
+
+#### a complete signup form
+```
+<form action="/signup" method="POST">
+  <p>
+    <label for="">Title</label>
+    <label>
+      <input type="radio" name="title" value="mr">Mr
+    </label>
+    <label>
+      <input type="radio" name="title" value="miss">Miss
+    </label>
+  </p>
+  <p>
+    <label>Name</label>
+    <input type="text" name="name">
+  </p>
+  <p>
+    <label>Email</label>
+    <input type="email" name="email">
+  </p>
+  <p>
+    <label>Password</label>
+    <input type="password" name="password">
+  </p>
+  <p>
+    <label>country</label>
+    <select name="country" id="">
+      <option value="china">china</option>
+      <option value="united states">united states</option>
+    </select>
+  </p>
+  <p>
+    <label>
+      <input type="checkbox" name="terms">i agree to the <a href="/terms">terms and conditions</a>
+    </label>
+  </p>
+  <p>
+    <button>sign up</button>
+  </p>
+</form>
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
