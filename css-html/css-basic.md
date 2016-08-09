@@ -317,7 +317,8 @@ Every webpage use at least one CSS: the **User agent Stylesheet**.
 #### the user agent stylesheet
 this CSS file is included in the browser and is called.
 + **every time** a webpage is rendered
-+ **before** any of our CSS is applied
++ **before** any of our CSS is applied  
+
 尽管每一种浏览器都有自己的用户代理CSS默认样式,但是它们都是类似的
 #### applying a CSS reset
 浏览器默认的样式会干扰我们想应用的样式,这就是为什么要设计**CSS样式重置**为所有浏览器提供一致的表现方式.  
