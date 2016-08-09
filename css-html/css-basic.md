@@ -164,9 +164,29 @@ a:hover{
 
 ### CSS inheritance (CSS继承)
 #### value propagation 值的传递
-The *color* value can be inherited from an ancestor.
+The **color** value can be inherited from an ancestor.
 #### inherited properties
 only a few CSS  properties can be inherited from ancestors.they are mainly text properties:
 - text color
 - font(family,size,style,weight)
 - line-height 
+
+### CSS Priority CSS优先级
+An HTML elemnt can be targeted by **multiple css rules** .
+#### order of CSS rules
+if similar selectors are in your CSS,the last one defined will take priority.  
+```
+p{color:red;}
+p{color:blue;}
+/* paragraphs will be blue */
+```
+#### the 100 measure
+the selector with the highest "score" will win
++ `#id` selectors are worth 100
++ `.class` selectors are worth 10
++ `tag` selectors are worth 1
+
+#### how to avoid conflicts
++ only use class
++ avoid applying multiple classes on a single HTML element
++ don't use inline-styles
