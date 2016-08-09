@@ -190,3 +190,136 @@ the selector with the highest "score" will win
 + only use class
 + avoid applying multiple classes on a single HTML element
 + don't use inline-styles
+
+
+### CSS color units
+different ways to define colors  
+Colors are widely used in CSS,whether for text color,background color,gradients,shadows,borders...There are several ways to define colors in CSS.
+#### color names
+defined by color names,CSS provides 145 colors names,from the most basic (black,white,orange...) to the more specific(lawngreen,orchid...)  
+because the color names are hard to remember,and because you probably want very specific colors,color names are not often used .
+```
+body{
+  background:white;
+}
+a{
+  color:red;
+}
+```
+#### rgb
+defined by rgb,computer monitors,TVs,mobile phones,all use the RGB color model to display colors,each color is defined by a combination of Red,Green,and Blue. There are 
+256 possible values for Red,Green and Blue,from 0 to 255,so there are 256*256*256=16,777,216(1600万颜色) possible colors available.
+```
+/* the black color */
+body{color:rgb(0,0,0)}
+
+/* the white color */
+body{color:rgb(255,255,255)}
+
+/* the red color */
+body{color:rgb(255,0,0)}
+
+/* the green color */
+body{color:rgb(0,255,0)}
+
+/* the blue color */
+body{color:rgb(0,0,255)}
+
+```
+#### rgba
+The **rgba** color unit is **rgb** to which we add an alpha value(ranging from 0-1,in decimal values),which defines how transparent the color is.  
+RGBA颜色的定义是在RGB的基础上添加了一个额外的透明通道,该值为小数从0到1,定义该颜色的透明度
+```
+body{color:rgba(0,0,0,0.5)}
+```
+#### hsl and hsla
+HSL is another way to define a color,think of it is a color wheel.  
+HSL是另外一种颜色的定义方式,把它看做一个颜色的轮子.通过H,S,L三个颜色通道的变化以及它们之间的叠加来得到各种各样的颜色.
++ the **Hue**(色调) a value ranging from 0 to 360,defines which color you want.
++ the **Saturation**(饱和度) percentage,ranging from 0% to 100% ,define how much of that color you want.
++ the **Lightness** percentage,rangring from 0% to 100%,defines how bright you want that color to be.
+
+```
+// the red color
+hsl(0,100%,50%);
+hsl(360,100%,50%);
+// the green color
+hsl(120,100%,50%);
+// the blue color
+hsl(240,100%,50%);
+```
+someone thinks the **HSL** is to be human-readable, where **RGB** is more computer-readable.  
+**HSLA** is the same as **HSL** ,with the added value of being able to define an alpha value:
+```
+body{color:hsla(240,100%,50%,0.5);}
+```
+#### hexadecimal 十六进制
+colors in CSS can also be defined with hexadecimal values,like `#ffffff`.  
+in hexadecimal ,we have 16 symbols to form numbers.0-9,A-F. just like RGB,a hexadecimal color value is a combination of Red,Green,and Blue,each of them being represent as a hexadecimal 
+value,like `DB` for Red,`4E` for green,and `44` for Blue. hexadecimal values are easier to copy and pase.
+
+#### which one to pick?
++ if you don't intend to use any transparent color,stick to hexadecimal values, as they are easier to copy/paste and don't take much space in your code.
++ if you want some transparency , convert your color from hex to rgba,and use the `rgba` color unit.
++ if your want to play around with your color directly in the browser,try `hsl`.
+
+
+### CSS Size units
+sizing for content and space  
+there many CSS properties that require size units:
++ **font-size** defines the size of the text
++ **border-width** defines the weight of element borders
++ **margin** defines the spacing between elements
++ **left/right/top/bottom** allow to position and move elements
+
+The most used units are:
+- `px` for pixels
+- `%` for percentage
+- `em` for sizing relative to the parent's `font-size` value
+#### pixels
+because computer screens use pixels to display the content,it is the most common size unit in CSS.
+```
+// define the width of the elements
+body{width:200px;}
+// set the text size
+body{font-size:20px;}
+```
+pixels in CSS are straightforward because they define absolute values:they are not affected by other inherited CSS properties.  
+They are also widely used for **positioning** and **spacing** purposes.
+
+#### percentage
+percentages are relative units:they rely upon the element's parent and/or ancestor.
+```
+// set block-level elements
+p{width:50%;}
+// set other CSS properties,like text size
+strong{font-size:150%;}
+```
+#### Em
+`em` is the relative unit:it depends upon the value of the element's `font-size`.  
+例如父元素字体大小为20px,而子元素的字体大小定义为`font-size:0.5em`,则子元素的字体大小为10px,该单位通常用来定义具有伸缩响应的网页,当你改变
+网页`body`的字体大小的时候,其他的比如`h1`,`h2`...,`p`等元素字体的大小会跟着变化,这样更能保证你的网页的**视觉平衡**.
+
+#### Rem
+The `rem` unit is similar to `em`,but instead of depending upon the parent's value,it relies upon the root element's value,which is the `<html>` element.
+```
+html{font-size:15px;}
+body{font-size:1rem;}       /* = 15px*/
+h1{font-size:2rem;}           /* = 30px */
+h2{font-size:1.5rem;}        /* = 22.5px */
+```
+#### which one to use?
+recommend **pixels** to use : as they're absolute values,they aren't affected by the element's context.
+
+### CSS Reset
+Removing default browser styling  
+Every webpage use at least one CSS: the **User agent Stylesheet**.
+#### the user agent stylesheet
+this CSS file is included in the browser and is called.
++ **every time** a webpage is rendered
++ **before** any of our CSS is applied
+尽管每一种浏览器都有自己的用户代理CSS默认样式,但是它们都是类似的
+#### applying a CSS reset
+浏览器默认的样式会干扰我们想应用的样式,这就是为什么要设计**CSS样式重置**为所有浏览器提供一致的表现方式.  
+你可以使用最流行的HTML5 Reset,将其放置于你的`<head>`之中即可,这里推荐的是[normalize.css](https://github.com/necolas/normalize.css)
+
