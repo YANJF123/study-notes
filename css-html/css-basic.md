@@ -309,7 +309,7 @@ h1{font-size:2rem;}           /* = 30px */
 h2{font-size:1.5rem;}        /* = 22.5px */
 ```
 #### which one to use?
-recommend **pixels** to use : as they're absolute values,they aren't affected by the element's context.
+recommend **pixels** to use : as they're absolute values,they aren't affected by the element's context. 
 
 ### CSS Reset
 Removing default browser styling  
@@ -324,3 +324,94 @@ this CSS file is included in the browser and is called.
 浏览器默认的样式会干扰我们想应用的样式,这就是为什么要设计**CSS样式重置**为所有浏览器提供一致的表现方式.  
 你可以使用最流行的HTML5 Reset,将其放置于你的`<head>`之中即可,这里推荐的是[normalize.css](https://github.com/necolas/normalize.css)
 
+### CSS font-familly
+choosing a font  
+CSS provides several font properties,that directly affectly text rendering . the `font-familly` property defines which font to use.
+#### generic font families
+have 5 generic families:
++ serif
++ sans-serif
++ monospace
++ cursive
++ fantasy
+because the `font-famiily` property is inherited by all HTML children elements,you can apply a font for the whole HTML document by applying 
+it on the ancestor fo all HTML elements:the `<body>` element.
+```
+body{font-familly:sans-serif;}
+```
+#### web-safe fonts
+通常你设置的字体如果在用户的机子上不可用,浏览器会使用默认的字体来代替,所以你应该考虑你所采用的字体应该具有通用性,以便你的网页的字体在
+任何计算机上都看起来一样  
+有9种web安全字体你可以参考:
+- Arial
+- Arial Black
+- Comic Sans MS
+- Courier New
+- Georgia
+- Impact
+- Times New Roman
+- Trebuchet MS
+- Verdana
+#### applying a list of fonts
+尽管使用单一的web安全字体是安全的,但是最佳实践是给`font-family`赋予多个字体,因为当赋予的第一个字体不可用的话,浏览器会采用第二个...依次类推,如
+果你提供的所有字体都不可用的话,最后才使用浏览器默认的字体,这样给浏览器更多的选择以至于使你的网页更加强壮.
+
+### CSS font properties
+For bold and italic text
+#### font-size
+used to set the font size among other things.
+```
+h2{font-size:18px;}
+```
+#### font-style
+this property can make your text italic.
+```
+/* default value is normal */
+h2{font-style:italic;}
+```
+#### font-weight
+this property can make your text bold.
+```
+h2{font-weight:bold;}
+```
+default value is `font-weight:normal`,depending on the `font-family` used,there is a range of font weights available,fromt **100** to **900**.  
+very few fonts provide all 9 weights.your will mostly find 400(normal) and 700(bold),and sometimes 300(light) and 500(medium).
+#### font-variant
+this property turn your text into small caps:
+```
+h2{font-variant:small-caps;}
+```
+会让你的文本变成小型的大写字母,默认值是`font-variant:normal;`  
+this is not a widely used property.
+
+### CSS line-height
+for readibility concerns,the `line-height` is **the height of each line**.  
+the `line-height` property uses the following units:
++ `px`
++ `em`
++ `%`
++ unitless-umbers,like `1.5`
+The unitless values basically act like percentages,so `150%` is equal to `1.5` .the latter is just more compact and readable.
+#### why line-height is important
+the purpose of the `line-height` is to define a readable line spacing for your text.because readibility is dependent upon the size of the text,
+it is recommended to use a dynamic value that is relative to the size of the text.use `px` is not recommended because it defines a static value.
+the recommened method is unitless-numbers.  
++ for body text,a line height of 1.5 times the size of the text is recommended.
++ for heading, a line height of 1.2 is recommended.
+```
+body{
+  font-size:16px;
+  line-height:1.5;
+}
+```
+above the computed height will thus be **16*1.5=24px**
+#### line-height inheritance 
+because the `line-height` property is inheritanced by the child elements,it will remain consistent no matter what `font-size` is subsequently applied.
+```
+body{
+  font-size:16px;
+  line-height:1.5;
+}
+blockquote{font-size:18px}
+```
+The `blockquote` element will have a line height of `27px`.
