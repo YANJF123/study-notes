@@ -415,3 +415,107 @@ body{
 blockquote{font-size:18px}
 ```
 The `blockquote` element will have a line height of `27px`.
+
+### CSS font shorhand
+a shortcut  for several font properties  
+it groups with this particular order:
++ `font-style`
++ `font-variant`
++ `font-weight`
++ `font-size`
++ `line-height`
++ `font-family`
+you can thus define 6 properties through a single one:
+```
+body{font:italic small-caps bold 16px/1.5 Arial,sans-serif;}
+```
+they have to be written in this particular order and there must be a slash `/` between the `font-size` and the `line-height`. the `font-size` and `font-family` are 
+mandatory(强制性的),others is optional.  
+Other shorhand properties exist,like `background` , `border` and `margin`.
+
+### CSS text properties
+Other text alterations  
+Alongside(根据) the several `font-*` properties,CSS provides many `text-*` properties.
+#### text-align 
+the `text-align` property must be applied on a block-level element and defines how its text and children inline elements are horizontally aligned.  
+该属性必须应用到块级元素,它定义了内部的文本和行内元素水平对齐的方式.  
+最常用的值有:
++ left
++ right
++ center
++ justify
+the `text-align` default value is `start`,basically,`start` can either be `left` or `right` ,depending on the direction set on the HTML document.  
+**direction** is a CSS propery that can either `ltr`(left to right) or `rtl`(right to left):
+- if `ltr` is chosen,`start` equals to `left`
+- if 'rtl' is chosen,`start` equals to `right`
+#### text-decoration
+the `text-decoration` property is used to add a line on your text.default value is `none`.  
+```
+.deleted{text-decoration:line-through;}
+```
+possible values:
+- overline (上划线)
+- underline (下划线)
+- line-through (删除线)
+##### text-indent
+the `text-indent` property allows to add space before the first letter of the first line of a block-level element.default value is `0`.
+```
+blockquote{text-indent:30px;}
+```
+#### text-shadow
+define:
+- `` the horizontal offset 水平偏移
+- `` the vertical offset 垂直偏移
+- the `blur` 模糊的距离
+- the `color` 颜色
+
+### CSS box model
+how rectangles are made 矩形是如何制造的?  
+在HTML中所有元素都是矩形,矩形的尺寸会根据具体元素的内容动态调整,你可以认为这些矩形是流体类的东西,根据内容来调整自己的形状.  
+块级元素会占尽它所在的行的所有宽度,例如段落,
+
+### CSS background
+how your rectangle is filled  
+the background of an HTML element is what appears behind the text.  
+HTML元素的背景指的是出现在文本后面的内容.
+#### background-color
+default value: `transparent` inherited by children elements:no.
+```
+body{background:#ffffff;}
+```
+#### background-image
+applying a background image only requires to specify its URL:
+```
+body{background-iamge:url(path/to/image.png)}
+```
+the behavior of the image(how it repeats itself,where it is positioned,how it is sized) is defined by other background properties.
+the `background-image` only defines which image to use.
+#### the difference between HTML images `<img>` and CSS background images
+the HTML `<img>` element is for images that are part of the content,while CSS background images are purely decorative.  
+the logo of a company ,the thumbnail of a gallery ,the picture of a product ... These are all considered **content** and should use the HTML `<img>` element.  
+a beautiful landscape,a cart icon...These can be considered as **decorative**,as they support the content but are not part of it.if they were to disappear,
+the webpage would still  make sense(有道理的).
+因为有多重的的选择,在内容和样式之间的界限很模糊,一些视觉技术很容易通过CSS的`background`来实现,所以如果你使用的图片是你页面的本质,主要内容的话,就用`<img>`.
+##### gradients
+CSS also allow to define **color gradients** as background images,in 2 different shapes:
++ `linear-gradient` for gradients in a single direction,in a rectangular shape
++ `radial-gradient` for gradients in all directions,in a circular shape
+#### background-position
+by default,a background image will repeat itself indefinitely(无限期).you can specify where its **original position** ,by choosing a horizontal `x` value,and a vertical `y` value.
++ pixel values `px`
++ percentages,relative to the HTML element's dimensions
++ keywords like `center`,'left','bottom'...
+```
+body{background-position:right bottom;}
+```
+you can mix different coordinate units:
+```
+body{background-position:center 20px;}
+```
+#### background-repeat
+by default,a background image will repeat itself indefinitely.you can choose to make it repeat only horizontally,only vertically,or not at all.
+```
+body{background-repeat:repeat-x;} /* only horizontally */
+body{background-repeat:repeat-y;} /* only vertically */
+body{background-repeat:no-repeat;} /* the background image will only appear once */
+```
