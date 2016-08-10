@@ -519,3 +519,79 @@ body{background-repeat:repeat-x;} /* only horizontally */
 body{background-repeat:repeat-y;} /* only vertically */
 body{background-repeat:no-repeat;} /* the background image will only appear once */
 ```
+
+### CSS display
+Changing the type of an HTML element  
+we've seen how there are mainly 2 types of HTML elements:block-level elements and inline ones.the `display` property allows to change the type of HTML element.
+#### why not use an HTML inline element,like `<span>` then?
+because you choose an HTML element for its meaning ,not its rendering.  
+因为你选择HTML元素主要是为了语义,而不是为了渲染样式的目的去选择特定的HTML元素,渲染交给CSS来做.
+Each `display` options have specific rendering behaviors:
++ `block` will take up the whole width available
++ `inline` will act as plain text
++ `inline-block`, as its name suggests,a compound(复合) of block and inline behavior
++ `list-item` is similar to `block` as it takes up the whole width available,but shows an additional bullet point
++ `table`,`table-row` and `table-cell` all have very specific,albeit(尽管) unexpected,behavior that allow more interesting layouts
+#### display:block
+This will turn any element into a **block** element.  
+This technique is often used on **links** in order to increase their clickable zone,which can be easily evaluated by setting a background color.  
+为了增加可点击的区域,设置背景色,这项技术通常用于超链接标签  
+```
+.menu a{
+  background:red;
+  color:white;
+  display:blcok;
+}
+```
+#### display:inline
+This turns any element into **inline** elements, as if they were just simple text.  
+it is often used to create `horizontal navigations`,where list items are semantically but not visually useful.
+```
+<ul class="menu">
+  <li><a href="#">Home</a></li>
+  <li><a href="#">Features</a></li>
+  <li><a href="#">About</a></li>
+</ul>
+.menu li{
+  display:inline;
+}
+```
+#### display:list-item
+The only HTML elements displayed  as `list-item` are the **list-items `<li>`** but also the **definition descriptions `<dd>`** .  
+A list item is rendered with a bullet point (if an unordered list `<ul>`) or with a incremental number(if within an ordered list `<ol>`).  
+Because the rendering of these bullet points and numbers varies across browsers,and is also hard to style in CSS,the `display:list-item` rule
+is never used.Actually,it is common for `<li>`s to be rendered as `display:block` or `display:inline`,as they are more flexible to style.
+
+#### display:none
+Applying `display:none;` to an HTML element removes it from your webpages.as if it never existed in your code.
+
+#### visibility:hidden
+The CSS property `visibility` is slightly similar to `dispaly`.Applying `visibility:hidden;`hidden an element from your page,but only turns it invisible:
+it still takes up the space it was supposed to.
+```
+.vis{
+  visibility:hidden;
+}
+```
+
+### CSS height and width
+Setting fixed dimensions to your rectangles  
+The dimensions(or height and width)of an element are dynamic,as they fluctuate in order to fit the content.
+```
+blockquote{width:600px;}
+```
+The blockquote will not take up the whole width available,but will remain 600px wide in any situation:
+- if the browser window is less wide than 600px,it will show a horizontal scrolling bar
+- if the browser window is wider than 600px,the blockquote will stay 600px wide and not take up the whole space
+because we have only set the width,the blockquote remians fluid in height,the height becomes the variable dimension to fit the blockquote's content.
+#### Setting both height and width
+#### CSS overflow
+The `overflow` CSS property allows us to manage the case of content being longer than its container.  
+The default value is `visible`:the content will be displayed anyway.By applying `overflow:hidden;`,your simply forbid any overflowing content to be seen.
+#### Beware of fixed dimensions
++ make sure your content doesn't overflow
++ if it does,use `overflow:hidden` or `overflow:auto` to prevent your design from breaking
+
+### CSS border
+The edges of the rectangle  
+Because an HTML elemnent is rendered as a rentangle, it can have up to 4 borders:top,bottom,left and right.your can set a border on all sides at once,or on each side individually.
