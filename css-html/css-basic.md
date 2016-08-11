@@ -691,6 +691,7 @@ Even without any CSS applied ,an HTML document already has its own rules:
 + **fluidity**:how the content adapts to browser dimensions 流动性
 + **ordering**:in which order elements appear 有序性
 + **stacking**: how elements appear on top of each other 堆叠性
+
 #### Fluidity 流动性
 In HTML,the content is king.all `block` elements are fluid,they will naturally adapt their layout to accommodate their inner content:
 + **width:100%** a block will take up the whole width available
@@ -698,6 +699,7 @@ In HTML,the content is king.all `block` elements are fluid,they will naturally a
 + **height:auto** a block's height varies automatically to match its  content's size
 + A **block** si by default in full width
 + Its **height** is the height of its content
+
 #### Ordering 有序性
 HTML elements are displayed in the order in which they are written in the code.First in the code -> first in the browser.  
 Each block appears in the order in which they appear in the HTML code, from top to bottom.  
@@ -727,6 +729,7 @@ The stack order depends on how elements are nested:child elements appear on top 
 </div>
 ```
 `<strong>` tag is on top,after is `<p>`,and the last is `<div>`tag
+
 #### Breaking the flow
 Several CSS properties allow to disrupt the Flow:
 + `height` and `width` can alter an element's fluidity
