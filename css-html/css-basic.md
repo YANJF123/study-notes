@@ -737,3 +737,61 @@ Several CSS properties allow to disrupt the Flow:
 + `float` disrupts an element's behavior as well as its surroundings
 + `position` `absolute` and `fixed` remove an element from the Flow
 + `z-index` can alter the order in which elements are stacked
+
+### CSS position
+Going manual  
+要手动  
+The CSS `position` property is versatile and powerful.It allow to set or alter an element's position.It has 4 possible value:
+- `static`(default value)
+- `relative`
+- `absolute`
+- `fixed`
+It's often used alongside the 4 coordinates properties:
++ `left`
++ `right`
++ `top`
++ `bottom`
+
+#### Static
+This is the default `position` value:static elements just follow the natural flow.They aren't afffected by any `left`,`right`,`top` or `bottom` value.
+
+#### relative
+when the `position` is set to `relative` ,an element can move according to its current position.  
+当将一个元素设置为`position:relative`,它会脱离文档流,具体偏移的位置根据其`left`,`right`,`top` and `bottom`的值来决定,偏移是相对于其原始位置,其相邻的其他元素并未察觉到该元素已经偏移了  
+
+#### absolute
+when the `position` is set to `absolute`,an element can move according to the **first positioned ancestor**.  
+a **positioned** element is one whose `position` value is either `relative`,`absolute` or `fixed`.so unless the position is not set or static,an element is `positioned`.  
+The characteristic of a positioned element is that it can act as a **reference point for its child elements**.  
+your can use `left`,`right`,`top` and `bottom` to move it in a position container.  
+**what happens if we set both left AND right?**  
++ if the `width` is not set,applying `left:0` and `right:0` will stretch the element across the whole width.it is the equivalent of setting `left:0` and `width:100%`.
++ if the `width` is set , then the `right` value is discarded(忽略).
+
+#### fixed
+when the `position` is set to `fixed`,it acts like `absolute`:you can set left/right and top/bottom coordinates.  
+The only difference is that the **point of reference is the viewport** . it means that a fixed element won't scroll with the page; it is fixed on the screen.  
+被设置为`position:fixed`的元素与设置`position:absolute`十分相似,只是它参考的是当前**视口**
+
+### CSS float
+The most unpredictable(无法预知) property  
+Behind the word `float`,an endless sea of possibilities(and misbehaviors).  
+`float` is probably the most difficult CSS concept to grasp. Its behavior can be intriguing(有趣的),unexpected,and magical(神奇的).  
+Probably because ,of all positioning properties there are ,it is the one that most influences its surroundings.  
+In other words,applying a float not only modifies the element it's applied upon **but also alter its ancestors,siblings,descendants,and following elements.**  
+`float` can only have one of these 3 values:
++ `left` and `right` turns an element into a `floating` one
++ `none` removes the floating aspect
+
+#### when to use float
+The purpose of floating an element is to push it to one side and make the next wrap around it.
+
+#### float=block
+floating elements will have a `display:block` applied to them automatically,and will mostly behave like block:
+- you can set a specific height and width
+- if no height is set,the element's height is that of the line-height
+- if a `width:100%` is applied,it will look like a block-level element
+
+#### clearing the float
+The clear property allows to **push elements** after **the float**.it can only be applied on ***block** elements.
+
