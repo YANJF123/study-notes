@@ -672,6 +672,7 @@ If you eneter 3 values(top/right/bottom),your omit setting `left`.As `right` is 
 + `margin`
 + `padding`
 + `border-width`
+
 Indeed,`border` is(in that order) a shorthand for:
 + `border-width`
 + `border-style`
