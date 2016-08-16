@@ -795,3 +795,84 @@ floating elements will have a `display:block` applied to them automatically,and 
 #### clearing the float
 The clear property allows to **push elements** after **the float**.it can only be applied on ***block** elements.
 
+### CSS pseudo-classes
+Enhancing the CSS selectors  
++ **generic** where `p` in CSS targets `<p>`
++ **classes** where `.intro` in CSS targets elements with a `class="intro"` attribute
++ **ids** where `#logo` in CSS targets HTML elements with `id="logo"` attribute
+
+All of these selectors can have pseudo-classes attached to them. A pseudo-class:
++ defines a particular state of the element
++ is a keyword that stats with a colon`:`
+
+#### Syntax 
+A psedo-class cant't exist on its own. it must be attached to a selector. The pseudo-class will only define a particular state of that selecor.  
+The syntax looks like this:
+```
+.selecotr:pseudo-class{}
+```
+
+#### :hover
+For example,a common pseudo-class used is `:hover`,which will apply a CSS style when the targeted element is **hover**.
+```
+a{color:blue;}
+a:hover{color:red;}
+```
+The first line defines how all `<a>` elements should look like(blue).  
+The second line defines how `<a>` should look like when **hovered**(blue).
+
+#### :visited
+This pseudo-class targets links that have been visited.by default ,links are blue and turn purple when you are visited them.Google results work like that.
+```
+a{color:dogerblue;}
+a:visited{color:rebeccapurple;}
+```
+
+#### :focus
+This pseudo-class happens when an HTML element is **in focus**.This is particularly useful for HTML `inputs`.
+```
+.form-input{border:2px solid grey;}
+.form-input:focus{
+    background:lightyellow;
+    border-color:blue;
+    outline:none;
+}
+```
+
+#### :first-child and :last-child
+These pseudo-classes are related to the HTML hierarchy.They target HTML elements depending on the order in which they appear in the code.
+```
+<ul>
+  <li>one</li>
+  <li>two</li>
+  <li>three</li>
+  <li>four</li>
+</ul>
+li:first-child{background:greenyellow;}
+li:last-child{background:lightsalmon;}
+```
+
+#### :nth-child
+This pseudo-class is a more global version of `:first-child` and `:last-child`.with `:nth:child`,your can calculate which child element you want to target.
+```
+/* target the second element */
+li:nth-child(2){background:violet;}
+
+/* odd and even  */
+li:nth-child(odd){backgrond:gold;}
+li:nth-child(even){backgrond:green;}
+```
+The n iterator  
+The most powerful aspect of `:nth-child` is how it can target elements based upon  caculations by using the `n` keyword.  
+The `n` value increments from **zero 0** to the **number** of child elements present.
+```
+/* every third element */
+li:nth-child(3n){background:red;}
+
+n+1  
+/* what if you want to target the 1st item and every third item  */
+li:nth-child(3n+1){background:red;}
+```
+
+#### Other pseudo-classes
+There are dozens of pseudo-classes availables,some of them for very specific states.The most used ones are the one's we've covered.
