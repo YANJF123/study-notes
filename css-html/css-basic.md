@@ -876,3 +876,64 @@ li:nth-child(3n+1){background:red;}
 
 #### Other pseudo-classes
 There are dozens of pseudo-classes availables,some of them for very specific states.The most used ones are the one's we've covered.
+
+
+### CSS gradients
+From one color to another  
+When we talk about gradients in CSS ,we talk about gradients of colors.  
+There are 2 types of gradients in CSS:
++ **linear**:colors go from point to another,in a straight line 
++ **radials**:colors go from the center of  a circle to its edges,in all directions
+A gradient is considered a `background image` and must be used with the according property.
+
+#### linear-gradient
+The syntax for linear gradients is quite complex,but the basic idea is to define:
+- which color you want
+- where these colors must appear along the axis(at the start,middle,end,etc)
+- in which direction the gradient must go 
+```
+div{
+  background-image:linear-gradient(red,blue);
+}
+```
+by default:
++ the **direction** is **vertical**,from top to bottom
++ the **first** color is at the **start**(top)
++ the **second** color is at the **end**(bottom)
+
+##### change the direction
+if to top to bottom direction doesn't suit you ,you can alter it by either:
+- defining the destination of the gradient,with keywords like **to left top**
++ defining a spacific angel in degree like `45deg`
+the direction must be set before the colors:
+```
+div{
+  background-image:linear-gradient(to  bottom right,yellow,purple)
+}
+```
+if you want a more specific angle,you can use a value in degrees:
+- `0deg` in the defualt value,from top to bottom
+- `20deg` is lightly diagonal,going clockwise
+- `90deg` is like 3pm,from right to left.
+- `180deg` is from bottom to top
+
+##### Adding more colors
+you can insert as manay colors as you want. they will be equlaly distributed along the axis:
++ **2 colors**:0% and 100%
++ **3 colors**:0%,50% and 100%
++ **4 colors**:0%,33%,67% and 100%
+```
+div{
+  background-image:linear-gradient(blue,green,red);
+}
+```
+
+##### setting specific color stops
+if you don't want colors to equally distributed ,you can set specific color stop positions,using either percentages `%` or pixels `px`
+```
+div{
+  background-image:linear-gradient(blue,green 10%,red 20%);
+}
+```
+
+
