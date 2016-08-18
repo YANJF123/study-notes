@@ -932,8 +932,71 @@ div{
 if you don't want colors to equally distributed ,you can set specific color stop positions,using either percentages `%` or pixels `px`
 ```
 div{
-  background-image:linear-gradient(blue,green 10%,red 20%);
+  background-image:linear-gradient(orange,grey 10%,yellow 50%);
+}
+```
+In this setup:
++ `orange` has no stop position,so it default to zero `0%`
++ `grey` is closer to the top,at `10%` instead of `50%`
+
+#### radial-gradient
+while linear gradients follow a single-line axis,**radial gradients** spread out in all directions.Their syntax is fairly similar to linear ones,as they both have **color stops**.
+but instead of specifying a direction you need to spcify:
+- a shape:either a circle or an ellipse
+- a starting point:which will be the center of the circle/ellipse
+- an end point : where the edge of the circle/ellipse wiil be 
+```
+div{
+      background-image: radial-gradient(red,yellow);
+      width: 200px;
+}
+```
+by default :
++ the gradient is an ellipse
++ the first color starts at the center
++ the last color ends at the farthest corner
+
+##### start position
+the **start position** works like `background positions`,you set it with the `at` keyword.
+```
+div{
+  background-image:radial-gradient(at top right,black,red);
 }
 ```
 
+#####  end position
+by default ,the shape wiil end at the `farthest corner`,you can either choose:
++ `closest-side`
++ `closest-corner`
++ `farthest-side`
++ `farthest-corner`
+The different is both hard to grasp and to visualize,so i won't go into detail. Mozilla has a [good description of the different values](https://developer.mozilla.org/en-US/docs/Web/CSS/radial-gradient#Values)
+```
+div{
+  background-image:radial-gradient(closest-corner at 20px 20px,green,blue);
+  width:300px;
+}
+div:hover{
+  background-image:radial-gradient(farthest-side at 20px 20px,green,blue);
+}
+```
 
+##### fixed size
+instead of setting both start and end position,you can just set **specific dimensions**
+```
+div{
+  background-image:radial-gradient(20px 10px at 75% 50%,red,blue);
+  width:300px;
+}
+```
+CSS gradients are powerful,considering how endless the options are.  
+you can write some buttons with CSS gradient.  
+```
+.button-grey  { background-image: linear-gradient(#f2f2f2, #f2f2f2);}
+.button-yellow{ background-image: linear-gradient(#fce374, #fcdf5b);}
+.button-orange{ background-image: linear-gradient(#f58a38, #f57c20);}
+.button-red   { background-image: linear-gradient(#ed6d64, #ed574c);}
+.button-purple{ background-image: linear-gradient(#847bba, #7568ba);}
+.button-blue  { background-image: linear-gradient(#42b0e3, #2ba9e3);}
+.button-green { background-image: linear-gradient(#97cc76, #8bcc62);}
+```
