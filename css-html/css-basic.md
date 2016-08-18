@@ -1000,3 +1000,112 @@ you can write some buttons with CSS gradient.
 .button-blue  { background-image: linear-gradient(#42b0e3, #2ba9e3);}
 .button-green { background-image: linear-gradient(#97cc76, #8bcc62);}
 ```
+
+### CSS transitions
+From one rule to another  
+CSS transitions allow to smoothly go from one element's state to another,how it works is that individual properties are animated from an initial to a final state.  
+you can define:
++ `transition-property` :which properties to animate
++ `transition-duration`: how long the animation lasts
++ `transition-timing-function`: how the intermediate states are calculated
++ `transition-delay`: to start the animation after a certain amount of time
+you can set each CSS property individually or use the shorthand version: `transition`,in that case only the duration is mandatory  
+keep in mind that a transition is a special kind of animation.where there's only a start and an end state.  
+
+#### quick example
+Transitions are often used on hover states.
+```
+<a href="#" class="with-transition">i am with transitioned</a>
+a{
+  background:lightgrey;
+  color:grey;
+}
+a:hover{
+  background:yellow;
+  color:red;
+}
+a.with-transiton{
+  transition:1s;
+}
+```
+
+#### transition-duration
+A transition's duration is the only CSS property needed to create a transition. it can either be set in seconds `2s` or millisenconds `100ms`  
+```
+a{
+  background:lightgrey;
+  color:grey;
+}
+a:hover{
+  background:yellow;
+  color:red;
+}
+a.with-fast-transiton{
+  transition:0.5s;
+}
+a.with-slow-transiton{
+  transition:2s;
+}
+```
+
+#### transition-property
+only 1/3 of CSS properties can be animated.Mozillia has a [complete list](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties)  
+by default,the `transition-property` property has a value of `all`,which simply means it will animate all possible properties.you can decide to only animate 1 or several properties.  
+```
+a{
+  background:lightgrey;
+  color:grey;
+}
+a:hover{
+  background:yellow;
+  color:red;
+}
+a.with-background-transiton{
+  transition-property:background;
+  transition:0.5s;
+}
+a.with-all-transiton{
+  transition:2s;
+}
+```
+
+#### transition-timing-function
+The timing function determines how each property's value is calculated during the transition.by default ,the transition is easd:it accelerates at the start and slows at the end.  
++ `ease` slow start,fast middle,slow end
++ `linear` constant speed
++ 'ease in' slow start,fast end
++ `ease out` fast start,slow end
++ `ease in out` like ease,but with more pronounced acceleration/decelaration curves(曲线)
+if you want to visualize how other timing functions work,check out this [Easing Functions Cheat Sheet](http://easings.net/)
+```
+div{
+  left:0;
+  position:relative;
+  transition:1s;
+  transition-timing-function:ease;
+}
+div:hover{
+  left:200px;
+}
+```
+
+#### transition-delay
+A delay will define how long the transitions has to wait before actually starting.like `transition-duration` you can either use seconds `s` or milliseconds `ms`.
+```
+<div>
+  <p>hover the grey area</p>
+  <a href="">without any delay</a>
+  <a href="" class="with-delay">with a second delay</a>
+</div>
+a{
+  background:blue;
+  color:white;
+  transition:all 1s;
+}
+div:hover a{
+  background:red;
+}
+a.with-delay{
+  transition-delay:1s;
+}
+```
