@@ -1109,3 +1109,124 @@ a.with-delay{
   transition-delay:1s;
 }
 ```
+
+### CSS animations
+a set sequence of CSS Rules  
+We hava just seen how CSS transitions are just a way to animate CSS properties between a starting state,and an end state.  
+so CSS transitions are specific kind of animations,where:
++ there is only 2 states:start and end
++ the animation doesn't loop
++ the intermediate states are only controlled by the timing function
+
+**CSS animations are like mini movies whre you are the director giving out instructions(CSS rules) to your actors (HTML elements) for different scenes(keyframs).**
+
+#### Animation properties
+like the `transition` property,`animation` is a shorthand property for several others:
++ **name** : the animation's name
++ **duration** : how long the transiton lasts
++ **timing-function** : how the intermediate states are calculated
++ **delay** : to start the animation after a certain amount of time
++ **iteration-count** : how many times the animation should be performed
++ **direction** : if the animation should be reversed or not
++ **fill-mode** : what styles are applied before the animation starts and after it ends
+
+#### quick example
+To animate a loading button,you could write a bouncing animation:
+```
+@keyframes bouncing{
+  0%{bottom:0;box-shadow:0 0 5px rgba(0,0,0,0.5);}
+  100%{bottom:50px;box-shadow:0 50px 50 px rgba(0,0,0,0.1);}
+}
+.loading-buttom{
+  animation:bouncing 0.5s cubic-bezier(0.1,0.25,0.1,1) 0s infinite alternate both;
+}
+```
+- name :bouncing
+- duration 0.5s
+- timing-function:cubic-bezier(0.1,0.25,0.1,1)
+- delay: 0s
+- iteration-count:infinite
+- direction: alternate(goes back and forth)
+- fill-mode:both
+
+#### @keyframes
+before applying animation to HTML elements,you need to **write animations using keyframes**.basically ,keyframes are each **intermediate step** in an animation.
+They are defined using **percentages**.
++ **6%** is the first step of the animation
++ **50** is the step halfway through the animation
++ **100%** is the last step
+you can also use the keywords `from` and `to` instead of **0%** and **100%** respectively.  
+Each keyframes is **CSS rule**,meaning that you can write CSS properties just like usuall.  
+To define an animation,just write the keyword `@keyframes` followed by it **name**.  
+```
+@keyframes around{
+  0%{left:0;top:0;}
+  25%{left:240px;top:0;}
+  50%{left:240px;top:140px;}
+  75%{left:0;top:140px;}
+  100%{left:0;top:0;}
+}
+p{
+  animation:around 4s linear infinite;
+}
+```
+
+#### animation-name
+The animation name is used at least twice
++ when writing the animation using `@keyframes`
++ when using the animation usting the `animation-name` property (or with the animation shorthand)
+```
+@keyframes whatever{
+  /* ... */
+}
+.selector{animation-name:whatever;}
+```
+
+#### animation-duration
+`animation-duration` can be set in seconds `1s` or milliseconds `200ms`
+```
+.selector{
+  animation-duration:0.5s;
+}
+```
+it default to `0s`,which means no animation at alll.
+
+#### animation-timing-function
+just like `transition timing-functions`,animation timing functions can use keywords like `linear`,`ease-out`,or be defined using custom `cubic bezier` functions.
+```
+.selector{
+  animation-timing-function:ease-in-out;
+}
+``
+it default to `ease`
+
+# animation-delay
+just like `transiton delays` ,animation delays can be set in seonds `1s` or milliseconds `200ms`. it defaults to `0s` which means no delay at all,it's useful when triggering
+ multiple animations in sequence.  
+```
+.a,.b,.c{animation:bouncing 1s;}
+.b{animation-delay:0.25s}
+.c{animation-delay:0.5s}
+```
+
+#### animation-iteration-count
+by default,animations are only played once(value of `1`),you can set 3 types of values:
++ integers like `2` or `3`
++ non-integers like `0.5` which will play only half the animation
++ the keyword `infinite` which will repeat the animation indefinitely
+```
+.selector{
+  animation-duration:infinite;
+}
+```
+
+#### animation-direction
+The animation's direction defines in which order the keyframes are read  
+- **normal** : starts at `0%` ,ends at `100%` ,starts at `0%` again
+- **reverse** : starts at `100%`,ends at `0%`,starts at `100%` again
+- **alternate** : starts at `0%`,goes to `100%`,goes to `0%`
+- **alternate-reverse** : starts at `100%` ,gotes to `0%` ,goes to `100%`
+
+#### animation-fill-mode
+an animation's fill mode defines what happens before the animation starts and after it ends.
+the detail you can find [here](http://marksheet.io/css-animations.html#animation-fill-mode)
