@@ -1197,7 +1197,7 @@ just like `transition timing-functions`,animation timing functions can use keywo
 .selector{
   animation-timing-function:ease-in-out;
 }
-``
+```
 it default to `ease`
 
 # animation-delay
