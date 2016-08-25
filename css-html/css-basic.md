@@ -36,15 +36,15 @@ p{color:red;}
 + CSS in the `<head>`,use `<style>` tag in the `<head>` of your HTML document.
 ```html
 <html>
-  <head>
-    <title>hello world</title>
-    <style>
-      p{color:red;}
-    </style>
-  </head>
-  <body>
-    <p>this text is important.</p>
-  </body>
+<head>
+  <title>hello world</title>
+  <style>
+    p{color:red;}
+  </style>
+</head>
+<body>
+  <p>this text is important.</p>
+</body>
 </html>
 ```
 
@@ -52,13 +52,13 @@ p{color:red;}
 the `<link>` HTML tag.
 ```html
 <html>
-  <head>
-    <title>Hello world</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <p>this text is important.</p>
-  </body>
+<head>
+  <title>Hello world</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <p>this text is important.</p>
+</body>
 </html>
 ```
 the 3rd method of using a separate CSS file is preferred.
@@ -84,8 +84,8 @@ CSS have a 3-part process:
 #### quick example
 ```
 blockquote{
-  background:lightgreen;
-  color:darkgreen;
+background:lightgreen;
+color:darkgreen;
 }
 <blockquote>sometings is ready.</blockquote>
 ```
@@ -93,8 +93,8 @@ blockquote{
 ```
 /* this is a css comment */
 blockquote{
-  background:lightgreen;
-  color:darkgreen;
+background:lightgreen;
+color:darkgreen;
 }
 ```
 
@@ -115,7 +115,7 @@ li{/* List items */}
 Of all HTML attributes,the class attribute is the most important for CSS.it allows us to define a group of HTML elements that we can target specifically.
 ```
 .data{
-  color:red;
+color:red;
 }
 <p class="data">something like ...</p>
 ```
@@ -124,7 +124,7 @@ Of all HTML attributes,the class attribute is the most important for CSS.it allo
 you can also use the `id` attribute in your HTML,and target it with a hash `#` in your CSS
 ```
 #tagline{
-  color:red;
+color:red;
 }
 <p id="tagline">this is a text.</p>
 ```
@@ -132,10 +132,10 @@ you can also use the `id` attribute in your HTML,and target it with a hash `#` i
 see some examples in below:
 ```
 .date{
-  color:red;
+color:red;
 }
 em.date{
-  color:blue;
+color:blue;
 }
 <p class="date">i am paragraph.</p>
 <p>i also a <em class="date">paragraph</em>.</p>
@@ -144,7 +144,7 @@ em.date{
 a **space** in a selector defines a ancestor/descendant relationship.
 ```
 header a{
-  color:red;
+color:red;
 }
 ```
 this can be read from right to left as:"select all **a** elements that are within a **header** element". this will prevent all other links 
@@ -155,10 +155,10 @@ HTML elments can have different **states**,the most common case is when you hove
 HTML元素具有不同的状态,最常见的情况是你把鼠标悬置在超链接上的时候. 当此事件发生的时候应用不同的CSS样式是可能的.  
 ```
 a{
-  color:blue;
+color:blue;
 }
 a:hover{
-  color:red;
+color:red;
 }
 ```
 
@@ -200,10 +200,10 @@ defined by color names,CSS provides 145 colors names,from the most basic (black,
 because the color names are hard to remember,and because you probably want very specific colors,color names are not often used .
 ```
 body{
-  background:white;
+background:white;
 }
 a{
-  color:red;
+color:red;
 }
 ```
 #### rgb
@@ -400,8 +400,8 @@ the recommened method is unitless-numbers.
 + for heading, a line height of 1.2 is recommended.
 ```
 body{
-  font-size:16px;
-  line-height:1.5;
+font-size:16px;
+line-height:1.5;
 }
 ```
 above the computed height will thus be **16*1.5=24px**
@@ -409,8 +409,8 @@ above the computed height will thus be **16*1.5=24px**
 because the `line-height` property is inheritanced by the child elements,it will remain consistent no matter what `font-size` is subsequently applied.
 ```
 body{
-  font-size:16px;
-  line-height:1.5;
+font-size:16px;
+line-height:1.5;
 }
 blockquote{font-size:18px}
 ```
@@ -538,9 +538,9 @@ This technique is often used on **links** in order to increase their clickable z
 为了增加可点击的区域,设置背景色,这项技术通常用于超链接标签  
 ```
 .menu a{
-  background:red;
-  color:white;
-  display:blcok;
+background:red;
+color:white;
+display:blcok;
 }
 ```
 #### display:inline
@@ -553,7 +553,7 @@ it is often used to create `horizontal navigations`,where list items are semanti
   <li><a href="#">About</a></li>
 </ul>
 .menu li{
-  display:inline;
+display:inline;
 }
 ```
 #### display:list-item
@@ -570,7 +570,7 @@ The CSS property `visibility` is slightly similar to `dispaly`.Applying `visibil
 it still takes up the space it was supposed to.
 ```
 .vis{
-  visibility:hidden;
+visibility:hidden;
 }
 ```
 
@@ -607,9 +607,9 @@ It also has 4 possible sides:
 + `border-right`
 ```
 blockquote{
-  border-color:blue;
-  border-style:solid;
-  border-width:1px;
+border-color:blue;
+border-style:solid;
+border-width:1px;
 }
 /* The shorthand property border allows to define all 3 properties at once*/
 blockquote{border:1px solid blue;}
@@ -618,9 +618,9 @@ blockquote{border:1px solid blue;}
 If you want to set a border on only one of the four sides,you need to include the border's position in the CSS property.
 ```
 blockquote{
-  border-bottom-color:blue;
-  border-bottom-style:solid;
-  border-bottom-width:1px;
+border-bottom-color:blue;
+border-bottom-style:solid;
+border-bottom-width:1px;
 }
 /* as for the border property,each side has its shorthand version */
 blockquote{border-bottom:1px solid blue;}
@@ -833,9 +833,9 @@ This pseudo-class happens when an HTML element is **in focus**.This is particula
 ```
 .form-input{border:2px solid grey;}
 .form-input:focus{
-    background:lightyellow;
-    border-color:blue;
-    outline:none;
+background:lightyellow;
+border-color:blue;
+outline:none;
 }
 ```
 
@@ -893,7 +893,7 @@ The syntax for linear gradients is quite complex,but the basic idea is to define
 - in which direction the gradient must go 
 ```
 div{
-  background-image:linear-gradient(red,blue);
+background-image:linear-gradient(red,blue);
 }
 ```
 by default:
@@ -908,7 +908,7 @@ if to top to bottom direction doesn't suit you ,you can alter it by either:
 the direction must be set before the colors:
 ```
 div{
-  background-image:linear-gradient(to  bottom right,yellow,purple)
+background-image:linear-gradient(to  bottom right,yellow,purple)
 }
 ```
 if you want a more specific angle,you can use a value in degrees:
@@ -924,7 +924,7 @@ you can insert as manay colors as you want. they will be equlaly distributed alo
 + **4 colors**:0%,33%,67% and 100%
 ```
 div{
-  background-image:linear-gradient(blue,green,red);
+background-image:linear-gradient(blue,green,red);
 }
 ```
 
@@ -932,7 +932,7 @@ div{
 if you don't want colors to equally distributed ,you can set specific color stop positions,using either percentages `%` or pixels `px`
 ```
 div{
-  background-image:linear-gradient(orange,grey 10%,yellow 50%);
+background-image:linear-gradient(orange,grey 10%,yellow 50%);
 }
 ```
 In this setup:
@@ -947,8 +947,8 @@ but instead of specifying a direction you need to spcify:
 - an end point : where the edge of the circle/ellipse wiil be 
 ```
 div{
-      background-image: radial-gradient(red,yellow);
-      width: 200px;
+background-image: radial-gradient(red,yellow);
+width: 200px;
 }
 ```
 by default :
@@ -960,7 +960,7 @@ by default :
 the **start position** works like `background positions`,you set it with the `at` keyword.
 ```
 div{
-  background-image:radial-gradient(at top right,black,red);
+background-image:radial-gradient(at top right,black,red);
 }
 ```
 
@@ -973,11 +973,11 @@ by default ,the shape wiil end at the `farthest corner`,you can either choose:
 The different is both hard to grasp and to visualize,so i won't go into detail. Mozilla has a [good description of the different values](https://developer.mozilla.org/en-US/docs/Web/CSS/radial-gradient#Values)
 ```
 div{
-  background-image:radial-gradient(closest-corner at 20px 20px,green,blue);
-  width:300px;
+background-image:radial-gradient(closest-corner at 20px 20px,green,blue);
+width:300px;
 }
 div:hover{
-  background-image:radial-gradient(farthest-side at 20px 20px,green,blue);
+background-image:radial-gradient(farthest-side at 20px 20px,green,blue);
 }
 ```
 
@@ -985,8 +985,8 @@ div:hover{
 instead of setting both start and end position,you can just set **specific dimensions**
 ```
 div{
-  background-image:radial-gradient(20px 10px at 75% 50%,red,blue);
-  width:300px;
+background-image:radial-gradient(20px 10px at 75% 50%,red,blue);
+width:300px;
 }
 ```
 CSS gradients are powerful,considering how endless the options are.  
@@ -1017,15 +1017,15 @@ Transitions are often used on hover states.
 ```
 <a href="#" class="with-transition">i am with transitioned</a>
 a{
-  background:lightgrey;
-  color:grey;
+background:lightgrey;
+color:grey;
 }
 a:hover{
-  background:yellow;
-  color:red;
+background:yellow;
+color:red;
 }
 a.with-transiton{
-  transition:1s;
+transition:1s;
 }
 ```
 
@@ -1033,18 +1033,18 @@ a.with-transiton{
 A transition's duration is the only CSS property needed to create a transition. it can either be set in seconds `2s` or millisenconds `100ms`  
 ```
 a{
-  background:lightgrey;
-  color:grey;
+background:lightgrey;
+color:grey;
 }
 a:hover{
-  background:yellow;
-  color:red;
+background:yellow;
+color:red;
 }
 a.with-fast-transiton{
-  transition:0.5s;
+transition:0.5s;
 }
 a.with-slow-transiton{
-  transition:2s;
+transition:2s;
 }
 ```
 
@@ -1053,19 +1053,19 @@ only 1/3 of CSS properties can be animated.Mozillia has a [complete list](https:
 by default,the `transition-property` property has a value of `all`,which simply means it will animate all possible properties.you can decide to only animate 1 or several properties.  
 ```
 a{
-  background:lightgrey;
-  color:grey;
+background:lightgrey;
+color:grey;
 }
 a:hover{
-  background:yellow;
-  color:red;
+background:yellow;
+color:red;
 }
 a.with-background-transiton{
-  transition-property:background;
-  transition:0.5s;
+transition-property:background;
+transition:0.5s;
 }
 a.with-all-transiton{
-  transition:2s;
+transition:2s;
 }
 ```
 
@@ -1079,13 +1079,13 @@ The timing function determines how each property's value is calculated during th
 if you want to visualize how other timing functions work,check out this [Easing Functions Cheat Sheet](http://easings.net/)
 ```
 div{
-  left:0;
-  position:relative;
-  transition:1s;
-  transition-timing-function:ease;
+left:0;
+position:relative;
+transition:1s;
+transition-timing-function:ease;
 }
 div:hover{
-  left:200px;
+left:200px;
 }
 ```
 
@@ -1098,15 +1098,15 @@ A delay will define how long the transitions has to wait before actually startin
   <a href="" class="with-delay">with a second delay</a>
 </div>
 a{
-  background:blue;
-  color:white;
-  transition:all 1s;
+background:blue;
+color:white;
+transition:all 1s;
 }
 div:hover a{
-  background:red;
+background:red;
 }
 a.with-delay{
-  transition-delay:1s;
+transition-delay:1s;
 }
 ```
 
@@ -1134,11 +1134,11 @@ like the `transition` property,`animation` is a shorthand property for several o
 To animate a loading button,you could write a bouncing animation:
 ```
 @keyframes bouncing{
-  0%{bottom:0;box-shadow:0 0 5px rgba(0,0,0,0.5);}
-  100%{bottom:50px;box-shadow:0 50px 50 px rgba(0,0,0,0.1);}
+0%{bottom:0;box-shadow:0 0 5px rgba(0,0,0,0.5);}
+100%{bottom:50px;box-shadow:0 50px 50 px rgba(0,0,0,0.1);}
 }
 .loading-buttom{
-  animation:bouncing 0.5s cubic-bezier(0.1,0.25,0.1,1) 0s infinite alternate both;
+animation:bouncing 0.5s cubic-bezier(0.1,0.25,0.1,1) 0s infinite alternate both;
 }
 ```
 - name :bouncing
@@ -1160,14 +1160,14 @@ Each keyframes is **CSS rule**,meaning that you can write CSS properties just li
 To define an animation,just write the keyword `@keyframes` followed by it **name**.  
 ```
 @keyframes around{
-  0%{left:0;top:0;}
-  25%{left:240px;top:0;}
-  50%{left:240px;top:140px;}
-  75%{left:0;top:140px;}
-  100%{left:0;top:0;}
+0%{left:0;top:0;}
+25%{left:240px;top:0;}
+50%{left:240px;top:140px;}
+75%{left:0;top:140px;}
+100%{left:0;top:0;}
 }
 p{
-  animation:around 4s linear infinite;
+animation:around 4s linear infinite;
 }
 ```
 
@@ -1177,7 +1177,7 @@ The animation name is used at least twice
 + when using the animation usting the `animation-name` property (or with the animation shorthand)
 ```
 @keyframes whatever{
-  /* ... */
+/* ... */
 }
 .selector{animation-name:whatever;}
 ```
@@ -1186,7 +1186,7 @@ The animation name is used at least twice
 `animation-duration` can be set in seconds `1s` or milliseconds `200ms`
 ```
 .selector{
-  animation-duration:0.5s;
+animation-duration:0.5s;
 }
 ```
 it default to `0s`,which means no animation at alll.
@@ -1195,14 +1195,14 @@ it default to `0s`,which means no animation at alll.
 just like `transition timing-functions`,animation timing functions can use keywords like `linear`,`ease-out`,or be defined using custom `cubic bezier` functions.
 ```
 .selector{
-  animation-timing-function:ease-in-out;
+animation-timing-function:ease-in-out;
 }
 ```
 it default to `ease`
 
 # animation-delay
 just like `transiton delays` ,animation delays can be set in seonds `1s` or milliseconds `200ms`. it defaults to `0s` which means no delay at all,it's useful when triggering
- multiple animations in sequence.  
+multiple animations in sequence.  
 ```
 .a,.b,.c{animation:bouncing 1s;}
 .b{animation-delay:0.25s}
@@ -1214,9 +1214,9 @@ by default,animations are only played once(value of `1`),you can set 3 types of 
 + integers like `2` or `3`
 + non-integers like `0.5` which will play only half the animation
 + the keyword `infinite` which will repeat the animation indefinitely
-```
+```css
 .selector{
-  animation-duration:infinite;
+animation-duration:infinite;
 }
 ```
 
@@ -1230,3 +1230,208 @@ The animation's direction defines in which order the keyframes are read
 #### animation-fill-mode
 an animation's fill mode defines what happens before the animation starts and after it ends.
 the detail you can find [here](http://marksheet.io/css-animations.html#animation-fill-mode)
+
+### CSS transform
+Fashioning unique shapes  
+CSS transforms are a collection of functions that allow to shape elements in particular ways:
++ **translate**: moves the elment along up to 3 axis (x,y and z)
++ **rotate**: moves the element around a central point
++ **scale**: resize the element
++ **skew**: distorts(扭曲) the element
+
+#### transform properties
+There are 3 CSS transform properties available:
++ `transform` define which transform function to use (translate,rotate,scale)
++ `transform-origin` allows to modify the origin point of a transformation (works like `background positions`)
++ `transform-style` is for 3d settings
+
+##### Doesn't break the flow 
+to prevent unexpected behavior,transformed elements do not affect the flow, whether rotated,scaled or translated,the won't affect other elements.
+
+#### translate
+The `translate()` function allows to move an element across the plane(on the x and y axis).it accepts either:
+- 1 parameter:moves the element along the `x` axis
+- 2 parameter:first value is for the `x` axis,second for the `y` one
+
+```css
+@keyframes translating{
+  0%{transform:translate(0,0);}
+  25%{transform:translate(240px,0);}
+  50%{transform:translate(240px,140px);}
+  75%{transform:translate(0,140px);}
+  100%{transform:translate(0,0);}
+}
+p{animation:translating 4s linear infinite;}
+```
+Remember:`transform` is the CSS property,`translate()` is the CSS value attached to that property (and also happens to be a function).  
+you can use `translateX()` and `translateY()` to only move your element along the `x` and `y` axis respectively.
+
+#### rotate
+The `rotate()` function allows to make an element revolve around a fixed point.By default ,it revolves around the element's center.  
+`rotate()` accepts only 1 parameter ,which is an angle value defined in degrees `deg`,gradians `grad`,radians `rad` or turns `turn`(which 1 turn being equivalent to a full circle).
+```
+@keyframes rotating{
+  0%{transform:rotate(0deg);}
+  100%{transform:rotate(360deg);}
+}
+p{animation:rotating 4s linear infinite;}
+```
+
+#### scale
+The `scale()` function allows to **resize an element**. It can either expand(扩大) or shrink(缩小) it.The function accepts either:
+- 1 parameter:the element is resized uniformily in height and width
+- 2 parameter :the first value resizes the element horizontally,the second one vetically
+
+The range of possible value is :
++ `1` :the element retains its original size 
++ `2` : the element doubles in size
++ `0.5` : the element is half of its size
++ `0` : the element basically disappears (as its height and width are equal to zero)
++ `-1` : the element is mirrored
+
+```css
+@keyframes scaling{
+  0%{transform:scale(1);}
+  20%{transform:scale(2);}
+  40%{transform:scale(0.5);}
+  60%{transform:scale(0);}
+  80%{transform:scale(-1);}
+  100%{transform:scale(1);}
+}
+p{animation:scaling 10s steps(1) 0s infinite;}
+```
+like `translate()`,the `scale()` function has x and y versions:`scaleX()` and `scaleY()` to resize horizontally and vertically respectively.
+
+#### skew
+The `skew()` function allows to distort(扭曲) an element,by dragging its sides along a line basically.  
+This transform function is rarely used ,as its effects are quite unpredictable(无法预知),and its results not necessarily appealing,nevertheless(然而),let's see how it works.  
+Like `scale()`,the `skew()`function accepts either:
++ 1 parameter:the element is distorted horizontally
++ 2 parameter : the first value distorts the element horizongtally,the second one *vertically*
+
+And like `rotate()`,`skew()` only accepts angle value like degrees `deg`.
+```css
+@keyframes skewing{
+  0%{transform:skew(0deg);}
+  20%{transform:skew(10deg);}
+  40%{transform:skew(45deg);}
+  60%{transform:skew(90deg);}
+  80%{transform:skew(120deg);}
+  100%{transform:skew(0deg);}
+}
+p{animation:skewing 10s steps(1) 0s infinite;}
+```
+
+#### 3d fuctions
+TODO
+
+
+### CSS responsiveness
+Designing for every screen  
+The WEB is meant to provide a platform to share information easily across the internet,no matter which device the information is viewed on. while the only 
+disparaties between computers accessing the Web consisted mostly upon different screen resolutions,the rapid growth of mobile devices has changed the requirements:
+a website needs to be accessible on mobile in order to be relevant.  
+what options are available to handle mobile devices?  
+1 Not doing anything and let mobile users zoom in to read your website.
+2 create a second website,like [m.facebook.com](http://m.facebook.com),and direct mobile devices to that website
+3 use responsive web design
+
+#### device ,browser ,viewport
+before going further,we need to define some terms:
++ **device** the hardware used:smartphone,tablet,pc or laptop
++ **browser** the software running:Firefox,Google Chrome,Safari,Internet Exploer
++ **viewport** the region within the browser that actually displays the webpage.
+
+![device/browser/viewport](http://marksheet.io/images/device-browser-viewport.png)
+
+#### Responsive web design
+The idea behind **responsive web design** is to make your website adapt to fit to any device.it does so by targetting devices with your CSS and applying certain styles on these devices only.  
+Responsiveness relies upon the properties of either the device or the viewport.For example:  
++ how wide is the viewport?
++ how high is the viewport?
++ how is the viewport oriented(朝向)?
++ what is the device's resolution(分辨率)?
+
+depending on the answer to these questions,a responsive CSS will apply different or additonal CSS rules.  
+Up until now,every part of our CSS was used by every device that accessed out website.Responsive web design allow us to apply certain styles in certain cases.  
+
+#### media queries
+We need to write blocks in our CSS that will only be used by devices that match that block's criterias(标准). these blocks are called **media queries**.  
+```css
+/* This part is read by every device/viewport */
+body{font-size:14px;}
+
+@media(min-width:1200px){
+  /* This part is only read by viewports wider than 1200px */
+  body{font-size:16px;}
+}
+```
+here,the default text size is `14px`,but to accomdate for larger viewports,the text size is set to `16px` if the viewport is wider than 1200 pixels.  
+
+##### several parameters
+you can require **2 conditions** for a media query to be activated.  
+```
+body{font-size:18px;}
+@media (min-width:1000px;) and (orientation:landscape){
+  body{font-size:20px;}
+}
+```
+##### serveral CSS rules
+you can include as many CSS rules as you want in the media query.
+
+#### parameters
+Media queries require parameters which act like conditions that need to be filled in order for the media query to be activated.  
+By writing `@media (min-width:1200px)`,we tell the browser to read this block only if the viewport is wider than 1200px;
+
+##### width
+The `width` parameter is the most used one in responsive web design.Thsi comes from the fact that webpages are read vetically.  
+##### height
+The `height` parameter works like the width one,expect it performs its checks on the viewports's height.you can use `min-height` and `max-height`.
+it's raraly used , as websites are mainly scrollable vertically.  
+##### orientation
+The orientation parameter can detect if the viewport is in either of the follwong modes:
++ **landscape**: the viewport is wider than it is tall
++ **portrait**: the viewport is taller than it is wide
+
+```css
+@media(orientation:protrait){/* for vertical viewports */}
+@media(orientation:landscape){/* for horizontal viewports */}
+```
+Althought it's mostly used for tablets and smartphones,be aware that even on a widescreen monitor,the viewport can be in portrait if its width is smaller than its height.
+
+##### resolution
+The `resolution` parameter is relevant to the `device's pixel density`,and can be expressed in either dots per inch `dpi` or dots per centimeter `dpcm`.  
+it depends on:
++ what your resolution is (like 1440x900,1024x768 etc.)
++ what your screen's diagonal is (like 11,14,21 etc.)
+
+the pixel density basically tells how **crisp** your display is (the higher the dpi,the crisper the display).  
+```css
+@media(min-resolution:300dpi){
+  /*  */
+}
+```
+Desktop screens usually have a pixel density around `100` dpi,smartphones on the other hand have an incredible range of dpi,for example:
++ Nokia Lumia 640 :332dpi
++ Apple Iphone 6+ : 401dpi
++ Google Nexus 5 : 445dpi
++ HTC One :469dpi
++ Samsung Galaxy S6 : 577dpi
+
+What role does CSS play here? well ,higher resolution screens wiil rend text very clearly:individual pixels become hardly noticable,and letters look absolutely smooth.  
+The problem is with **images** on Retina displays for example.it's a long topic,so read this [CSS Techniques for Retina](https://www.sitepoint.com/css-techniques-for-retina-displays/)  
+A Use case would be to provide a default background image for every device,and apply **high resolution background images** on Retina displays.  
+```
+/* 40x40 logo */
+.logo{
+  background-image:url(marksheet-logo.png);
+  background-size:40px 40px;
+}
+@media(min-resolution:300dpi){
+   /* 80x80 logo resized to 40x40 */
+  .logo{background-image:url(marksheet-log@2x.png);}
+}
+```
+keep in mind that the **background size must be set**.Otherwise,the `@2x` Retina image would take twice the space.
+> The `@2x` suffix is just Apple's notation for Retina images,and has been adoped as the de facto default notation in CSS
+> 
