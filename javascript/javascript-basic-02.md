@@ -234,6 +234,54 @@ arr.reduce(function(pre,cur,index,array){
   // 结果为15
 ```
 
+### Date类型
+ECMAScript中的Date类型是在早期的Java中的`java.util.Date`类基础上构建的.Date类型使用UTC(国际协调时间)1970年1月1日午夜(零时)开始经过的毫秒数来保存日期的.
+```javascript
+// 创建一个日期对象,不传参数默认为当前时间
+var now=new Date();
+// 传递参数返回具体的某个时间,其构造函数默认调用Date.parse()或者Date.UTC()进行转换为时间戳(毫秒数)
+var now=new Date("2016-2-11"); //Thu Feb 11 2016 00:00:00 GMT+0800 (中国标准时间)
+var now=new Date(2016,1,11); // Thu Feb 11 2016 00:00:00 GMT+0800 (中国标准时间)
+
+// Date.parse()
+// 接收一个表示日期的字符串的参数,然后尝试根据这个字符串返回相应的日期的毫秒数
+// 非法的参数返回NAN
+Date.parse("2016-2-11"); //1455120000000
+Date.parse("2016/2/11"); //1455120000000
+
+// Date.UTC()
+// 接收一系列的参数,返回相应的日期毫秒数
+// 传递参数的格式为年份,基于0的月份(一月0,二月1...),月中的那一天(1-31),小时数(0-23),分钟,秒,毫秒数
+// 只有前两个参数是必须的,省略的 其他参数统统假设为0
+// 非法的参数返回NAN
+Date.UTC(2016,2,11); //1457654400000
+new Date(1457654400000); // Fri Mar 11 2016 08:00:00 GMT+0800 (中国标准时间)
+Date.UTC(2016,2,11,22,55,48); //1457736948000
+
+// Date.now()
+// 返回当前的时间
+
+// Date类型重写了toLocaleString(),toString()和valueOf()方法
+// 其中toLocaleString()返回与浏览器设置的地区相匹配的日期格式
+// toString()通常返回带有时区信息的日期和时间
+// valueOf()返回时间戳(毫秒数)
+
+// 日期之间可以通过`>`,`<`,`=`进行比较
+
+// 时间格式化
+// toDateString()
+// toTimeString()
+// toLocaleDateString()
+// toLocaleTimeString()
+// toUTCString()
+// 其中toUTCString()是推荐的日期格式化
+
+// 日期/时间组件方法
+// 比如 getTime(),setTime(),getFullYear()....
+
+```
+
+
 
 
 
