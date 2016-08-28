@@ -281,140 +281,221 @@ Date.UTC(2016,2,11,22,55,48); //1457736948000
 
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+### RegExp 类型
+javascript中,一个正则表达式是一个模式与三个标志的组合体,定义正则表达式有字面量形式,也可以通过构造函数来,前者实用简单推荐使用
+`var expression=/pattern/flags;`
++ **g**:表示全局模式,模式将被应用于所有字符,而非在发现第一个匹配项的时候立刻停止
++ **i**:表示不区分大小写
++ **m**:表示多行模式,即在到达一行文本末尾会还会继续查找下一行中是否存在与模式匹配的项
+```javascript
+// 匹配字符中所有"at"实例
+var pattern=/at/g;
+// 匹配第一个"bat"或"cat",不区分大小写
+var pattern=/[bc]at/i;
+// 匹配所有以"at"结尾的3个字符的组合,不区分大小写
+var pattern=/.at/gi;
+
+// exec()
+// RegExp的主要方法是exec(),专门为捕获组设计的
+// 接受一个参数,即要应用模式的字符串
+// 返回包含第一个匹配项信息的数组,没有匹配则返回null
+// 返回的数组中包含两个额外的属性,input和index
+// index表示匹配项在字符串中的位置
+// input表示应用正则表达式的字符串
+var text="sat cat fat";
+var pattern=/.at/i;
+var matches=pattern.exec(text); // ['sat']
+matches.index; // 0
+matches.input; // "sat cat fat"
+
+// test()
+// 正则表达式的第二个方式是test()
+// 接受一个参数,在模式与该参数匹配的情况下返回true
+var text="000-00-000";
+var pattern=/\d{3}-\d{2}-\d{3}/i;
+if(pattern.test(text)){
+  console.log("matched");
+}
+// 正则表达式的valueOf()返回正则表达式本身
+```
+
+### Function类型
+函数实际上是对象,每个函数都是Function类型的实例,而且都与其他类型一样具有属性和方法.由于函数都是对象,因此函数名实际上是一个
+指向函数的对象指针,不会与某个函数绑定.
+```javascript
+// 函数的定义方式一
+function sum(a,b){
+  return a+b;
+}
+// 函数的定义方式二
+var sum=function(a,b){
+  return a+b;
+}
+// 通过构造函数定义
+var sum=new Function('a','b','return a+b');
+
+//由于函数名仅仅是指向函数的指针,函数名与包含对象指针的其他变量没有什么不同
+function sum(a,b){
+  return a+b;
+}
+console.log(sum(1,1)); //2
+var another=sum;
+console.log(another(1,1)); // 2
+sum=null;
+console.log(another(1,1)); //2
+
+// 函数没有重载,后面定义的同名函数覆盖前面定义的
+
+// 函数申明与函数表达式的区别
+// 解析器会率先读取函数申明,并使其在执行任何代码之前可用
+// 之语函数表达式,则必须等到解析器执行它所在的代码行,才会被真正解析执行
+// 解析器通过函数申明提升(function declaration hoisting)的过程,把函数申明提升到顶部
+
+// 如下的代码能够正常运行
+console.log(sum2(1,1)); //2
+function sum2(a,b){
+  return a+b;
+}
+
+// 如下代码产生错误
+console.log(sum2(1,1));
+var sum2=function(a,b){
+  return a+b;
+}
+
+// 函数也可以作为值来使用
+// 不仅可以像传递参数一样把一个函数传递给另一个函数
+// 而且还可以将一个函数作为另一个函数的结果返回
+function add5(num){
+  return num+5;
+}
+function callSomeFunction(someFunction,args){
+  return someFunction(args);
+}
+callSomeFunction(add5,5); //10
+
+// 来看一个函数返回另一函数的例子
+function createComparisonFunction(propertyName){
+  return function(obj1,obj2){
+    var v1=obj1[propertyName];
+    var v2=obj2[propertyName];
+    if(v1<v2){
+      return -1;
+    }else if(v1>v2){
+      return 1;
+    }else{
+      return 0;
+    }
+  };
+}
+
+var data=[
+  {name:"lucy",age:20},
+  {name:"bob",age:22}
+];
+
+data.sort(createComparisonFunction('name'));
+data[0].name; // bob
+data.sort(createComparisonFunction('age));
+data[0].name; // lucy
+
+// 函数内部属性
+// 函数内部的两个特殊对象: arguments,this
+// arguments
+// arguments的主要用途是保存函数的参数
+// arguments有一个名叫callee的属性,保存了拥有这个arguments对象的函数
+// 例如在递归函数中,通过使用arguments.callee可以解除函数名的紧密耦合的现象
+function factorial(num){
+  if(num<=1){
+    return 1;
+  }else{
+    return num*arguments.callee(num-1);
+  }
+}
+
+// this
+// 与java中this类似
+// this引用的是函数执行的环境对象,在网页全局作用域中调用函数时,this对象引用的是window
+window.color="red";
+var o={color:"blue"};
+function sayColor(){
+  return this.color;
+}
+sayColor(); // red;
+o.sayColor=sayColor;
+o.sayColor;// blue
+
+// ECMAScript5规范了另一个函数对象的属性 : caller
+// 该属性保存着调用当前函数的函数的引用
+function outer(){
+  inner();
+}
+function inner(){
+  console.log(arguments.callee.caller);
+}
+outer(); // function outer(){inner();}
+
+// 函数属性和方法
+// 每个函数都包含两个属性:length和prototype
+// length
+// length属性表示函数希望接收命名的参数个数
+function sum(a,b){
+  return a+b;
+}
+sum.length; // 2
+
+// prototype
+// 保存他们说有实例的方法,诸如toString(),valueOf()
+// prototype属性是不可枚举的,因此用for-in无法发现
+
+// 每个函数包含两个非继承而来的方法:apply()和call()
+// 这两个方法用途都是在特定的作用域中调用函数,实际上等于设置了函数体内的this
+// apply()方法接收两个参数,一个是在其中运行函数的作用域,另一个是参数组
+// 其中第二个参数可以是Array的实例,也可以是arguments对象
+function sum(a,b){
+  return a+b;
+}
+function callSum1(num1,num2){
+  return sum.apply(this,arguments);
+}
+function callSum2(num1,num2){
+  return sum.apply(this,[num1,num2]);
+}
+console.log(callSum1(3,4)); // 7
+console.log(callSum2(3,4)); // 7
+
+// call()
+// call()方法与apply()方法作用相同,只是接收参数的方式不同
+// call()的第二个参数必须一一列举出来
+function callSum3(num1,num2){
+  return sum.call(this,num1,num2);
+}
+callSum3(3,4); // 7
+
+// call()和apply()真正强大的地方在于能够扩充函数运行的作用域
+window.color="red";
+var o={color:"blue"};
+function sayColor(){
+  return this.color;
+}
+sayColor(); //red
+sayColor.call(this); //red
+sayColor.call(window); //red
+sayColor.call(o); //blue
+
+// ECMAScript5定义的新方法:bind()
+// bind()
+// 这个方法会创建函数的一个实例
+// 其this值会被绑定给传给bind()函数的值
+window.color="red";
+var o={color:"blue"};
+function sayColor(){
+  return this.color;
+}
+sayColor(); //red
+var someObj=sayColor.bind(o); 
+someObj(); //blue
+
+// 每个而函数继承的toLocaleString(),toString(),valueOf()都返回函数代码
+```
 
