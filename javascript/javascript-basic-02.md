@@ -396,7 +396,7 @@ var data=[
 
 data.sort(createComparisonFunction('name'));
 data[0].name; // bob
-data.sort(createComparisonFunction('age));
+data.sort(createComparisonFunction('age'));
 data[0].name; // lucy
 
 // 函数内部属性
@@ -497,5 +497,181 @@ var someObj=sayColor.bind(o);
 someObj(); //blue
 
 // 每个而函数继承的toLocaleString(),toString(),valueOf()都返回函数代码
+```
+
+### 基本包装类型
+为了便于操作基础类型值,ECMAScript提供了3个特殊的引用类型:Boolean,Number和String.这些类型与其他引用类型相似,但同时也具备
+有各自的基本类型相应的特殊行为.实际上,每当读取一个基本类型值的时候,后台就会创建一个对应的基本包装类型的对象,从而让我们
+能够调用一些方法来操作这些数据.  
+引用类型和基本包装类型的区别是对象的生存期,使用new操作符创建的引用类型的实例,在执行流离开当前作用域之前都一直保存在内
+存中,而自动创建的基本包装类型的对象,则只存在于一行代码执行的瞬间,然后被立即销毁,着就意味着我们不能在运行时为基本类型添
+加属性和方法.  
+```javascript
+var s1="some text";
+s1.color="red";
+console.log(s1.color); // undefined
+```
+**不建议显式地创建基本包装类型的对象**
+```javascript
+
+// Boolean 类型
+// 由于容易造成误解,所以在ECMAScript中Boolean对象用处不大
+// 尽量避免少用
+var booleanObject=new Boolean(true);
+var booleanValue=true;
+typeof booleanObject; // Object
+typeof booleanValue; // boolean
+
+// Number类型
+// 同样建议不用显式的创建Number类型
+var numberObject=new Number(10);
+// Number类型也重写了valueOf(),toLocaleString()和toString()方法
+// valueOf()方法对象表示的基本类型的数值
+// 另外两个返回字符串形式的数值,可以为toString()方法传递一个表示基数的参数,告诉返回几进制的字符串形式
+var num=10;
+console.log(num.toString(2)); // 10
+console.log(num.toString(8)); // 12
+
+// toFixed()方法
+// 会按照指定的小数位返回数值的字符串表示,并且支持舍入特性
+var num=10;
+console.log(num.toFixed(2)); // 10.00
+
+// toExponential()
+// 该方法返回指数表示法表示的数值字符串形式
+// 也接收一个指定输出结果小数位数的参数
+var num=10;
+console.log(num.toExponential(1)); //1.0e+1
+
+// String 类型
+// 继承的valueOf(),toLocaleString(),toString()都返回对象所表示的基本字符串值
+var stringObject=new String("hello world");
+// String()类型的每个实例都有一个length属性
+var stringValue="hello world";
+stringValue.length; // 11
+var myName="王强强";
+myName.length; //3
+
+// charAt()
+// 返回给定位置的字符
+var str="'hello world";
+charAt(1); // e
+// charCodeAt()
+// 返回给定位置字符编码
+charCodeAt(1); // 101
+
+// ECMAScript中新定义的访问个别位置的字符的方法
+str[1]; //e 
+
+// concat()
+// 字符串连接方法,但是用的少,人们更倾向于用 + 
+var str="hello";
+str.concat(" world"); // hello world
+// 可以传递更多的参数
+str.concat(" alias"," baby"," code"); // hellow alias baby code
+
+// slice() substr() substring()
+// 着三个方法都会返回被操作字符串的一个子字符串,而且都会接受一个或者两个参数
+// 第一个参数指定子字符串的开始位置,第二个参数表示字符串到哪里结束
+// 具体来说,slice()和subString()的第二个参数指定的是字符串最后一个字符后面的位置
+// 而substr()第二个参数指定返回字符串的个数
+// 如果未传递第二个参数,则将字符串的长度作为结束位置
+// 而在传递负值参数的情况下各不相同,这里不再介绍了
+var stringValue="hello world";
+stringValue.slice(3); // lo world
+stringValue.substring(); // lo world
+stringValue.substr(3); // lo world
+
+stringValue.slice(3,7); //lo w
+stringValue.substring(3,7); // lo w
+stringValue.substr(3,7); //lo worl
+
+// 字符串位置方法
+// indexOf()和lastIndexOf()
+// 两个方法都从一个字符串中搜索给定的子字符串,然后返回子字符串的位置,未找到返回-1
+var stringValue="hello world";
+stringValue.indexOf("o"); // 4
+stringValue.lastIndexOf("o"); //7
+// 这两个方法都可以接受第二个参数,表示从字符串中那个位置开始搜索
+stringValue.indexOf("o",6); // 7
+stringValue.lastIndexOf("o",6); //4
+
+// trim()方法
+// ECMAScript中新定义的方法
+// 该方法会创建一个字符串的副本,删除前置及后缀的所有空格,然后返回结果
+var str="  hello world  ";
+str.trim(); //hello world
+
+// 字符串大小写转换
+// toLowerCase()
+// toLocaleLowerCase()
+// toUpperCase()
+// toLocaleUpperCase()
+
+// 字符串模式匹配方法
+// match()
+// 接受一个参数,要么是一个正则表达式,要么是一个RegExp对象
+var text="cat, sat, bat, fat";
+var pattern=/.at/;
+var matches=text.match(pattern);
+matches[0]; // cat
+matches.index; // 0
+pattern.lastIndex; // 0
+
+// search
+// 与match()方法的参数相同
+// 返回字符串中第一个匹配项索引,没找到返回-1,它始终从字符串开头向结尾查找
+var text="cat, sat, bat, fat";
+text.search(/at/); // 1
+
+// 为了简化替换字符串操作,ECMAScript提供了replace()方法
+// 接受两个参数
+// 第一个参数可以是一个RegExp对象或者一个字符串,第二个参数可以是一个字符串或者一个函数
+// 如果第一个参数只是一个字符串,那么只会替换第一个子字符串
+// 想要替换掉素有子字符串,唯一的办法就是提供一个正则表达式,而且要指定全局(g)标志
+var text="cat, sat, bat, fat";
+text.replace("at","ond"); // cond, sat, bat, fat
+text.replace(/at/g,"ond"); // cond, sond, bond, fond
+
+// 其中replace()方法传递函数的例子
+function htmlEscape(text){
+  return text.replace(/[<>"&"]/g,function(match,pos,originaltext){
+    switch(match){
+      case "<" : return "&lt;";
+      case ">" : return "&gt;";
+      case "&" : return "&amp;";
+      case "\"" : return "&quot;";
+    }
+    });
+}
+var p="<p class=\"container\">hello world</p>";
+htmlEscape(p); // "&lt;p class=&quot;container&quot;&gt;hello world&lt;/p&gt;"
+
+// split()
+// 这个方法可以基于指定的分隔符将一个字符串分割成多个子字符串,并将结果放到一个数组中
+// 分隔符既可以是字符串,也可以是RegExp(不会将字符串看成正则表达式)
+// 接受的第二个参数用于指定数组的大小,以便确保返回的数组不会超过既定大小
+var colorText="red,blue,green,yellow";
+undefined
+colorText.split(","); // ["red", "blue", "green", "yellow"]
+colorText.split(",",3); //["red", "blue", "green"]
+colorText.split(/[, -]/); // ["red", "blue", "green", "yellow"]
+
+// localCompare()方法
+// 比较两个字符串,并返回下列的值中的一个:
++ 如果字符串在字母表中应该排在字符串参数钱,返回负数(-1)
++ 如果字符串等于字符串参数,返回0
++ 如果字符串在字母表中应该排在字符串参数之后,返回正数(1)
+
+var stringValue="yellow";
+stringValue.localeCompare("brick"); // 1
+stringValue.localeCompare("yellow"); // 0
+stringValue.localeCompare("zoo"); // -1
+
+// fromCharCode()方法
+// 接受一或多个字符编码,转换成一个字符串
+// 与charCodeAt()执行相反的操作
+String.fromCharCode(104,101,108,108,111); // "hello"
+
 ```
 
