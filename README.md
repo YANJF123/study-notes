@@ -10,6 +10,7 @@
 ## Javascript
 - [javascript-faq](https://github.com/buuug7/study-notes/blob/master/javascript/javascript-faq.md)
 - [javascript-basic](https://github.com/buuug7/study-notes/blob/master/javascript/javascript-basic.md)
+- [javascript-basic-02](https://github.com/buuug7/study-notes/blob/master/javascript/javascript-basic-02.md)
 - [javascript-Sring-Array-method](https://github.com/buuug7/study-notes/blob/master/javascript/javascript-Sring-Array-method.md)
 - [javascript-useful-hacks](https://github.com/buuug7/study-notes/blob/master/javascript/javascript-useful-hacks.md)
 - [javascript-scope-hoisting](https://github.com/buuug7/study-notes/blob/master/javascript/javascript-scope-hoisting.md)
