@@ -1,7 +1,8 @@
 # Study Notes
-自己收集的一些非常有用的web开发的相关技巧知识,以备自己以后查看,也可方便别人学习查看,都是web开发当中频繁用到的,并且有详细的例子,现在陆续更新当中
+自己收集的一些非常有用的web开发的相关技巧知识,以备自己以后查看,也可方便别人学习查看,都是web开发当中频繁用到的,并且有详细的例子,陆续更新当中...
 
 ## Css+Html+Sass
++ [css-basic](https://github.com/buuug7/study-notes/blob/master/css-html/css-basic.md)
 - [css-useful-tips](https://github.com/buuug7/study-notes/blob/master/css-html/css-useful-tips.md)
 - [notes-css-position](https://github.com/buuug7/study-notes/blob/master/css-html/notes-css-position.md)
 - [notes-html5](https://github.com/buuug7/study-notes/blob/master/css-html/notes-html5.md)
