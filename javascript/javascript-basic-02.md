@@ -675,3 +675,97 @@ String.fromCharCode(104,101,108,108,111); // "hello"
 
 ```
 
+### Global 对象
+不属于任何其他对象的属性和方法,最终都是Global的属性和方法,诸如isNaN(),isFinite(),parseFloat()...等都是Global对象的方法
+```javascript
+// URI编码方法
+// encodeURI() 不会对本身属于URI的特殊字符进行编码,例如冒号,正斜杠,问好和井号
+// encodeURIComponent() 对它发现的任何非标准字符进行编码
+var uri="https://github.com/buuug7/study-notes/network/members readme.md#contribute";
+encodeURI(uri); //"https://github.com/buuug7/study-notes/network/members%20readme.md#contribute"
+encodeURIComponent(uri); //"https%3A%2F%2Fgithub.com%2Fbuuug7%2Fstudy-notes%2Fnetwork%2Fmembers%20readme.md%23contribute"
+
+// 对应的解码方法
+// decodeURI() 解码用encodeURI()编码过的URL
+// decodeURIComponent() 解码用encodeURIComponent()编码过的URI
+// 而escap()和unescape()方法已经废弃了
+
+// eval()方法
+// 只接受一个参数,即要执行的ECMAScript字符串
+// 它会将传入的参数当做实际的ECMAScript语句来解析,然后把执行后的结果插入到原位置
+eval("alert('hi!')"); 
+// 等价于
+alert("hi!");
+
+eval("function say(){alert('hi');}");
+say(); // 在eval外部可以调用其内部定义的函数
+
+// 在严格模式下
+// 外部访问不到eval()中创建的任何变量和函数
+// 同样对eval赋值也会导致错误
+"use strict";
+eval=123;
+
+// Global对象的属性
+// 好多 这里省略了
+
+
+// window对象
+// ECMAScript虽然没有指出如何直接访问Global对象,但Web浏览器都是将这个全局对象作为window对象的一部分加以实现的.
+// 因此,在全局作用域中声明的所有变量和函数,都成为window对象的属性
+// 其中一种取得Global对象的方法是:
+var global=function(){
+  return this;
+}();
+
+
+// Math对象
+// Math对象属性
+Math.E;  //自然对数的底数,即常量e的值
+Math.LN10; // 10的自然对数
+Math.LN2; // 2的自然对数
+Math.LOG2E; // 以2为底e的对数
+Math.LOG10E; //以10为底e的对数
+Math.PI; //π的值
+Math.SQRT1_2; // 1/2的平方根(即2的平方根的倒数)
+Math.SQRT2; // 2的平方根
+
+// min()和max()方法
+// 其中min()和max()方法用于确定一组数值中的最小值和最大值.
+Math.max(2,44,565,9); //565
+Math.min(343,6,33.32); //6
+// 例如找出数组中最大或最小值,可以用apply()方法
+var values=[1,2,3,4,5,6,7,8];
+Math.max.apply(Math,values); //8
+
+// 舍入方法
+// Math.ceil()执行向上舍入
+// Math.floor() 执行向下舍入
+// Math.round() 执行标准舍入,四舍五入
+
+// random()方法
+// Math.random()方法返回介于0跟1之间的一个随机数,不包括0和1
+// 一个通用的从某个整数范围内随机选择一个值
+// 值=Math.floor(Math.random()*可能值的总数+第一个可能的值);
+
+// Math对象的其他方法
+// 查手册,这里不再罗列
+```
+
+### 总结
+对象在Javascript中被称为引用类型的值,而且有一些内置的引用类型可以用来创建特定的对象
++ 引用类型与传统面向对象程序设计中的类相似,但实现不同
++ Object是一个基础类,其他所有类型都从Object继承了基础的行为
++ Array类型是一组值的有序列表,同时还提供了操作和转换这些值的功能
++ Date类型提供了有关日期和时间的信息
++ RegExp类型是ECMAScript支持正则表达式的一个接口,提供了最基本的和一些高级的正则表达式功能
+
+函数实际上是Function类型的实例,因此函数也是对象;  
+因为有了基本包装类型,所以Javascript中的基本类型值可以被当做对象来访问.三种包装类型分别是:
++ Boolean
++ Number
++ String
+
+在所有代码执行之前,作用域中就已经存在两个内置对象:Global和Math,在大多数的Javascript实现中都不能直接访问Global对象,不过web浏览器实现了承担该角色的window对象,全局变量和函数都是global对象的属性.  
+
+Math对象提供了很多属性和方法,用于辅助完成复杂的数学计算.
