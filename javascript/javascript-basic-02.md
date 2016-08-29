@@ -681,9 +681,9 @@ String.fromCharCode(104,101,108,108,111); // "hello"
 // URI编码方法
 // encodeURI() 不会对本身属于URI的特殊字符进行编码,例如冒号,正斜杠,问好和井号
 // encodeURIComponent() 对它发现的任何非标准字符进行编码
-var uri="https://github.com/buuug7/study-notes/network/members readme.md#contribute";
-encodeURI(uri); //"https://github.com/buuug7/study-notes/network/members%20readme.md#contribute"
-encodeURIComponent(uri); //"https%3A%2F%2Fgithub.com%2Fbuuug7%2Fstudy-notes%2Fnetwork%2Fmembers%20readme.md%23contribute"
+var uri="https://github.com/buuug7/study-notes/readme.md#contribute";
+encodeURI(uri); //"https://github.com/buuug7/study-notes/readme.md#contribute"
+encodeURIComponent(uri); // "https%3A%2F%2Fgithub.com%2Fbuuug7%2Fstudy-notes%2Freadme.md%23contribute"
 
 // 对应的解码方法
 // decodeURI() 解码用encodeURI()编码过的URL
