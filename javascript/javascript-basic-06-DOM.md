@@ -1,4 +1,4 @@
-### DOM
+## DOM
 DOM(文档对象模型)是针对HTML和XML文档的一个API(应用程序编程接口).
 
 #### 节点层次
@@ -84,7 +84,7 @@ document.getElementById('a1').children[1].cloneNode();
 // 处理文档树中的文本节点,在DOM解析出现异常的时候使用
 ```
 
-### Document 类型
+#### Document 类型
 Javascript 通过Document类型表示文档,在浏览器中,document是HTMLDocument(继承自Document)的一个实例,表示整个HTML页面.Document节点具有的特征:
 + nodeType 的值为9
 + nodeName的值为"#document"
@@ -143,7 +143,7 @@ document.write("abc");
 document.writeln("abc");
 ```
 
-### Element 类型
+#### Element 类型
 Element类型是用于表现XML或HTML元素,提供了对元素标签名,子节点及特性的访问,其特征:
 + nodeType 的值为1
 + nodeName的值为元素的标签名
@@ -209,3 +209,140 @@ var items=ul.getElementsByTagName('li');
 ```
 
 
+#### Text类型
+文本节点由Text类型来表示,包含的是可以照字面解释的纯文本内容.纯文本中可以包含转义后的HTML字符,但不能包含HTML代码.
++ nodeType的值为3
++ nodeName的值为`#text`
++ nodeValue的值为节点所包含的文本
++ parentNode是一个Element
++ 不支持子节点
+```javascript
+// <p>some text</p>
+// <p>some other text</p>
+var p=document.getElementsByTagName('p');
+// 取得节点的文本
+p[0].firstChild.nodeValue;// some text
+// 修改节点的值,结果会立即反应在浏览器中
+p[0].firstChild.nodeValue="some text after modified!";
+
+// 创建文本节点
+// 用document.createTextNode()
+// 接受一个参数,要插入节点中的文本.
+var textNode=document.createTextNode("<strong>you wakl</strong>");
+var div=document.createElement('div'); // 创建div
+div.appendChild(textNode); // 把文本节点添加到刚创建的div内
+document.body.appendChild(div); //把div插入到body中
+
+// 规范化文本节点
+// DOM文档中存在相邻的同胞文本很容易导致混乱,因为分不清哪个文本节点表示哪个字符串
+// 于是催生了一个能够将相邻文本节点合并的方法
+// 该方法名字叫normalize()
+// 在过在一个包含两个或者多个文本节点的元素上调用,则会将所有文本合并成一个节点
+
+// 分隔文本节点
+// splitText()
+// TODO
+
+```
+
+#### comment类型
+注释在DOM中是通过Comment类型来表示的.
++ nodeType的值为8
++ nodeName的值为 '#comment'
++ nodeValue的值是注释的值
++ parentNode可能是Document或者Element
++ 不支持子节点
+```javascript
+//<div id="myDiv"><!-- a comment --></div>
+var div = document.getElementById('myDiv');
+var comment=div.firstChild;
+comment.data; //  a comment 
+comment.nodeValue; // a comment
+```
+
+
+#### CDATASection 类型
+TODO
+
+#### DocumentType 类型
+```javascript
+document.doctype.name; // html
+```
+
+#### DocumentFragment类型
+在所有节点类型中,只有DocumentFragment(文档片段)在文档中没有对应的标记.是一种轻量级的文档,虽然不能把文档片段直接添加到文档中,但是可以降它作为一个"仓库"来使用,即在里面保存将来可能会添加到文档中的节点.
++ nodeType的值为11
++ nodeName的值为"#document-fragment"
++ nodeValue的值为null
++ parentNode的值为null
+
+```javascript
+// <ul id="myList"></ul>
+var fragment=document.createDocumentFragment();
+var ul=document.getElementById('myList');
+var li=null;
+for(var i=0;i<4;i++){
+  li=document.createElement('li');
+  li.appendChild(document.createTextNode('item '+(i+1)));
+  fragment.appendChild(li);
+}
+ul.appendChild(fragment);
+```
+
+#### Attr类型
+元素的特性在DOM中意Attr类来表示,Attr对象有三个属性:name,value和specified,name为特性名称,value为特性值,而specificed是一个布尔值,用于区别特性是在代码中指定的,还是默认的.
+```javascript
+var attr=document.createAttribute('align');
+attr.value='left';
+element.setAttributeNode(attr);
+element.attributes['align'].value; // left
+element.getAttributeNode(); // left
+element.getAttribute('align'); //left
+// 我们建议并不直接访问特性节点,实际上使用getAttribute(),setAttribute()和removeAttribute()方法远比操作特性节点来的容易
+```
+
+
+### DOM操作技术
+#### 动态脚本
+```javascript
+// 动态加载js
+// <script type="text/javascript" src="cilent.js"></script>
+var script=document.createElement('script');
+script.type="text/javascript";
+script.src="client.js";
+document.body.appendChild(script);
+
+// 动态加载css样式
+// <link rel="stylesheet" href="style.css">
+var link=document.createElement('link');
+link.rel="stylesheet";
+link.href="style.css";
+document.head.appendChild(link);
+
+// 操作表格
+// <table>是HTML中最复杂的结构之一,使用DOM创建表格更加复杂
+var table=document.createElement('table');
+table.border=1;
+table.width="100%";
+var tbody=document.createElement('tbody');
+table.appendChild(tbody);
+tbody.insertRow(0);
+table.rows[0].insertCell(0);
+tbody.rows[0].cells[0].appendChild(document.createTextNode('cell 1,1'));
+
+table.rows[0].insertCell(1);
+tbody.rows[0].cells[1].appendChild(document.createTextNode('cell 2,1'));
+```
+
+#### 使用NodeList
+理解NodeList及其近亲NamedNodeMap和HTMLCollection,是从整体上透彻理解DOM的关键所在.着三个集合都是动态更新的.一般来说,应该尽量减少访问NodeList的次数,因为每次访问NodeList,都会运行一次基于文档的查询
+
+### 小结
+DOM是语言中立的API,用于访问和操作HTML和XML文档.DOM1级将HTML和XML文档形象地看做一个层次化的节点树,可以是用javascript来操作节点树,进而改变底层文档的外观和结构.
++ 最基本的节点类型是Node,用于抽象的表示文档中一个独立的部分,所有其他类型都继承于Node
++ Document表示整个文档,是一组分层节点的根节点
++ Element节点表示文档中的所有HTML和XML元素,可以用来操作这些元素的内容和特性
++ 另外还有一些节点类型,分别表示文本内容,注释,文档类型,CDATA区域或者文档片段
+
+访问DOM在多数情况下是很直观的,不过在处理`<script>`和`<link>`元素时还是存在一些复杂性,由于这两个元素包含了脚本和样式信息,因此浏览器会把它们与其他元素分开对待.
+DOM操作往往是javascript程序中开销最大的部分,而访问NodeList导致的问题为最多.NodeList对象都是动态的,这就意味着每一次访问NodeList对象,就执行一次查询,有鉴于此,建议减少DOM曹组.
