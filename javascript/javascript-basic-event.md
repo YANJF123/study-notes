@@ -95,6 +95,93 @@ window.addEventListener('resize',handle);
 // scroll
 // 在window对象上发生
 window.addEventListener('scroll',handle);
-
-
 ```
+
+###### 焦点事件
+焦点事件会在页面获得或失去焦点时触发
++ blur 在元素失去焦点时触发,这个事件不会冒泡,所有浏览器都支持
++ focus 在元素获得焦点时触发,这个事件不会冒泡,所有浏览器都支持
++ focusin 获得焦点时触发
++ focusout 失去焦点时触发
+
+###### 鼠标与滚轮事件
++ click 在用户按下鼠标按钮或者按下回车键后触发
++ dbclick 双击左键后触发
++ mousedown 在用户按下任意鼠标键触发
++ mouseenter 鼠标光标从元素外部首次移动到元素范围之内时触发
++ mouseleave 在位于元素上方的光标移动到元素范围之外时触发
++ mousemove 当鼠标指针在元素内部移动时触发
++ mouseout 在鼠标指针位于一个元素上方,然后用户将其移入另一个元素时触发
++ mouseover 在鼠标位于一个元素外部,然后用户首次将其移入另一个元素边界之内时触发
++ mouseup 在用户释放鼠标按钮时触发
++ mousewheel 鼠标滚轮事件
+```javascript
+// 客户区坐标
+// 发生事件时鼠标指针在视口中的位置
+// 用event.clientX和event.clientY
+
+// 页面坐标
+// 发生事件时鼠标在页面中的位置
+// 用event.pageX和event.pageY
+
+// 屏幕坐标
+// 发生事件时鼠标在屏幕上的位置
+// 用 event.screenX和event.screenY
+
+
+// 修改键
+// 也就是在按下鼠标时键盘上的某些键的状态也许可以影响到所采取的操作
+// 有shift,ctrl,alt,meta
+// 表示这些键的状态有shiftkey,ctrlkey,altkey,metakey
+// 当鼠标事件发生时,通过检测这几个属性就知道对应的键是否被按下
+var div =document.getElementById('myDiv');
+div.addEventListener('click',function(event){
+  if(event.shiftkey){
+    //some operation
+  }
+  if(event.ctrlkey){
+    // some other operation
+  }
+  ...
+  });
+
+
+// 相关元素
+// DOM通过event对象的relatedTarget属性提供了相关元素的信息
+// 这个属性只对于mouseover和mouseout事件才有值,对于其他事件,这个属性的值为null
+
+
+// 鼠标按钮
+// 对于mousedown和mouseup事件来说,要判断是鼠标左键或右键,或者是滚轮,到底是那个触发的该事件
+// 在event对象中存在一个button属性,表示按下或者释放的键
+// 0表示主鼠标键(左键),1表示中间的键(滚轮),2表示次鼠标按钮
+
+// 更多事件信息
+// event.detail中包含了有关事件的更多信息
+
+
+// 鼠标滚轮事件
+// mousewheel
+// 发生该事件时event对象会包含鼠标事件的所有标准信息外,还会包含一个特殊的wheelDelta属性
+// 向前滚动滚轮时,wheelDelta是120的倍数
+// 向后滚动滚轮时,wheelDelta是-120的倍数
+var p = document.querySelector('#myp');
+var handle = function(e) {
+  var e = EventUtil.getEvent(e);
+  console.log(e.wheelDelta);
+};
+EventUtil.addHandler(p, 'mousewheel', handle);
+
+
+// 触摸设备
+// 由于触摸设备不支持鼠标,有一下几点需要注意
+// 1 不支持dblclick,双击会放大画面
+// 2 轻击可单击元素会触发mosemove事件,可单击的元素指的是那些单击可产生默认操作的元素(如链接)
+// 3 mousemove事件会触发mouseover和mouseout事件
+// 4 两个手指放屏幕上且页面随手指一动而滚动会触发mousewheel和scroll事件
+
+// 无障碍阅读
+// TODO
+```
+
+
