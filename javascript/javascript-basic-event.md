@@ -65,7 +65,7 @@ DOM3级规定了以下几类事件:
 
 除了上面定义的事件外,HTML5也定义了一组事件,而有些浏览器在DOM和BOM上实现了自己的专有事件
 
-###### UI事件
+##### UI事件
 + load 当页面完全加载后在window上触发,当所有框架加载完毕后在框架集上触发,当图像加载完毕后在`<img>`元素上触发,嵌入内容加载完毕后在`<object>`元素上触发
 + unload 当页面完全卸载后在window上面触发,当所有框架都卸载后,在框架集上触发,或者嵌入的内容卸载完毕后`<object>`上触发
 + abord 当用户停止下载过程时,如果嵌入的内容没有加载完毕,则在`<object>`元素上触发
@@ -97,14 +97,14 @@ window.addEventListener('resize',handle);
 window.addEventListener('scroll',handle);
 ```
 
-###### 焦点事件
+##### 焦点事件
 焦点事件会在页面获得或失去焦点时触发
 + blur 在元素失去焦点时触发,这个事件不会冒泡,所有浏览器都支持
 + focus 在元素获得焦点时触发,这个事件不会冒泡,所有浏览器都支持
 + focusin 获得焦点时触发
 + focusout 失去焦点时触发
 
-###### 鼠标与滚轮事件
+##### 鼠标与滚轮事件
 + click 在用户按下鼠标按钮或者按下回车键后触发
 + dbclick 双击左键后触发
 + mousedown 在用户按下任意鼠标键触发
@@ -184,4 +184,65 @@ EventUtil.addHandler(p, 'mousewheel', handle);
 // TODO
 ```
 
+##### 键盘与文本事件
++ keydown 当用户按下键盘上的任意键触发,如果按住不放会重复触发此事件
++ keypress 当用户按下键盘上的字符键触发,如果按住不放会重复触发此事件
++ keyup 当用户释放键盘上的键触发
++ textinput 在文本插入文本框之前会触发该事件
 
+在用户按下一个键盘上的字符键时,首先会触发keydown,然后紧跟着是keypress事件,最后会触发keyup事件  
+```javascript 
+// 键码
+// event对象中keyCode属性中会包含一个代码与键盘上按下的键对应
+
+// 字符编码
+// event对象的charCode这个属性只有在发生keypress事件时才包含值
+// 该值是按下的那个键所代表字符的ASCII编码
+
+// DOM3变化
+// 给event对象新增加了key和char,key用来替代keyCode
+// 不过浏览器支持的不好,不推荐使用
+// Safari5和chrome支持名为keyIdentifier属性
+// DOM3还为事件增加了一个名为location属性
+// 该属性为一个数值,表示按下了什么位置上的键
+// event对象的getModifierState()方法用来检测修改键,不过浏览器支持不好,不建议用
+
+
+// textinput事件
+// 该事件时DOM3新增加的事件
+// 他跟keypress的区别是:任何可以获得焦点的元素都可以触发keypress,但只有可编辑区才能触发textinput
+// 由于textinput事件主要考虑的是字符,因此它的event对象中包含一个data属性
+// 这个属性的值就是用户输入的字符(非字符编码)
+// 实际测试好像chrome并不支持textinput事件
+
+// 设备中的键盘事件
+// TODO
+```
+
+##### 复合事件
+复合事件时DOM3级新添加的一类事件,用于处理IME(Input Method Editor)(输入法编辑器)的输入序列的.  
+支持该事件的浏览器不多,建议不要贸然使用.  
+TODO
+
+##### 变动事件
+DOM2级的变动(mutation)事件能在DOM中的某一部分发生变化时给出提示.
+TODO
+
+##### HTML5事件
+TODO
+
+##### 设备事件
+TODO
+
+##### 触摸与手势事件
+TODO
+
+#### 内存和性能
+TODO
+
+#### 模拟事件
+TODO
+
+
+### 小结
+TODO
