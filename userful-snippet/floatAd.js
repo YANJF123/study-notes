@@ -269,13 +269,13 @@ $(function () {
             //关闭区域背景透明度(0.1-1)
             //headFilter: 0.1,
             //图片
-            'img': "{$r[picurl]}",
+            'img': "path/to/img.jpg",
             //图片高度
-            'imgHeight': {$r[pic_height]},
+            'imgHeight': 50,
             //图片宽度
-            'imgWidth': {$r[pic_width]},
+            'imgWidth': 200,
             //图片链接
-            'linkUrl': "{$ad_url }",
+            'linkUrl': "http://www.github.com/somelinks",
             //浮动层级别
             'z-index': 100,
         },],
