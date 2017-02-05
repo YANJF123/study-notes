@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>test file api</title>
+</head>
+
+<body>
+    <form action="">
+        <input type="file" id="f-id">
+    </form>
+    <div>progress: <span id="progress"></span></div>
+    <div>output: <span id="output"></span></div>
+    <div class="drop-target" id="drop-target" style="width:400px;height:200px;background: purple;">
+        <span>drop target</span>
+    </div>
+    <script>
+    var el = document.getElementById('drop-target');
+    el.addEventListener('dragenter', function(e) {
+        let info = '',
+            output = document.getElementById('output'),
+            progress = document.getElementById('progress'),
+            //files = e.target.files,
+            fileReader = new FileReader();
+        e.preventDefault();
+        if (e.type == 'drop') {
+            files = e.dataTransfer.files;
+            i = 0;
+            len = files.length;
+            while (i < len) {
+                console.log(files[i].type + files[i].name);
+            }
+        }
+    }, false);
+    </script>
+</body>
+
+</html>
