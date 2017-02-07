@@ -1,5 +1,143 @@
 ## ES6新特性和一些陌生的知识
 
+#### 集合Set
+集合Set对象允许你存储任意类型的唯一值(不能重复),无论它是原始值或者是对象引用.
+```javascript
+// 语法
+// 参数iterable 一个可迭代对象，其中的所有元素都会被加入到 Set 中。null被视作 undefined 。
+new Set([iterable]);
+
+// 实例
+const mySet = new Set();
+mySet.add(1);
+mySet.add(2);
+mySet.add(3);
+mySet.add('buuug7');
+
+console.log(mySet); // Set { 1,2,3,'buuug7' }
+console.log(mySet.has(5)); //false
+console.log(mySet.size); // 3
+console.log(mySet.delete((2))); // true
+console.log(mySet.delete((88))); // false
+
+console.log('..............................');
+// 迭代set
+for (let item of mySet.keys()) {
+    console.log(item);
+}
+
+// 与 Array互换
+const arr = [...mySet];
+console.log(arr); // [ 1, 3, 'buuug7' ]
+```
+
+#### Map集合
+Map对象就是简单的键值映射,其中键和值可以是任意值(对象或者原始值)  
+Map 对象会按元素插入的顺序遍历— for...of 循环每次遍历都会返回一个 [key, value] 数组。
+```javascript
+// 语法
+// iterable
+// Iterable 可以是一个数组或者其他 iterable 对象，其元素或为键值对，或为两个元素的数组。 
+// 每个键值对都会添加到新的 Map。null 会被当做 undefined。
+new Map([iterable])
+```
+Objects 和 maps 的比较  
+Object 和 Map类似的一点是,它们都允许你按键存取一个值,都可以删除键,还可以检测一个键是否绑定了值.因此,一直以来,我们都把对象当成Map来使用,不过,现在有了Map,下面的区别解释了为什么使用Map更好点.
++ 一个对象通常都有自己的原型,所以一个对象总有一个"prototype"键。不过，从 ES5 开始可以使用map = Object.create(null)来创建一个没有原型的对象。
++ 一个对象的键只能是字符串或者 Symbols，但一个 Map 的键可以是任意值。
++ 你可以通过size属性很容易地得到一个Map的键值对个数，而对象的键值对个数只能手动确认。
+```javascript
+// 示例
+const myMap = new Map();
+const keyObj = {}, keyFun = function () {
+}, keyString = 'a string';
+
+myMap.set(keyObj, 'some value related to keyObj');
+myMap.set(keyFun, 'some value related to KeyFun');
+myMap.set(keyString, 'some value related to keyString');
+
+console.log(myMap.size); // 3
+console.log(myMap.get(keyObj)); // some value related to keyObj
+console.log(myMap.get(keyFun)); // some value related to KeyFun
+console.log(myMap.get(keyString)); // some value related to keyString
+console.log(myMap.get('a string')); // some value related to keyString
+
+console.log(myMap.get({})); // undefined , 因为keyObj !== {}
+console.log(myMap.get(function () {
+})) // undefined ,因为keyFunc !== function () {}
+
+// 用for...of 方法迭代
+for (let item of myMap) {
+    console.log(item);
+}
+
+for (let item of myMap.keys()) {
+    console.log(item);
+}
+
+for (let item of myMap.values()) {
+    console.log(item);
+}
+
+for (let [k, v] of myMap.entries()) {
+    console.log(k + '<==>' + v);
+}
+
+// 用forEach()方法迭代
+myMap.forEach((v, k) => console.log(k + '<==>' + v));
+
+// 与数组的关系
+const arr = [['k1', 'v1'], ['k2', 'v2'], ['k3', 'v3']];
+// 二位数组转换成Map
+const arrToMap = new Map(arr);
+console.log(arrToMap); //Map { 'k1' => 'v1', 'k2' => 'v2', 'k3' => 'v3' }
+// Map转换成二维数组
+const mapToArr = [...arrToMap];
+console.log(mapToArr); // [ [ 'k1', 'v1' ], [ 'k2', 'v2' ], [ 'k3', 'v3' ] ]
+```
+
+#### TypedArray 
+一个TypedArray对象描述一个表示底层的二进制数据缓存区的类似数组(array-like)视图.没有名为TypedArray的全局属性,也没有直接可见的TypedArray构造函数.
+```javascript
+new TypedArray(length); 
+new TypedArray(typedArray); 
+new TypedArray(object); 
+new TypedArray(buffer [, byteOffset [, length]]); 
+
+以下皆是 TypedArray() : 
+
+Int8Array(); 
+Uint8Array(); 
+Uint8ClampedArray();
+Int16Array(); 
+Uint16Array();
+Int32Array(); 
+Uint32Array(); 
+Float32Array(); 
+Float64Array();
+```
+
+参数:
++ length :当传入lengch参数时,一个内部数组缓冲区被创建,该缓存区的大小是传入的length乘以数组中每个元素的字节数,每个元素的值都为0.(译者注:每个元素的字节数是由具体的构造函数决定的,比如Int16Array的每个元素的字节数为2,Int32Array的每个元素的字节数为4)
++ typedArray :当传入一个包含任意类型元素的任意类型化数组对象(typedArray) (比如 Int32Array)作为参数时,typeArray被复制到一个新的类型数组。typeArray中的每个值会在复制到新的数组之前根据构造器进行转化.新的生成的类型化数组对象将会有跟传入的数组相同的length(译者注:比如原来的typeArray.length==2,那么新生成的数组的length也是2,只是数组中的每一项进行了转化)
++ object :当传入一个 object 作为参数时，如同通过 TypedArray.from() 方法一样创建一个新的类型数组。
++ buffer, byteOffset, length :当传入arrayBuffer和可选参数byteOffset,可选参数length时,一个新的类型化数组视图将会被创建,该类型化数组视图用于呈现传入的ArrayBuffer实例。byteOffset和length指定类型化数组视图暴露的内存范围,如果两者都未传入,那么整个buffer都会被呈现,如果仅仅忽略length,那么buffer中偏移(byteOffset)后剩下的buffer将会被呈现.
+
+```javascript
+// 属性访问
+const int16 = new Int16Array(3);
+int16[0] = 2;
+int16[1] = 54;
+console.log(int16); // Int16Array [ 2, 54, 0 ]
+console.log(int16[1]); // 54
+
+// 用 for...of来遍历TypedArray
+for(let item of int16){
+    console.log(item);
+}
+```
+
+
 #### const, let
 const 声明创建一个只读的常量。这不意味着常量指向的值不可变，而是变量标识符的值只能赋值一次。(译者注：JavaScript中的常量和Java，C++中的常量一个意思。注意区分常量的值和常量指向的值的不同)
 ```javascript
@@ -277,4 +415,189 @@ var obj = {
  string text line 2`
 
 `string text ${expression} string text`
+```
+
+
+#### for...of 语句
+for...of 语句在可迭代对象(包括Array,Map,Set,String,TypedArray,arguments对象等等)上创建一个迭代循环,对每个不同属性值,调用一个自定义的有执行语句的迭代挂钩.
+```javascript
+for(variable of object){
+  statement
+}
+```
+for...of 可以遍历:
++ Array
++ String
++ TypedArray
++ Map
++ Set
++ 遍历DOM集合,遍历Dom元素集合,比如一个NodeList对象: 下面的例子演示给每一个article标签的p子标签添加一个 "read" class.
+```javascript
+let articleParagraphs = document.querySelectorAll("article > p");
+
+for (let paragraph of articleParagraphs) {
+  paragraph.classList.add("read");
+}
+```
++ 遍历生成器
+```javascript
+// 注意: Firefox目前还不支持 "function*".
+// 删除该*号可以让下面的代码在Firefox 13中正常运行.
+ 
+function* fibonacci() { // 一个生成器函数
+    let [prev, curr] = [0, 1];
+    for (;;) {
+        [prev, curr] = [curr, prev + curr];
+        yield curr;
+    }
+}
+ 
+for (let n of fibonacci()) {
+    // 当n大于1000时跳出循环
+    if (n > 1000)
+        break;
+    console.log(n);
+}
+```
++ 遍历另外的可遍历对象,您也可以遍历一个已经明确的可遍历（可迭代）协议
+```javascript
+var iterable = {
+    [Symbol.iterator]() {
+        return {
+            i: 0,
+            next() {
+                if (this.i < 3) {
+                    return { value: this.i++, done: false };
+                }
+                return { value: undefined, done: true };
+            }
+        };
+    }
+};
+
+for (var value of iterable) {
+    console.log(value);
+}
+// 0
+// 1
+// 2
+```
+
+for...of与for...in的区别
+for...in 循环会遍历一个Object所有的可枚举属性  
+for...of语法是为各种Collection对象专门定制的,并不适用于object,它会以这种方式迭代出任何拥有[Symbol.iterator] 属性的collection对象的每个元素。  
+```javascript
+// for...in 遍历每一个属性名称,而 for...of遍历每一个属性值
+
+Object.prototype.objCustom = function () {};
+Array.prototype.arrCustom = function () {};
+
+let iterable = [3, 5, 7];
+iterable.foo = "hello";
+
+for (let i in iterable) {
+    console.log(i); // logs 0, 1, 2, "foo", "arrCustom", "objCustom"
+}
+
+for (let i of iterable) {
+    console.log(i); // logs 3, 5, 7
+}
+```
+
+#### import 
+import语句用于导入从外部模块，另一个脚本等导出的函数，对象或原语。
+```javascript
+import defaultMember from "module-name"; 
+import * as name from "module-name"; 
+import { member } from "module-name"; 
+import { member as alias } from "module-name"; 
+import { member1 , member2 } from "module-name"; 
+import { member1 , member2 as alias2 , [...] } from "module-name"; 
+import defaultMember, { member [ , [...] ] } from "module-name"; 
+import defaultMember, * as name from "module-name"; 
+import "module-name";
+
+
+//name 参数是将引用导出成员的名称。member参数指定独立成员，而name参数导入所有成员。如果模块导出单个默认参数，而不是一系列成员，name也可以是函数。
+//下面提供一些示例说明语法。
+
+//导入整个模块的内容。以下代码将myModule添加到当前作用域，其中包括所有导出绑定。
+import  * as myModule from "my-module";
+
+//导入模块的单个成员。以下代码将myMember添加到当前作用域。
+import {myMember} from "my-module";
+
+//导入模块的多个成员。以下代码会将foo和bar都添加到当前作用域。
+import {foo, bar} from "my-module";
+
+//导入整个模块的内容，其中一些被显式命名。
+//以下代码将myModule，foo，bar插入到当前作用域。注意，foo和myModule.foo是完全相同的，bar和myModule.bar也是如此。
+import MyModule, {foo, bar} from "my-module";
+
+//导入成员并指定一个方便的别名。以下代码将shortName添加到当前作用域。
+import {reallyReallyLongModuleMemberName as shortName} from "my-module";
+
+//导入整个模块 使用模块副作用，不导入任何绑定。
+import "my-module";
+
+//使用别名导入模块的多个成员。
+import {reallyReallyLongModuleMemberName as shortName, anotherLongModuleName as short} from "my-module";
+```
+
+
+#### export 
+export语句用于从给定的文件 (或模块) 中导出函数，对象或原语。
+```javascript
+export { name1, name2, …, nameN };
+export { variable1 as name1, variable2 as name2, …, nameN };
+export let name1, name2, …, nameN; // also var
+export let name1 = …, name2 = …, …, nameN; // also var, const
+
+export default expression;
+export default function (…) { … } // also class, function*
+export default function name1(…) { … } // also class, function*
+export { name1 as default, … };
+
+export * from …;
+export { name1, name2, …, nameN } from …;
+export { import1 as name1, import2 as name2, …, nameN } from …;
+
+
+//有两种不同的导出方式，每种方式对应于上述的一种语法：
+//命名导出：
+export { myFunction }; // 导出一个函数声明
+export const foo = Math.sqrt(2); // 导出一个常量
+//默认导出 (每个脚本只能有一个)：
+export default myFunctionOrClass // 或者 'export default class {}'
+// 这里没有分号
+// 对于只导出一部分值来说，命名导出的方式很有用。在导入时候，可以使用相同的名称来引用对应导出的值。
+//关于默认导出方式，每个模块只有一个默认导出。一个默认导出可以是一个函数，一个类，一个对象等。
+//当最简单导入的时候，这个值是将被认为是”入口”导出值。
+
+
+// 示例
+//命名导出
+//在这个模块里，我们可以这么导出：
+// module "my-module.js"
+export function cube(x) {
+  return x * x * x;
+}
+const foo = Math.PI + Math.SQRT2;
+export { foo };
+
+//这样的话，在其它脚本 (cf. import)，我们可以这样使用：
+import { cube, foo } from 'my-module.js';
+console.log(cube(3)); // 27
+console.log(foo);    // 4.555806215962888
+
+// 默认导出
+//如果我们只想导出一个简单的值或者想在模块中保留一个候选值，就可以使用默认导出：
+// module "my-module.js"
+export default function cube(x) {
+  return x * x * x;
+}
+//然后，在另一个脚本中，默认的导出值就可以被简单直接的导入：
+// module "my-module.js"
+import cube from 'my-module';
+console.log(cube(3)); // 27​​​​​
 ```
