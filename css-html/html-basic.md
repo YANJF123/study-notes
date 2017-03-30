@@ -354,6 +354,7 @@ if the number of options to choose from takes up too much space,you can use `<se
 </select>
 ```
 if your add the `mutiple` attribute , your can provide the ability to select multiple choices.
+
 ```
 <label for="">which browers do you have?</label>
 <select name="" id="" multiple>
@@ -361,7 +362,7 @@ if your add the `mutiple` attribute , your can provide the ability to select mul
   <option value="IE">IE</option>
   <option value="firefox">firefox</option>
 </select>
-``` 
+```
 
 #### a complete signup form
 ```
@@ -404,7 +405,6 @@ if your add the `mutiple` attribute , your can provide the ability to select mul
   </p>
 </form>
 ```
-
 
 
 
