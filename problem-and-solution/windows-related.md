@@ -1,6 +1,13 @@
-#### Windows下运行php7需要Visual C++Redistributable 2015,下载地址为
+#### vcruntime140.dll找不见
+Windows下运行php7需要Visual C++Redistributable 2015,下载地址为
 ```
 https://www.microsoft.com/en-gb/download/details.aspx?id=48145
+```
+
+#### vcruntime110.dll
+其中在安装wamp3.x的时候回提示该文件找不到,下载地址为
+```
+https://www.microsoft.com/zh-CN/download/details.aspx?id=30679
 ```
 
 #### 创建以点号开头的文件夹
