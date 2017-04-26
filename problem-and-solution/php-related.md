@@ -1,5 +1,20 @@
 ## php related
 
+#### 文件上传大小限制
+```
+Starting with version 2.7.0, the import engine has been re–written and these problems should not occur. If possible, upgrade your phpMyAdmin to the latest version to take advantage of the new import features.
+
+The first things to check (or ask your host provider to check) are the values of max_execution_time, upload_max_filesize, memory_limit and post_max_size in the php.ini configuration file. All of these three settings limit the maximum size of data that can be submitted and handled by PHP. Please note that post_max_size needs to be larger than upload_max_filesize. There exist several workarounds if your upload is too big or your hosting provider is unwilling to change the settings:
+
+Look at the $cfg['UploadDir'] feature. This allows one to upload a file to the server via scp, ftp, or your favorite file transfer method. PhpMyAdmin is then able to import the files from the temporary directory. More information is available in the Configuration of this document.
+
+Using a utility (such as BigDump) to split the files before uploading. We cannot support this or any third party applications, but are aware of users having success with it.
+
+If you have shell (command line) access, use MySQL to import the files directly. You can do this by issuing the “source” command from within MySQL:
+
+source filename.sql;
+```
+
 #### 如何用composer加载自己写的类(PSR-4)
 比如你项目文件机构
 + src
