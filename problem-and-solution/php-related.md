@@ -14,6 +14,10 @@ If you have shell (command line) access, use MySQL to import the files directly.
 
 source filename.sql;
 ```
+修改完毕了记着重启服务器
+```
+service apche2 restart
+```
 
 #### 如何用composer加载自己写的类(PSR-4)
 比如你项目文件机构
