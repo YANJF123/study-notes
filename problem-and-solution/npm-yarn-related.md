@@ -1,5 +1,14 @@
 ## npm related
 
+#### npm跟yarn命令比较
+其中pakageName代表包的名称
++ `npm install == yarn / yarn install`
++ `npm install packageName --save == yarn add packageName`
++ `npm install packageName --save-dev == yarn add packageName --dev`
++ `npm uninstall packageName --save == yarn remove packageName`
++ `npm update == yarn upgrade`
++ `npm install packageName -g == yarn global add packageName`
+
 #### npm配置淘宝源
 ```
 npm config set registry https://registry.npm.taobao.org
