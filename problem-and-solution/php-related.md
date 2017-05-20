@@ -1,3 +1,14 @@
+## 新安装的PHP需要设置的地方
+```
+// windows
+; On windows:
+extension_dir = "ext"
+
+extension=php_openssl.dll
+extension=php_mbstring.dll
+extension=php_curl.dll
+```
+
 ## php related
 
 #### 文件上传大小限制
