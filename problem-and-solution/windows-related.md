@@ -1,3 +1,9 @@
+#### VC 
++ [VC11](https://www.microsoft.com/en-us/download/details.aspx?id=30679)
++ [VC14](https://www.microsoft.com/en-us/download/details.aspx?id=48145)
++ [VC15](https://go.microsoft.com/fwlink/?LinkId=746572)
+
+
 #### vcruntime140.dll找不见
 Windows下运行php7需要Visual C++Redistributable 2015,下载地址为
 ```
