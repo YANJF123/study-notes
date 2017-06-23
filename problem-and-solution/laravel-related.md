@@ -1,5 +1,14 @@
 ## laravel related
 
+#### laravel 验证汉化
+```
+$this->validate($request,[
+    '验证的表单名称（例如name）' => '验证规则',
+],[],[
+    '验证的表单名称（例如name）' => '你想改成的中文（例如 姓名）'
+])
+```
+
 #### homestead安装phpmyadmin
 + Go to phpMyadmin website, download the latest version and unzip it into your code directory
 + Open up homestead.yaml file and add these lines
