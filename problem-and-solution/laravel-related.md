@@ -7,6 +7,16 @@ $this->validate($request,[
 ],[],[
     '验证的表单名称（例如name）' => '你想改成的中文（例如 姓名）'
 ])
+
+// 或者
+$validation = Validator::make($data, $rules,[
+    'required' => '请输入:attribute',
+    confirmed' => '密码确认不一致',
+],[
+     'name' => '用户名',
+     'email' => '电子邮箱',
+     'password' => '密码',
+]);
 ```
 
 #### homestead安装phpmyadmin
