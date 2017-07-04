@@ -1,5 +1,10 @@
 ## ubuntu related
 
+#### 查看是那个发行版，比如是centos或者ubuntu
+```
+lsb_release -a
+```
+
 #### ubuntu 安装php7+nginx+mysql
 ```
 add-apt-repository ppa:ondrej/php 添加php源
