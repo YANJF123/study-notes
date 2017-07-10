@@ -1,5 +1,10 @@
 ## git related
 
+#### generating a new ssh key 
+```
+https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
+```
+
 #### git常用操作
 + 添加远程仓库地址 `git remote add origin https://github.com/buuug7/some.git`
 + 修改远程仓库地址 `git remote set-url origin https://github.com/...`
