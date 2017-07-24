@@ -15,3 +15,5 @@ http://idea.lanyus.com/
   - option+enter 导入类
   - control+enter 弹出生成菜单,比如构造函数,getter,setter等
   - shift+option+shif+n navigating symbol
+  - control+command+j 多重光标选择 all occurences
+  - control+j add selection for next occurence 选择下一个出现的光标点
