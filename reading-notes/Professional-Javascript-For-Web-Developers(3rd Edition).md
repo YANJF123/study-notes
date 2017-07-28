@@ -1,9 +1,13 @@
 # Professional javascript for web developers 3rd Edition
 
+## 第一章
+
 javascript组成的三个部分:
 + ECMAScript ,由ECMA-262定义的一个标准,目前各大浏览器都已经完整支持第五版,改标准最新的版本为ES6=ECMAScript2015
 + DOM,文档对象模型,提供访问和操作网页内容的方法和接口
 + BOM,提供与浏览器交互的方法和接口
+
+## 第二章
 
 在HTML中引入Script标签的位置:  
 全部放入head标签的缺点:  
