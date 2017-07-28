@@ -18,3 +18,15 @@ javascript组成的三个部分:
 + 把全部的JavaScript文件应用放在body标签结束之前
 + 在解析JavaScript代码之前,页面的内容将完全呈现在浏览器中
 + 用户因为浏览器窗口显示空白页面的时间缩短而感到打开页面的速度加快了
+
+#### 延迟脚本
+```JavaScript
+<script src="example.js" defer></script>
+```
+script标签的defer表示脚本可以延迟到文档完全被解析和显示之后执行,只对外部脚本有效.  
+
+#### 异步脚本
+```JavaScript
+<script src="example.js" async></script>
+```
+指定async属性的目的是不让页面等待脚本下载和执行,从而异步加载页面其他内容,只对外部脚本有效.
