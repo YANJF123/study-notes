@@ -21,12 +21,36 @@ javascript组成的三个部分:
 
 #### 延迟脚本
 ```JavaScript
-<script src="example.js" defer></script>
+<script defer src="example.js"></script>
 ```
 script标签的defer表示脚本可以延迟到文档完全被解析和显示之后执行,只对外部脚本有效.  
 
 #### 异步脚本
 ```JavaScript
-<script src="example.js" async></script>
+<script async src="example.js"></script>
 ```
 指定async属性的目的是不让页面等待脚本下载和执行,从而异步加载页面其他内容,只对外部脚本有效.
+
+#### 内嵌代码与外部文件
+并不存在硬性的规定必须使用外部文件,但是支持使用外部文件的人多会强调如优点:  
++ 可维护性,可集中管理JavaScript代码
++ 可缓存,浏览器能够根据具体的设置缓存链接的所有外部JavaScript文件
++ 适应未来
+
+#### 文档模式
+html5,的文档模式为
+```
+<!DOCTYPE html>
+```
+
+#### <noscript>元素
+用于在不支持JavaScript的浏览器中显示替代的内容,在如下情况下才会显示出noscript元素内的内容:
++ 浏览器不支持脚本
++ 浏览器支持脚本,但脚本被禁用
+
+
+```
+<noscript>
+  <p>本页面需要浏览器支持JavaScript.</p>
+</noscript>
+```
