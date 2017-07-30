@@ -156,3 +156,103 @@ Number类型
     * `>>=`
     * `>>>=`
 + 逗号操作符,`var num=1,num=2,num=3;`用于声明多个变量,也可以赋值.
+
+#### 语句
+if语句
+```javascript
+var i = 30;
+if (i>25){
+  //do some
+} else if (i>30) {
+  // do other
+} else {
+  // do else
+}
+```
+
+do-while语句
+```javascript
+var i = 30;
+do {
+  //some
+} while(i<30 );
+```
+
+while语句
+```javascript
+var i = 30;
+while (i<30) {
+  // do some
+}
+```
+
+for语句
+```javascript
+for (var i =0; i<5; i++){
+  //do some
+}
+```
+
+for-in 语句,是一种精准的迭代语句,可用来枚举对象的属性.
+```javascript
+var arr = [1,2,3,4];
+for (var item in arr ) {
+  console.log(item);
+}
+```
+
+label 语句,一般都是配合for等循环语句使用.
+```javascript
+start:
+for (var i=0;i<count;i++){
+  // some
+}
+```
+
+break 和 continue 语句
+```javascript
+// break 语句会立刻退出循环,强制继续执行循环后面的语句
+for (var i=1;i<10;i++){
+  if(i==3){
+    break;
+  }
+  console.log(i);
+}
+// 0 1 2 4 5
+
+// continue 语句会退出当前循环,继续执行下次循环
+for (var i=1;i<10;i++){
+  if(i==3){
+    continue;
+  }
+  console.log(i);
+}
+// 0 1 2
+```
+
+with 语句,其作用是将代码的作用域设置到一个特定的对象中. 严格模式下不允许使用with语句.所以这里在不做介绍.
+
+switch语句,用来简化多重if else 语句来设计的,如果省略break关键字,就会导致执行完当前case,继续执行下一个case.
+```javascript
+var num =2;
+switch (num) {
+  case 1: console.log(num);break;
+  case 2: console.log(num);break;
+  case 3: console.log(num);break;
+  case 4: console.log(num);break;
+  default: console.log(num);
+}
+```
+#### 函数
+函数就是一组相关代码的集合,主要用来复用代码.  ECMAScript中函数参数保存在`arguments`对象中,访问参数可通过arguments[i] ,ECMAScript中函数没有重载的概念.  
+与其他语言函数的区别:
++ 无需指定函数的返回值,任何ECMAScript函数都可以在任何时候返回任何值
++ 实际上,未指定任何返回值的函数返回的是`undefined`
++ ECMAScript没有函数签名的概念,因为函数参数是一个包含零个或多个值的数组形式
++ 可以向ECMAScript函数传递任意数量的参数,并通过arguments对象来访问这些参数.
++ 由于不存在函数签名的特性,ECMAScript函数不能重载.
+```javascript
+function sum(){
+  return arguments;
+}
+```
