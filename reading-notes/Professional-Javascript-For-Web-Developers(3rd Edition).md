@@ -72,3 +72,46 @@ function(){
 ECMAScript的变量是松散类型的,是可以用来保存任何类型的数据.使用`var`操作符定义的变量将成为定义该变量作用域中的局部变量.省略`var`会导致创建全局变量,我们不建议通过省略`var`来定义全局变量,因为在局部作用域中定义的全局变量很难维护.
 
 #### 数据类型
+typeof操作符用来检测给定变量的数据类型,返回值有:
++ undefined 未定义
++ boolean 布尔值
++ string 字符串
++ number 数值
++ object 数值是对象或null
++ function 函数
+
+undefined 类型,值只有一个就是undefined,使用var声明变量但是未初始化,该变量就为undefined,同样未申明的变量用typeof检测也会返回undefined,所有我们在定义一个变量的时候一定要初始化,这是一个明智的选择,可以避免很多问题.  
+
+null类型是第二个只有一个值的数据类型,这个特殊的值就是null.null值表示一个空对象指针.null == undefined ,会返回true.  
+
+Boolean类型只有两个字面值:true和false,任何类型的值都可以转换为Boolean值,空字符串,0,NaN,null,undefined被转换为false,其余的都被转换为true.
+
+Number类型
++ 浮点数,其保存值所需要的内存空间是整数的两倍,可用e表示法,浮点数值计算会产生舍入误差,所以永远不要测试某个特定的浮点数值.
++ 数值范围,由于内存限制,不可能保存世界上所有数值,ECMAScript能够表示的最小和最大数值保存在`Number.MIN_VALUE`和`Number.MAX_VALUE`中,超出该范围的值会被自动转换为特殊的Infinity,正无穷(Infinity),负无穷(-Infinity).
++ NaN(Not a Number),这个数值用于表示一个本来要返回数值的操作未返回数值的情况,比如`1/0`会返回NaN,任何与NaN涉及的操作都会返回NaN,NaN与任何值不相等,包括自身.`isNaN()`函数用来判断NaN.
++ 数值转换
+  - Number()函数,转换的规则比较复杂
+  - parseInt()函数,转换为整数
+  - parseFloat(),转换为浮点数
++ String类型,用于表示由零个或多个Unicode字符组成的字符序列,即字符串.
+  - 转义字符
+    * `\n` 换行
+    * `\t` 制表
+    * `\b` 空格
+    * `\r` 回车
+    * `\f` 进纸
+    * `\\` 斜杠
+    * `\'` 单引号
+    * `\"` 双引号
+    * `\xnn` 以十六进制代码nn表示的一个字符
+    * `\unnnn` 以十六进制代码nnnn表示的一个Unicode字符
+  - 转换为字符串,使用`toString()`方法,用String()也可以
++ Object类型,对象是一组数据和功能的集合,Object的每个实例都具有下列属性和方法
+  - Constructor, 保存着用于创建当前对象的函数
+  - hasOwnProperty(propertyName),用于检测给定的属性在当前对象实例中是否存在.
+  - isPrototypeOf(Object),用于检查传入的对象是否是另一个对象的原型
+  - propertyIsEnumerable(propertyName),用于检查给定的属性是否能够使用for-in语句来枚举.
+  - toLocalString(),返回对象的字符串表示,该字符串与执行环境的地区对应.
+  - toString(),返回对象的字符串表示
+  - valueOf(),返回对象的字符串,数值或布尔值表示
