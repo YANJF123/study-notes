@@ -1,13 +1,14 @@
 ## mysql related
 
 #### 修改数据库密码
-```
-进入mysql命令行输入:
+```mysql
+# 进入mysql命令行输入:
 use mysql;
 update user set password=PASSWORD('root') where user='root';
 flush privileges;//记着一定要刷新权限,不然不会生效的
 
-新版本的mysql密码存储字段变成了authentication_string,所以用下面的方法更新
+# 新版本的mysql密码存储字段变成了authentication_string,所以用下面的方法更新
+use mysql
 update user set authentication_string=PASSWORD('root') where user='root';
 flush privileges;
 ```
