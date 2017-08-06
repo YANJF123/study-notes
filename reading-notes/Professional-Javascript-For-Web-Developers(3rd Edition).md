@@ -295,4 +295,214 @@ Javascript是一门具有自动垃圾收集机制的编程语言,开发人员不
 + 离开作用域的值将被自动标记为可以回收,因此将在垃圾手机期间被删除
 + **标记清除** 是目前主流的垃圾手机算法,其思想是给当前不使用的值加上标记,然后在回收其内存.
 + 另一种垃圾收集算法是 **引用计数** ,其思想是跟踪记录所有值被引用的次数,当引用次数变为0时,则说明在没有办法访问这个值了,因此就可以将其占用的内存空间回收.不过在代码存在循环引用现象时,该算法会导致问题.
-+ 适当的解除变量的引用对垃圾回收机制有好处 
++ 适当的解除变量的引用对垃圾回收机制有好处
+
+
+
+## 第五章 引用类型
+引用类型的值(对象)是引用类型的一个实例,引用类型是一种数据结构,用于将数据和功能组织在一起.这也常被称为类,但是javascript对类的概念跟其他语言略有不同.
+
+#### object类型
+到目前为止,我们看到的大多数引用类型值都是Object类型的实例,也是使用最多的一个引用类型.
+```javascript
+// new 操作符来创建
+var person = new Object();
+person.name = 'buuug7';
+person.age = 22;
+
+// 对象字面量来创建
+var person = {
+  name : 'buuug7',
+  age : 22
+};
+
+// 访问 , 点表示法
+person.name; // buuug7
+person.age; // 22
+
+// 访问, 方括号表示法
+person['name']; // buuug7
+person['age']; // 22
+```
+
+#### Array类型
+ECMAScript中的数组与其他语言中的数组区别较大,ECMAScript中的每一项可以保存任何类型的数组.其数组长度可以动态的调整.
+```javascript
+
+//
+// 创建数组
+//
+// 使用Array构造函数
+var numbers = new Array(); // 创建一个空数组
+var numbers = new Array(5); // 创建指定长度的数组
+var numbers = new Array("red","blue","green"); // 创建并初始化数组
+
+// 使用数组字面量表示法
+var numbers = [];
+var numbers = [1,2,3];
+
+//
+// 读取数组
+//
+var numbers = [1,2,3];
+numbers[0]; // 1
+numbers[1]; // 2
+
+//
+// 数组长度
+//
+var numbers = [1,2,3];
+numbers.length; // 3
+
+//
+// 检测数组
+//
+// 不推荐 instanceof 如果网页中包含多个框架,导致检测不准确
+// 推荐用ES5的Array.isArray()
+var numbers = [1,2,3];
+Array.isArray(numbers); // true
+
+//
+// 转换方法
+//
+// toLocalString() toString() valueOf()
+// toString() 返回由数组中每个值的字符串形式拼接而成的一个逗号分隔的字符串
+// valueOf() 返回数组本身
+// 用join()方法也可以实现toString()方法的功能
+var numbers = [1,2,3];
+numbers.join(','); // 1,2,3
+
+//
+// 栈方法
+//
+// 数组可以表现的像栈一样,LIFO(Last-In-First-Out,后进先出)
+// 栈中项的插入叫推入,移除叫弹出,只发生在栈的顶部.
+// ECMAScript专门提供了push()和pop()方法,以便实现类似栈的行为
+var numbers = [1,2,3];
+numbers.push(4); // 4
+numbers.pop(); // 4
+
+//
+// 队列方法
+//
+// 队列数据结构的访问规则是FIFO(First-In-First-Out,先进先出)
+// 结合使用shift()和push()数组可以实现队列方法
+var numbers = [1,2,3];
+numbers.push(4); // 4
+numbers.shift(); // 1
+alert(numbers); // 2,3,4
+// unshift()与shift()作用相反,它可以在数组的前端添加任意个项并返回数组的长度
+numbers.unshift(0,1); // 5
+alert(); // 0,1,2,3,4
+
+//
+// 重排序方法
+//
+// reverse() 取反
+// sort() 默认按照升序排列,不过通常情况下并不是我们想要的结果,它接受一个函数
+var numbers = [1,2,3,10,4];
+numbers.sort(function(value1,value2){
+  return value2-value1;
+});
+
+//
+// concat()方法
+//
+// 基于当前数组中的所有项创建一个新数组
+var numbers = [1,2,3];
+var numbers2 = numbers.concat(4,5,6); // [1, 2, 3, 4, 5, 6]
+
+//
+// slice()方法
+//
+// 基于当前数组中的一个或者多个创建一个新数组
+// 如果slice方法的参数为负数,则用数组长度加上该数来确定相应的位置
+// 例如数组长度为8, slice(-4,-2)与slice(4,6)相同
+var numbers = [1,2,3,4,5,6];
+var numbers2 = numbers.slice(1); // [2,3,4,5,6]
+var numbers3 = numbers.slice(1,3); // [2,3]
+
+//
+// splice()方法
+//
+// 删除: 可以删除任意项,只需要指定两个参数,要删除的第一项位置和要删除的项数
+var numbers = [1,2,3,4,5,6];
+// 从第一项开始,总共删除1项
+var removed = numbers.splice(0,1); // 1
+alert(numbers); // 2,3,4,5,6
+
+// 插入: 向指定位置插入多个项,提供参数:起始位置,0(要删除的项数),和要插入的项
+var numbers = [1,2,3,4,5,6];
+// 向位置1插入8,9,10
+var removed = numbers.splice(1,0,8,9,10); // []``
+alert(numbers); // 1, 8, 9, 10, 2, 3, 4, 5, 6
+
+// 替换: 可以向指定位置插入任意数量的项,同时可删除任意数量的项
+// 删除三项,插入三项
+var numbers = [1,2,3,4,5,6];
+var removed = numbers.splice(1,3,7,8,9); // [2,3,4]
+alert(numbers); // 1,7,8,9,5,6
+
+//
+// 位置方法
+//
+// indexOf() 和 lastIndexOf()
+// 接受两个参数,要查找的项和表示查找起点位置的索引
+var numbers = [1,2,3,4,2,5,6];
+numbers.indexOf(2); // 1
+numbers.lastIndexOf(2); // 4
+
+//
+// 迭代方法
+//
+// 每个方法都接受两个参数:要在每一项运行的函数和(可选)运行该函数的作用域对象(this)
+// 传入这些方法中的函数会接收三个参数:数组项的值,该项在数组中的值和数组对象本身
+// every() 对数组中的每一项运行给定函数,如果该函数对每一项都返回true,则返回true
+// some() 对数组中的每一项运行给定函数,如果该函数任一项返回true,则返回true
+// filter() 对数组中的每一项运行给定函数,返回该函数返回true的项组成的数组
+// forEach() 对函数中的每一项运行给定函数,没有返回值
+// map() 对数组中的每一项运行给定函数,返回每次函数调用的结果组成的数组
+
+var numbers = [1,2,3,4,5,4,3,2,1];
+var everyResult = numbers.every(function(item,index,array){
+  return item>2;
+});
+alert(everyResult); // false
+
+var someResult = numbers.some(function(item,index,array){
+  return item>2;
+});
+alert(someResult); // true
+
+var filterResult = numbers.filter(function(item,index,array){
+  return item>2;
+});
+alert(filterResult); // 3,4,5,4,3
+
+numbers.forEach(function(item,index,array){
+  // 执行某些操作
+});
+
+var mapResult = numbers.map(function(item,index,array){
+  return item*2;
+});
+alert(mapResult); // 2, 4, 6, 8, 10, 8, 6, 4, 2
+
+
+//
+// 缩小方法
+//
+// reduce() reduceRight()
+// 这两个方法都会迭代数组的所有项,然后构建一个最终返回的值
+// reduce()方法从数组的第一项开始,逐个遍历到最后
+// reduceRight() 方法从数组的最后一项开始,向前遍历到第一项
+// 这两个方法都接收两个参数: 一个在每一项上调用的函数和(可选的)作为缩小基础的初始值
+// 传给reduce()和reduceRight()的函数接收四个参数:前一个值,当前值,项的索引和数组对象
+// 这个函数返回的任何值都会作为第一个参数自动传给下一个项,第一次迭代发生在第二项上,因此第一个参数是数组的第一项,第二个参数是数组的第二项
+var numbers = [1,2,3,4,5];
+var sum = numbers.reduce(function(prev,cur,index,array){
+  return prev+cur;
+});
+alert(sum); // 15
+
+```
