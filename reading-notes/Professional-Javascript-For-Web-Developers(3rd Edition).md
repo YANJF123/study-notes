@@ -504,5 +504,56 @@ var sum = numbers.reduce(function(prev,cur,index,array){
   return prev+cur;
 });
 alert(sum); // 15
+```
 
+#### Date 类型
+Date类型使用UTC(Coordinated Universal Time,国际协调时间)1970-01-01零时开始经过的毫秒数来保存日期.
+```javascript
+// 创建一个日期对象
+var now = new Date();
+
+//
+// Date.parse();
+// 该函数接受一个表示日期的字符串参数,然后尝试根据这个字符串返回相应日期的毫秒数
+// 2017-08-02 00:00:00
+Date.parse('2017-08-02'); // 1501632000000
+
+// Date.UTC();
+// 返回对应日期的毫秒数,接受的参数为:年份,基于0的月份(0-11),月中的那一天(1-31),小时(0-23),分钟,秒以及毫秒数
+// 其中只有年跟月是必须的
+// 2017-08-02 00:00:00
+Date.UTC(2017,7,2); // 1501632000000
+
+// 当然创建一个日期对象的时候会自动调用Date.parse()或者Date.UTC()
+var now = new Date(2017,7,2);
+var now = new Date('2017-08-02');
+
+// Date.now()返回当前时间时间表示的毫秒数,而不是时间对象
+
+//
+// 继承方法
+//
+// toString(),toLocaleString(),valueOf()
+// toString() 返回带有时区信息的日期和时间,一般以军用时间表示
+// toLocaleString() 返回与浏览器设置的地区相适应格式的时间和日期
+// valueOf() 返回毫秒表示数
+
+//
+// 常用日期格式化方法
+//
+// toDateString() 显示: 星期几 月 日 年
+// toLocaleDateString() 特定于地区的
+// toTimeString() 显示: 时 分 秒 时区信息
+// toLocaleTimeString() 特定与地区的
+// toUTCString() 完整的UTC日期
+// toLocaleString()
+// 以上的几种方法输出的字符串格式因浏览器而异,没有哪一种方法能够在用户界面中显示一致的日期信息
+
+//
+// 获取和设置日期
+//
+// getTime() setTime()
+// getFullYear() setFullYear()
+// getUTCFullYear() setUTCFullYear()
+// 很多... 自己查API,这里就不罗列了
 ```
