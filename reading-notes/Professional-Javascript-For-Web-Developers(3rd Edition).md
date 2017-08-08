@@ -557,3 +557,61 @@ var now = new Date('2017-08-02');
 // getUTCFullYear() setUTCFullYear()
 // 很多... 自己查API,这里就不罗列了
 ```
+
+#### RegExp 类型
+ECMAScript通过RegExp类型来支持正则表达式.
+
+```javascript
+// 创建正则表达式
+// var expression = /pattern/flags;
+// 任何一个正则表达式都可以带一个或者多个表示(flags)
+// g: 表示全局模式(global),即模式将应用于所有字符串,而非在发现第一个匹配项时立刻停止
+// i: 表示不区分大小写(case-insensitive)
+//m: 表示多行(multiline)模式
+
+// 创建正则表达式的方式有:字面量形式,使用RegExp构造函数
+// RegExp的实例属性: global,ignoreCase,lastInex,multiline,source
+
+// exec()
+var pattern = /[bc]a/i;
+pattern.global; // false
+pattern.ignoreCase; // true
+// RegExp的实例方法: exec(),test()
+// exec()接受一个参数,即要应用模式的字符串,然后返回包含第一个匹配项信息的数组
+var pattern = /[ab]c/gi;
+var matches = pattern.exec('bbac');
+matches.index; // 2
+matches.input; // bbac
+matches[0]; // ac
+
+// test()
+// 模式与参数匹配的情况下返回true
+var pattern = /\d{3}-\d{3}-\d{2}/;
+var text = '210-337-18';
+if (pattern.test(text)){
+  alert('yes!');
+}
+
+// RegExp实例继承的toLocaleString()和toString()方法都会返回正则表达式的字面量
+
+//
+// RegExp构造函数的属性
+//
+// input 最近一次匹配的字符串
+// lastMatch 最近一次的匹配项
+// lastParen 最近一次匹配的捕获组
+// leftContext input字符串lastMatch之前的文本
+// rightContext input字符串lastMatch之后的文本
+// multiline 布尔值,表示是否所有表达式都是用多行模式
+// 9个用于存储捕获组的构造函数属性,RegExp.$1,RegExp.$2 ... RegExp.$9
+var text = 'this has been a short summer';
+var pattern = /(.)hort/g;
+if (pattern.test(text)){
+  alert(RegExp.input); // this has been a short summer'
+  alert(RegExp.lastMatch); // short
+  alert(RegExp.lastParen); // s
+  alert(RegExp.leftContext); // this has been a
+  alert(RegExp.rightContext); // summer
+  alert(RegExp.multiline); // false
+}
+```
