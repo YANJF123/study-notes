@@ -615,3 +615,99 @@ if (pattern.test(text)){
   alert(RegExp.multiline); // false
 }
 ```
+
+#### javascript 正则表达式
+```javascript
+// 元字符
+// ( [ { \ ^ $ | ) ? * + .
+
+// 常用特殊字符
+// \t 制表符
+// \n 换行符
+// \r 回车符
+// \f 换页符
+// \b 退格符
+
+//
+// 字符类
+//
+// 原则上正则的一个字符对应一个字符,可以用[]括起来,着[]整体对应一个字符
+var pattern = /[ab]/i;
+pattern.test('a'); // true
+pattern.test('b'); // true
+
+// 取反
+// [^ab]
+var pattern = /[^ab]/i;
+pattern.test('a'); // false
+pattern.test('b'); // false
+pattern.test('c'); // true
+
+// 范围
+// [a-z]
+var pattern = /[a-z]/i;
+pattern.test('m'); // true
+pattern.test(9); // false
+
+// 组合
+// [^a-z]
+// [a-z1-5\n]
+// [a-zA-Z]
+
+// 预定义
+// . 除了换行和回车之外的任意字符
+// \d 数字字符
+// \D 非数字字符
+// \s 空白字符
+// \S 非空白字符
+// \w 单词字符(所有的字母)
+// \W 非单词字符
+
+// 量词
+// ? 出现零次或者一次
+// * 出现零次或者多次
+// + 一次或者多次
+// {n} 对应出现零次或者n次
+// {n,m} 至少出现n次,但不超过m次
+// {n,} 至少出现n次
+
+// 分组
+// 用小括号表示
+// /(dog){2}/g;
+var pattern = /(dog){2,}/g;
+pattern.test('dogdogpppp'); //true
+
+// 方向引用
+// 用 \编号 表示法来引用
+/(dog)\1/.test('dogdog'); // true ,这里的\1 就表示第一个捕获组
+
+// 候选
+// 用 | 表示
+/(red|black|yellow)/.test('red'); // true
+/(red|black|yellow)/.test('yellow'); // true
+
+// 前瞻
+// ?=exp 正向前瞻 匹配exp前面的位置
+// ?!exp 负向前瞻 匹配后面不是exp的位置
+var str1 = "bedroom";
+var str2 = "bedding";
+var reBed = /(bed(?=room))///在我们捕获bed这个字符串时，抢先去看接下来的字符串是不是room
+alert(reBed.test(str1));//true
+alert(RegExp.$1)//bed
+alert(RegExp.$2 === "")//true
+alert(reBed.test(str2))//false
+
+var str1 = "bedroom";
+var str2 = "bedding";
+var reBed = /(bed(?!room))/  //要来它后面不能是room
+alert(reBed.test(str1))//false
+alert(reBed.test(str2))//true
+
+
+// 边界
+// ^ 开头,注意不能紧跟于左中括号的后面
+// $ 结尾,
+// \b 单词边界,指[a-zA-Z_0-9]之外的字符
+// \B 非单词边界
+
+```
