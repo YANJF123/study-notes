@@ -711,3 +711,31 @@ alert(reBed.test(str2))//true
 // \B 非单词边界
 
 ```
+#### Function 类型
+每个函数都是Function类型的实例,而且都与其他引用类型一样具有属性和方法.由于函数都是对象,因此函数名实际上也是一个指向函数对象的指正,不会与某个函数绑定.
+```javascript
+// 定义函数
+function sum(num1,num2){
+  return num1 + num2;
+}
+// 或者
+var sum=function(num1,num2){
+  return num1+num2;
+}
+// 也可以用构造函数Function来声明,但是不建议
+```
+##### 函数没有重载(将函数名想象为指针),后定义的会覆盖前面定义的同名函数
+##### 函数申明和函数表达式
+解析器会率先读取函数声明,并使其在执行任何代码之前可用,至于函数表达式,则必须等到解析器执行到它所在的代码行,才会真正被解释执行.
+```javascript
+alert(num(10,10));
+function sum(num1,num2) {
+  return num1+num2;
+}
+
+// 下面的会出错
+alert(sum(10,10));
+var sum = function(num1,num2) {
+  return num1+num2;
+}
+``` 
