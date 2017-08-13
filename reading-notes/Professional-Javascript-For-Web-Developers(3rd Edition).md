@@ -906,6 +906,66 @@ String.fromCharCode(104,101,108,108,111); // "hello"
 // HTML方法
 // 没啥意义,很少用到,忘记吧
 
-
-
 ```
+
+#### 单体内置对象
+
+##### Global对象
++ uri编码,`encodeURI() encodeURIComponent() decodeURI() decodeURIComponent()`
++ eval方法,慎用,严格模式有很多限制
++ Global对象的属性
+  + undefined 特殊值undefined
+  + NaN 特殊值NaN
+  + Infinity 特殊值Infinity
+  + Object 构造函数Object
+  + Array 构造函数Array
+  + Function 构造函数Function
+  + Boolean 构造函数Boolean
+  + String 构造函数String
+  + Number 构造函数Number
+  + Date 构造函数 Date
+  + RegExp 构造函数 RegExp
+  + Error 构造函数 Error
+  + EvalError 构造函数EvalError
+  + RangeError 构造函数RangeError
+  + ReferenceError 构造函数ReferenceError
+  + SyntaxError 构造函数 SyntaxError
+  + TypeError 构造函数TypeError
+  + URIError 构造函数URIError
++ window对象,全局对象作为window对象的一部分来实现,在全局申明的所有变量和函数,成为了window对象的属性
+
+##### Math对象
++ Math对象的属性
+  + Math.E 自然对数的底数,即常量e的值
+  + Math.LN10 10的自然对数
+  + Math.LN2 2的自然对数
+  + Math.LOG2E 以2为底e的对数
+  + Math.LOG10E 以10为底e的对数
+  + Math.PI 3.14...
+  + Math.SQRT1_2 1/2的平方根
+  + Math.SQRT2 2的平方根
++ Math.max()
++ Math.min()
++ Math.ceil() 向上舍入
++ Math.floor() 向下舍入
++ Math.round() 四舍五入
++ Math.random() 返回介于0和1之间的随机数
++ 其他更多...
+
+#### 第五章总结
+对象在JavaScript中被称为引用类型的值,而且有一些内置的引用类型可以用来创建特定的对象
++ 引用类型与传统面向对象编程中的类类似,但实现不同
++ Object是基础类型,其他所有类型都从Object继承了基本的行为
++ Array类型是一组值得有序列表,同时提供了操作和转换这些值的功能
++ Data类提供了有关日期和时间的信息
++ RegExp是ECMAScript支持正则表达式的一个接口,提供了基本和高级的正则表达式功能
++ 函数Function类型的实例,因此函数也是对象,这一点正是JavaScript最有特色的地方,因为函数是对象,所以函数也有方法,用来增强其功能
++ 因为有了基本包装类型,所以JavaScript中基本类型值可以被当做对象来访问.三种基本包装类型是
+  + Boolean
+  + Number
+  + String
+  + 三种基本包装类型共有的特点是:
+    + 每个包装类型都映射到基本类型
+    + 在读取模式下访问基本类型值时,就会创建对应的基本包装类型的一个对象,从而方便了数据操作
+    + 基本类型值的语句一经执行完毕,就会立刻销毁创建的基本类型包装对象
++ 在所有代码执行之前,作用于中已经存在两个内置对象,Global和Math,在大多数ECMAScript实现中不能直接访问Global对象,不过在web浏览器中window承担了Global对象的角色,全局变量和函数都是Global对象的属性.Math提供了很多属性和方法,用于辅助完成复杂的数学计算.
