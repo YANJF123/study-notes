@@ -758,3 +758,154 @@ var sum = function(num1,num2) {
   - `apply()` 第一个参数为运行函数的作用域对象,第二个参数为传递给函数的数组或者arguments对象
 + `bind()` ECMAScript5中定义的方法,该方法会创建一个函数的实例,其this值会被绑定到传给bind()函数的值.
 + `toString()`,`toLocaleString()` 和 `valueOf()`都会返回函数的代码,在代码调试的时候非常有用
+
+#### 基本包装类型
+为了便于操作基本类型值,ECMAScript提供了3个特殊的引用类型,Boolean,Number和String,每当读取一个基本类型值时候,后台就会创建一个对应的基本包装类型的对象.从而让我们能够调用一些方法来操作这些数据.  
+引用类型和基本包装类型的主要区别就是对象的生存期,使用new操作符创建的引用类型的实力,在执行流离开当前作用域之前都一直保存在内存中.而自动创建的基本包装类型的对象,则只存在于一行代码执行的一瞬间.这意味着我们不能在运行时为基本类型值添加属性和方法.
+```javascript
+//
+// Boolean 类型
+//
+// Boolean类型是与布尔值对应的引用类型
+// Boolean类型的实例重写了valueOf()方法,返回基本类型值true或false
+// 重写了toString()方法,返回字符串'true'或'false'
+// 用处不大,容易引起混淆,建议永远不要使用了
+var booleanObject = new Boolean(true);
+
+//
+// Number 类型
+//
+// Number是与数字值对应的引用类型.
+// 重写了 valueOf(),toLocaleString()和toString()方法,第一个返回对象表示的基本类型的值,另外两个则返回字符串形式的的数值.
+// 我们任然不建议直接实例化Number类型
+
+// toString(2) 以二进制输出 ...
+// toString(8) 以8进制输出
+
+// toFixed()
+var num = 10;
+alert(num.toFixed(2)); // 10.00
+
+// toExponential() e表示法,其接收一个参数,该参数用来指定输出结果中小数的位数
+alert(num.toExponential()); // 1.0e+1
+alert(num.toExponential(2)); // 1.00e+1
+
+// toPrecision()
+// 返回该数值最合适的表示方法,该方法接收一个参数,表示数值的所有数字的位数
+var num = 99;
+alert(num.toPrecision(1)); // 1e+2
+alert(num.toPrecision(2)); // 99
+alert(num.toPrecision(3)); // 99.0
+
+//
+// String 类型
+//
+// String类型是字符串的对象包装类型.
+var stringObject = new String('hello world');
+// 其中继承的valueOf(),toLocaleString()和toString()都返回对象所表示的基本字符串值.
+// length属性,表示字符串中包含多少个字符.即使字符串包含双字节字符,每个字符串也任然算一个字符.
+
+// charAt() 返回对应位置的字符,基于0
+// charCodeAt() 返回对应位置的字符编码,基于0
+
+// 访问字符串中某个字符可以用方括号表示法.
+var str ='hello world';
+str[2]; // l
+
+
+// concat()
+// +
+var str1 = 'hello';
+var str2 = 'world';
+str1.concat(' world'); // hello world
+str1+' world'; // hello world
+
+// slice() ,第一个参数指定开始位置,第二个参数指定结束位置,关系为: startIndex <= index < endIndex
+// substr() ,第一个参数指定开始位置,第二个参数指定返回的字符个数
+// substring() ,跟slice()一模一样
+// 以上三个方法在参数为负数的情况下情况各个不同,这里不做过多介绍,为了避免混乱,建议少用.
+var str = 'hello world';
+str.slice(6); // world
+str.slice(3,5); // lo
+
+str.substr(3); // lo world
+str.substr(3,5); //lo wo
+
+str.substring(6); // world
+str.substring(3,5); // lo
+
+// 字符串位置
+// indexOf()和lastIndexOf()
+// 在一个字符串中搜索给定的子字符串,返回子字符串的位置,没有找到返回 -1
+// 第一个参数为子字符串,第二个参数可选,指定开始搜索的开始位置
+var str = 'hello world';
+str.indexOf('o'); // 4
+str.lastIndexOf('o'); // 7
+
+str.indexOf('o',6); // 7
+str.lastIndexOf('o',6); // 4
+
+// trim() 删除前置及后缀的所有空格
+
+// 大小写
+// toLowerCase() toLocaleLowerCase()
+// toUpperCase() toLocaleUpperCase()
+
+// 字符串模式匹配方法
+// match()
+// 在字符串上调用match()与在RegExp上调用exec()方法相同
+// 该方法接受一个参数,要么是一个正则表达式,要么是一个RegExp对象.
+var text = 'cat, bat, sat, fat';
+var pattern = /.at/;
+var matches = text.match(pattern);
+matches.index; // 0
+matches.lastIndex; // 0
+matches[0]; // cat
+
+// search()
+// 参数与match()方法一致
+// 返回字符串第一个匹配项的索引,如果没有返回-1
+// 始终从字符串开头向后查找
+var text = 'cat, bat, sat, fat';
+text.search(/at/); 1
+
+// replace()
+// 第一个参数可以是一个RegExp对象或者一个字符串,第二个参数是一个字符串或者函数
+var text = 'cat, bat, sat, fat';
+text.replace('at','ond'); // cond, bat, sat, fat
+text.replace(/at/g, 'ond'); // cond, bond, sond, fond
+// 第二个参数为函数可以实现更精准的替换操作
+// 传递给函数的三个参数分别为: 模式的匹配项,模式匹配项在字符串中的位置和原始字符串
+// 这个函数应该返回一个字符串
+var text = 'cat, bat, sat, fat';
+var result = text.replace(/.at/g,function(match,pos,originalText){
+  switch (match) {
+    case 'cat':return 'bigCat';break;
+    case 'bat':return 'bigBat';break;
+    case 'sat':return 'bigSat';break;
+    case 'fat':return 'bigFat';break;
+    default: return 'opps...';
+
+  }
+});
+alert(result); //"bigCat, bigBat, bigSat, bigFat"
+
+// split()
+// 根据指定的分隔符将一个字符串分割成多个字符串,并将结果放在一个数组中
+// 第一个参数为分隔符,第二个可选的第二个参数用于指定数组的大小,确保返回的数组不会超过既定大小
+var colorText = 'red,blue,green,yellow';
+colorText.split(','); //  ["red", "blue", "green", "yellow"]
+colorText.split(',',2); //  ["red", "blue"]
+
+// localCompare()
+
+// fromCharCode()
+// 它属于String构造函数的静态方法
+String.fromCharCode(104,101,108,108,111); // "hello"
+
+// HTML方法
+// 没啥意义,很少用到,忘记吧
+
+
+
+```
