@@ -57,33 +57,19 @@ a2enmod php7
 sudo apt-get remove apache2*
 ```
 
-#### ubuntu 安装php7
-```
-// You can do the following:
-sudo apt-get install python-software-properties software-properties-common
-sudo LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
-sudo apt-get update
-
-// Optionally purge(清除) PHP 5:
-sudo apt-get remove php5-common -y
-// Or directly purge it including configuration files:
-sudo apt-get purge php5-common -y
-
-// And finally install PHP 7:
-sudo apt-get install php7.0 php7.0-fpm php7.0-mysql -y
-
-// Optionally clean up unneeded packages afterwards:
-sudo apt-get --purge autoremove -y
-
-// PHP5 has now been replaced with PHP7 as the default PHP in Ubuntu 16.4 so, to install PHP7 on Ubuntu 16.04:
-sudo apt-get install php7.0 
-// or
-sudo apt-get install php
-```
-
-#### ubuntu 安装php5.6
+#### ubuntu 安装php5 php7
 ```
 sudo add-apt-repository ppa:ondrej/php
 sudo apt-get update
-sudo apt-get -y install php5.6 php5.6-mcrypt php5.6-mbstring php5.6-curl php5.6-cli php5.6-mysql php5.6-gd php5.6-intl php5.6-xsl php5.6-zip
+// php5.6
+sudo apt-get -y install php5.6 php5.6-mcrypt php5.6-mbstring php5.6-curl php5.6-cli php5.6-mysql php5.6-gd php5.6-intl php5.6-xsl php5.6-zip php5.6-fpm
+
+// php7.1
+sudo apt-get -y install php7.1 php7.1-mcrypt php7.1-mbstring php7.1-curl php7.1-cli php7.1-mysql php7.1-gd php7.1-intl php7.1-xsl php7.1-zip php7.1-fpm
+```
+#### apache2 切换php版本
+```
+$ sudo a2dismod php5.6
+$ sudo a2enmod php7.1
+$ sudo service apache2 restart
 ```
