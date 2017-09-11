@@ -5,15 +5,14 @@
 // 安装
 npm install -g n
 
-Use or install the latest official release:
+// Use or install the latest official release:
+n latest
 
-$ n latest
-Use or install the stable official release:
+// Use or install the stable official release:
+n stable
 
-$ n stable
-Use or install the latest LTS official release:
-
-$ n lts
+// Use or install the latest LTS official release:
+n lts
 ```
 
 #### npm跟yarn命令比较
