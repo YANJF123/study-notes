@@ -1,5 +1,21 @@
 ## npm related
 
+#### Node version management
+```
+// 安装
+npm install -g n
+
+Use or install the latest official release:
+
+$ n latest
+Use or install the stable official release:
+
+$ n stable
+Use or install the latest LTS official release:
+
+$ n lts
+```
+
 #### npm跟yarn命令比较
 其中pakageName代表包的名称
 + `npm install == yarn / yarn install`
