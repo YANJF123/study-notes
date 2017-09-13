@@ -1,6 +1,6 @@
 ## git related
 
-### reate github repository from CLI
+### create github repository from CLI
 ```
 curl -u 'username' https://api.github.com/user/repos -d '{"name":"RepoName"}'
 ```
