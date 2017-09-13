@@ -1,5 +1,10 @@
 ## git related
 
+### reate github repository from CLI
+```
+curl -u 'username' https://api.github.com/user/repos -d '{"name":"RepoName"}'
+```
+
 #### generating a new ssh key 
 ```
 https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
