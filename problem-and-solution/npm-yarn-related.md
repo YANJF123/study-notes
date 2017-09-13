@@ -24,8 +24,9 @@ n lts
 + `npm update == yarn upgrade`
 + `npm install packageName -g == yarn global add packageName`
 
-#### npm配置淘宝源
+#### npm配置仓库地址
 ```
+// 淘宝地址
 npm config set registry https://registry.npm.taobao.org
 
 //当你想发布自己的包时，需要将地址修改回来
