@@ -27,6 +27,9 @@ n lts
 #### npm配置淘宝源
 ```
 npm config set registry https://registry.npm.taobao.org
+
+//当你想发布自己的包时，需要将地址修改回来
+npm config set registry https://registry.npmjs.org/
 ```
 
 #### npm常用命令
