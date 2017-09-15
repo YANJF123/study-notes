@@ -39,13 +39,6 @@ update user set authentication_string=password('yourpassword') where user='root'
 
 ```
 
-
-
-#### ubuntu查看apache2 版本号
-```
-apachectl -v
-```
-
 #### ubuntu转换php5跟php7
 ```
 a2dismod php5
@@ -67,9 +60,25 @@ sudo apt-get -y install php5.6 php5.6-mcrypt php5.6-mbstring php5.6-curl php5.6-
 // php7.1
 sudo apt-get -y install php7.1 php7.1-mcrypt php7.1-mbstring php7.1-curl php7.1-cli php7.1-mysql php7.1-gd php7.1-intl php7.1-xsl php7.1-zip php7.1-fpm
 ```
-#### apache2 切换php版本
+#### apache2
+[官网文档](http://httpd.apache.org/docs/)
 ```
-$ sudo a2dismod php5.6
-$ sudo a2enmod php7.1
-$ sudo service apache2 restart
+// 查看版本
+apache2 -v
+
+// 切换站点
+a2ensite 
+a2dissite
+// 例如切换 000-default.conf
+a2ensite 000-default
+a2dissite 000-default
+
+// 切换模块
+a2enmod
+a2dismod
+
+// 例如切换php版本
+a2dismod php5.6
+a2enmod php7.1
+service apache2 restart
 ```
