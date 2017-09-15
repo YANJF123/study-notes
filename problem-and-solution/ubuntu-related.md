@@ -81,4 +81,8 @@ a2dismod
 a2dismod php5.6
 a2enmod php7.1
 service apache2 restart
+
+// 切换配置
+a2enconf
+a2disconf
 ```
