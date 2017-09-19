@@ -15,10 +15,15 @@ git checkout -b dev
 git branch -a
 
 // git删除本地分支
-git branch -D dev
+git branch -delete dev
 
 // git删除远程分支
 git push --delete origin dev
+
+// git重命名本地分支
+git branch -m dev dev_renamed
+
+
 ```
 
 #### git本地回滚操作
@@ -58,6 +63,16 @@ git push origin dev
 git push --delete origin dev_backup
 ```
 
+#### git 重命名远程分支
+原理是就是先删除远程分支,然后在重命名本地分支,在重新提交一个远程分支
+```
+// 先删除远程分支
+git push --delete origin dev
+// 在重命名本地分支
+git branch -m dev dev_renamed
+// 在提交本地分支
+git push -u origin dev_renamed
+```
 
 #### create github repository from CLI
 ```
