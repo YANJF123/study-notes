@@ -39,7 +39,7 @@ git reset --hard HEAD~3
 // 1, 检出要回滚的分支
 git checkout dev
 
-// 2, 拉去更新
+// 2, 拉取仓库中的最新信息
 git pull
 
 // 3, 备份当前分支
