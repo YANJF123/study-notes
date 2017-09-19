@@ -1,6 +1,65 @@
 ## git related
 
-### create github repository from CLI
+#### git 分支操作
+```
+// git创建分支
+git checkout dev
+
+// git切换分支
+git checkout dev
+
+// git创建并切换分支
+git checkout -b dev
+
+// git查看分支
+git branch -a
+
+// git删除本地分支
+git branch -D dev
+
+// git删除远程分支
+git push --delete origin dev
+```
+
+#### git本地回滚操作
+```
+// 回滚到commit-id,commit-id之后的提交的commit都去除
+git reset --hard commit-id
+
+// 将最近三次的提交回滚
+git reset --hard HEAD~3
+```
+
+#### git远程代码回滚
+```
+// 过程比本地回滚复杂
+// 应用场景,自动部署系统后发布后发现问题,需要回滚到某一个commit,在重写发布
+// 原理: 先将本地分支退回到某个commit,删除远程分支,在重新push本地分支
+
+// 1, 检出要回滚的分支
+git checkout dev
+
+// 2, 拉去更新
+git pull
+
+// 3, 备份当前分支
+git branch dev_backup
+
+// 4, 回滚到commit_id
+git reset --hard commit_id
+
+// 5, 删除远程分支dev
+git push --delete origin dev
+
+// 6, 提交回滚后的分支
+git push origin dev
+
+// 7, 如果前面都成功了,删除备份的分支dev_backup
+git push --delete origin dev_backup
+```
+
+
+#### create github repository from CLI
 ```
 curl -u 'username' https://api.github.com/user/repos -d '{"name":"RepoName"}'
 ```
