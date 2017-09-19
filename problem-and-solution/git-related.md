@@ -1,5 +1,23 @@
 ## git related
 
+#### git 最常用的操作
+```
+// 克隆远程仓库
+git clone URL
+
+// 添加当前的变动
+git add .
+
+// 确认本次提交
+git commit -m "some message"
+
+// 提交到远程仓库master 分支
+git push -u origin master
+
+// 拉取仓库最新的信息
+git pull
+```
+
 #### git 分支操作
 ```
 // git创建分支
