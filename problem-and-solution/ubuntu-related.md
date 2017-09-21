@@ -60,6 +60,12 @@ sudo apt-get -y install php5.6 php5.6-mcrypt php5.6-mbstring php5.6-curl php5.6-
 // php7.1
 sudo apt-get -y install php7.1 php7.1-mcrypt php7.1-mbstring php7.1-curl php7.1-cli php7.1-mysql php7.1-gd php7.1-intl php7.1-xsl php7.1-zip php7.1-fpm
 ```
+#### php安装有些项目时提示requires ext-dom
+```
+// 需要安装xml
+apt-get install php7.1-xml
+```
+
 #### apache2
 [官网文档](http://httpd.apache.org/docs/)
 ```
