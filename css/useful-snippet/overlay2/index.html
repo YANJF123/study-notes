@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            min-width: 800px;
+        }
+        .block{
+            margin:50px 50px;
+            background: url("./bg.jpg") no-repeat 50% 50%;
+            background-size: 100% auto;
+            padding:80px;
+            position: relative;
+            z-index: 1;
+            color:#fff;
+            font-size: 22px;
+        }
+        .block:before{
+            position: absolute;
+            left:0;
+            top:0;
+            width:100%;
+            height:100%;
+            content: '';
+            z-index: -1;
+            background: rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+
+<div class="block">
+    <h2>Lorem ipsum dolor sit amet.</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequuntur debitis eligendi eum fuga inventore
+       maxime nemo nulla praesentium vitae. Blanditiis error fuga nam repellat repellendus veniam. Ab, explicabo,
+       odio.</p>
+</div>
+
+</body>
+</html>
