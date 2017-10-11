@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
+        html{
+            box-sizing: border-box;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: inherit; // 1
+        }
+
+        body{
+            margin:1rem;
+        }
+
         body{
             min-width: 800px;
         }

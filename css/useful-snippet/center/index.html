@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>center</title>
+    <link rel="stylesheet" href="https://unpkg.com/normalize.css">
+    <style>
+        html{
+            box-sizing: border-box;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: inherit; // 1
+        }
+
+        body{
+            margin:1rem;
+        }
+
+        .box{
+            margin:25px;
+            display: block;
+            width:200px;
+            height: 200px;
+            background-color: rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .box-inner{
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255,0,0,0.75);
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+        }
+
+        .box-flex{
+            margin:25px;
+            width:200px;
+            height:200px;
+            background-color: rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        .box-flex-inner{
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255,0,0,0.75);
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <div class="box-inner"></div>
+</div>
+
+<div class="box-flex">
+    <div class="box-flex-inner"></div>
+</div>
+
+</body>
+</html>

@@ -6,6 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
+        html{
+            box-sizing: border-box;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: inherit; // 1
+        }
+
+        body{
+            margin:1rem;
+        }
+
         .block {
             margin: 100px 50px;
             background: url("./le-dou-ke-ji.png") no-repeat 5% 99%;

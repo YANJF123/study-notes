@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
+        html{
+            box-sizing: border-box;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: inherit; // 1
+        }
+
+        body{
+            margin:1rem;
+        }
+
         .card{
             display: flex;
             position: relative;
@@ -31,6 +45,9 @@
     </style>
 </head>
 <body>
+
+<h2>Card</h2>
+
 <div class="card" style="width:30rem">
     <div class="card-header">
         Lorem ipsum dolor sit
